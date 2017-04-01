@@ -1,49 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <object
-    i18n:domain="morear.content"
+    i18n:domain="plone"
     meta_type="Dexterity FTI"
-    name="Cover"
+    name="Link"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Cover</property>
+      name="title">Link</property>
   <property
       i18n:translate=""
       name="description"></property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Cover</property>
+  <property name="factory">Link</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
   <!-- Hierarchy control -->
-  <property name="allowed_content_types">
-    <!-- <element value="" />-->
-  </property>
+  <property name="allowed_content_types"/>
   <property name="filter_content_types">True</property>
   <property name="global_allow">True</property>
 
   <!-- Schema, class and security -->
-  <property name="add_permission">cmf.AddPortalContent</property>
-  <property name="klass">plone.dexterity.content.Item</property>
-  <property name="model_file"></property>
+  <property name="add_permission">plone.app.contenttypes.addLink</property>
+  <property name="klass">plone.app.contenttypes.content.Link</property>
+  <property name="model_file">plone.app.contenttypes.schema:link.xml</property>
   <property name="model_source"></property>
-  <property name="schema">morear.content.interfaces.ICover</property>
+  <property name="schema"></property>
 
   <!-- Enabled behaviors -->
-  <property name="behaviors">
-    <element value="plone.app.content.interfaces.INameFromTitle" />
+  <property name="behaviors" purge="false">
+    <element value="plone.app.dexterity.behaviors.discussion.IAllowDiscussion"/>
+    <element value="plone.app.dexterity.behaviors.id.IShortName"/>
+    <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
+    <element value="plone.app.content.interfaces.INameFromTitle"/>
+    <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
+    <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Cover</property>
-  <property name="immediate_view">cover_view</property>
-  <property name="default_view">cover_view</property>
+  <property name="add_view_expr">string:${folder_url}/++add++Link</property>
+  <property name="default_view">link_redirect_view</property>
   <property name="default_view_fallback">False</property>
+  <property name="immediate_view">view</property>
   <property name="view_methods">
-    <element value="cover_view" />
+    <element value="link_redirect_view"/>
   </property>
 
   <!-- Method aliases -->
@@ -69,23 +72,21 @@
       action_id="view"
       category="object"
       condition_expr=""
-      description=""
-      i18n:attributes="title description"
+      i18n:attributes="title"
       title="View"
       url_expr="string:${object_url}"
       visible="True">
-    <permission value="View" />
+    <permission value="View"/>
   </action>
   <action
       action_id="edit"
       category="object"
       condition_expr=""
-      description=""
-      i18n:attributes="title description"
+      i18n:attributes="title"
       title="Edit"
       url_expr="string:${object_url}/edit"
       visible="True">
-    <permission value="Modify portal content" />
+    <permission value="Modify portal content"/>
   </action>
 
 </object>

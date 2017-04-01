@@ -18,4 +18,13 @@
       directory="static"
       />
 
+  <!-- browser view -->
+  <browser:page
+      name="cover_view"
+      for="*"
+      class=".views.CoverView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
 </configure>
