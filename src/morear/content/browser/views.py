@@ -19,3 +19,16 @@ class CoverView(BrowserView):
 #        portal = api.portal.get()
 
         return self.template()
+
+
+class ProductView(BrowserView):
+
+    template = ViewPageTemplateFile("template/product_view.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+#        portal = api.portal.get()
+
+        return self.template()
+

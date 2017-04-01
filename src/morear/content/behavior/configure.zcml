@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="morear.content">
+
+    <include package="plone.behavior" file="meta.zcml" />
+
+
+    <plone:behavior
+        title="namedFromTimeStamp"
+        description="Named content id from time stamp"
+        provides=".behaviors.INamedFromTimeStamp"
+        factory=".behaviors.NamedFromTimeStamp"
+    />
+
+    <plone:behavior
+        title="bigImage"
+        description="Big Image for Page"
+        provides=".behaviors.IBigImage"
+        factory=".behaviors.BigImage"
+    />
+
+    <plone:behavior
+        title="contentMedia"
+        description="Content media, include one main image, three small image, and one youtube video."
+        provides=".behaviors.IContentMedia"
+        factory=".behaviors.ContentMedia"
+    />
+
+</configure>

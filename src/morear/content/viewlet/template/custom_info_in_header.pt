@@ -1,0 +1,39 @@
+<?python
+from plone import api
+portal = api.portal.get()
+prefix = '%s/++theme++moreartheme/' % portal.absolute_url()
+?>
+
+<tal:inner condition="python:context.Type() != 'Cover'">
+
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/location.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/privacy.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/about.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/sitemap.css" rel="stylesheet" type="text/css" />
+<link tal:condition="python:'document.pt' in str(view.view) or 'ProductView' in str(view.view)"
+      class="for-theme" href="${prefix}content/css/product.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/event.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/musicman.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/news.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/shoppingcart.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/buymore.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/member.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/search.css" rel="stylesheet" type="text/css" />
+<link tal:condition="False"
+      class="for-theme" href="${prefix}content/css/faq.css" rel="stylesheet" type="text/css" />
+
+<link class="for-theme" href="${prefix}content/css/web.css" rel="stylesheet" type="text/css" />
+<link class="for-theme" href="${prefix}content/css/in-menu.css" rel="stylesheet" type="text/css" />
+
+</tal:inner>

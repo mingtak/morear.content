@@ -42,6 +42,7 @@
     <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
     <element value="plone.app.versioningbehavior.behaviors.IVersionable" />
     <element value="plone.app.lockingbehavior.behaviors.ILocking" />
+    <element value="morear.content.behavior.behaviors.IBigImage"/>
   </property>
 
   <!-- View information -->

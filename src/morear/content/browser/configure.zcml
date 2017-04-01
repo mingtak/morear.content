@@ -27,4 +27,12 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="product_view"
+      for="*"
+      class=".views.ProductView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
 </configure>
