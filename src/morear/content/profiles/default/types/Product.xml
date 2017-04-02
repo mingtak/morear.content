@@ -33,11 +33,12 @@
   <property name="schema">morear.content.interfaces.IProduct</property>
 
   <!-- Enabled behaviors -->
-  <property name="behaviors">
+  <property name="behaviors" purge="true">
+    <element value="morear.content.behavior.behaviors.INamedFromTimeStamp"/>
+    <element value="plone.app.dexterity.behaviors.id.IShortName"/>
     <element value="morear.content.behavior.behaviors.IBigImage"/>
     <element value="morear.content.behavior.behaviors.IContentMedia"/>
     <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
-    <element value="plone.app.content.interfaces.INameFromTitle" />
   </property>
 
   <!-- View information -->

@@ -35,5 +35,6 @@ prefix = '%s/++theme++moreartheme/' % portal.absolute_url()
 
 <link class="for-theme" href="${prefix}content/css/web.css" rel="stylesheet" type="text/css" />
 <link class="for-theme" href="${prefix}content/css/in-menu.css" rel="stylesheet" type="text/css" />
+<link class="for-theme" href="${prefix}content/css/custom.css" rel="stylesheet" type="text/css" />
 
 </tal:inner>
