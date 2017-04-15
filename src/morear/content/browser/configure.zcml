@@ -35,4 +35,12 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="news_listing_view"
+      for="*"
+      class=".views.NewsListingView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
 </configure>

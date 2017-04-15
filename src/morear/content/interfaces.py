@@ -101,3 +101,16 @@ class ICover(Interface):
         title=_("More Feast Text"),
         required=True,
     )
+
+
+class IFaq(Interface):
+
+    title = schema.TextLine(
+        title=_(u'Question'),
+        required=True,
+    )
+
+    description = schema.Text(
+        title=_(u'Description'),
+        required=False,
+    )
