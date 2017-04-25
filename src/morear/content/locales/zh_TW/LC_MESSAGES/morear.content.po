@@ -1,6 +1,3 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -15,157 +12,157 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: morear.content\n"
+"Domain: DOMAIN\n"
 
 #: ./behavior/behaviors.py:60
 msgid "Above Text"
-msgstr ""
+msgstr "在上面的文字描述"
 
 #: ./behavior/behaviors.py:85
 msgid "Below Text"
-msgstr ""
+msgstr "在下面的文字描述"
 
 #: ./behavior/behaviors.py:33
 msgid "Big Image"
-msgstr ""
+msgstr "大圖(全寬)"
 
 #: ./behavior/configure.zcml:21
 msgid "Big Image for Page"
-msgstr ""
+msgstr "帶大圖的頁面"
 
 #: ./behavior/behaviors.py:34
 msgid "Big image for page."
-msgstr ""
+msgstr "帶大圖的頁面"
 
 #: ./behavior/configure.zcml:28
 msgid "Content media, include one main image, three small image, and one youtube video."
-msgstr ""
+msgstr "多媒體內容，包含一個主要圖檔，三個小圖及一個youtube"
 
 #: ./profiles/default/types/Cover.xml
 msgid "Cover"
-msgstr ""
+msgstr "首頁"
 
 #: ./interfaces.py:24
 msgid "Description"
-msgstr ""
+msgstr "簡要描述"
 
 #: ./interfaces.py:227
 msgid "Document With Big Image"
-msgstr ""
+msgstr "帶大圖的頁面"
 
 #: ./profiles/default/types/Cover.xml
 #: ./profiles/default/types/DocWithBigImage.xml
 #: ./profiles/default/types/Faq.xml
 msgid "Edit"
-msgstr ""
+msgstr "編輯"
 
 #: ./profiles/default/types/Faq.xml
 msgid "Faq"
-msgstr ""
+msgstr "問與答"
 
 #: ./behavior/behaviors.py:65
 msgid "Image"
-msgstr ""
+msgstr "圖檔"
 
 #: ./configure.zcml:23
 msgid "Installs the morear.content add-on."
-msgstr ""
+msgstr "安裝 morear.content 模組"
 
 #: ./behavior/behaviors.py:55
 msgid "Main Image"
-msgstr ""
+msgstr "主要圖檔"
 
 #: ./interfaces.py:48
 msgid "Main Slide"
-msgstr ""
+msgstr "主要 Slider"
 
 #: ./interfaces.py:53
 msgid "Main Slider URL"
-msgstr ""
+msgstr "主要 Slider 連結"
 
 #: ./interfaces.py:127
 msgid "More Design Image"
-msgstr ""
+msgstr "More Design 圖檔"
 
 #: ./interfaces.py:132
 msgid "More Design URL"
-msgstr ""
+msgstr "More Design 連結"
 
 #: ./interfaces.py:196
 msgid "More Feast Text"
-msgstr ""
+msgstr "More Feast 文字"
 
 #: ./behavior/configure.zcml:14
 msgid "Named content id from time stamp"
-msgstr ""
+msgstr "由時間戳記命名 id"
 
 #: ./profiles/default/types/DocWithBigImage.xml
 msgid "Page with Image"
-msgstr ""
+msgstr "帶大圖的頁面"
 
 #: ./profiles/default/types/Product.xml
 msgid "Product"
-msgstr ""
+msgstr "產品"
 
 #: ./interfaces.py:214
 msgid "Question"
-msgstr ""
+msgstr "問題"
 
 #: ./interfaces.py:206
 msgid "Spotify Embeded Code"
-msgstr ""
+msgstr "Spotify 嵌入碼"
 
 #: ./interfaces.py:19
 msgid "Title"
-msgstr ""
+msgstr "標題"
 
 #: ./configure.zcml:32
 msgid "Uninstalls the morear.content add-on."
-msgstr ""
+msgstr "御除 morear.content 模組"
 
 #: ./profiles/default/types/Cover.xml
 #: ./profiles/default/types/DocWithBigImage.xml
 #: ./profiles/default/types/Faq.xml
 msgid "View"
-msgstr ""
+msgstr "檢視"
 
 #: ./interfaces.py:105
 msgid "What's New Big Image, 800X400"
-msgstr ""
+msgstr "What's New 的大圖, 800X400 px"
 
 #: ./interfaces.py:110
 msgid "What's New Small Image, 411X153."
-msgstr ""
+msgstr "What's New 的小圖, 411X153 px"
 
 #: ./interfaces.py:95
 msgid "What's New Text."
-msgstr ""
+msgstr "What's New 的文字"
 
 #: ./interfaces.py:100
 msgid "What's New URI."
-msgstr ""
+msgstr "What's New 的連結"
 
 #: ./interfaces.py:90
 msgid "What's New title."
-msgstr ""
+msgstr "What's New 的標題"
 
 #: ./behavior/behaviors.py:28
 #: ./behavior/configure.zcml:21
 msgid "bigImage"
-msgstr ""
+msgstr "大圖"
 
 #: ./behavior/behaviors.py:50
 #: ./behavior/configure.zcml:28
 msgid "contentMedia"
-msgstr ""
+msgstr "多媒體內容"
 
 #: ./interfaces.py:43
 msgid "mainSlide"
-msgstr ""
+msgstr "主要 Slider"
 
 #: ./interfaces.py:116
 msgid "moreDesign"
-msgstr ""
+msgstr "More Design"
 
 #: ./configure.zcml:23
 msgid "morear.content"
@@ -177,8 +174,8 @@ msgstr ""
 
 #: ./behavior/configure.zcml:14
 msgid "namedFromTimeStamp"
-msgstr ""
+msgstr "由時間戳記命名"
 
 #: ./interfaces.py:85
 msgid "whatsNEW"
-msgstr ""
+msgstr "What's New"

@@ -3,7 +3,14 @@ from plone import api
 portal = api.portal.get()
 prefix = '%s/++theme++moreartheme/' % portal.absolute_url()
 ?>
+
+<script src="${portal/absolute_url}/++theme++moreartheme/js/vue.min.js"></script>
+
 <tal:inner condition="python:context.Type() != 'Cover'">
+<link tal:condition="python:context.getParentNode().id == 'about'"
+      class="for-theme" href="${prefix}content/css/about.css" rel="stylesheet" type="text/css" />
+
+
 
 <link class="for-theme" href="${prefix}content/css/web.css" rel="stylesheet" type="text/css" />
 <link class="for-theme" href="${prefix}content/css/in-menu.css" rel="stylesheet" type="text/css" />
@@ -15,13 +22,17 @@ prefix = '%s/++theme++moreartheme/' % portal.absolute_url()
       class="for-theme" href="${prefix}content/css/privacy.css" rel="stylesheet" type="text/css" />
 
 <link tal:condition="False"
-      class="for-theme" href="${prefix}content/css/about.css" rel="stylesheet" type="text/css" />
-
-<link tal:condition="False"
       class="for-theme" href="${prefix}content/css/sitemap.css" rel="stylesheet" type="text/css" />
 
-<link tal:condition="python:'document.pt' in str(view.view) or 'ProductView' in str(view.view)"
-      class="for-theme" href="${prefix}content/css/product.css" rel="stylesheet" type="text/css" />
+<tal:check condition="python:context.getParentNode().id != 'about'">
+    <link tal:condition="python:'DocWithBigImageVie' in str(view.view)"
+          class="for-theme" href="${prefix}content/css/product.css" rel="stylesheet" type="text/css" />
+</tal:check>
+
+<tal:check condition="python:context.getParentNode().id != 'about'">
+    <link tal:condition="python:'document.pt' in str(view.view) or 'ProductView' in str(view.view)"
+          class="for-theme" href="${prefix}content/css/product.css" rel="stylesheet" type="text/css" />
+</tal:check>
 
 <link tal:condition="False"
       class="for-theme" href="${prefix}content/css/event.css" rel="stylesheet" type="text/css" />
@@ -44,10 +55,9 @@ prefix = '%s/++theme++moreartheme/' % portal.absolute_url()
 <link tal:condition="False"
       class="for-theme" href="${prefix}content/css/search.css" rel="stylesheet" type="text/css" />
 
-<link tal:condition="False"
+<link tal:condition="python:'FaqListingView' in str(view.view)"
       class="for-theme" href="${prefix}content/css/faq.css" rel="stylesheet" type="text/css" />
-
-
+<!--<h1>${python:str(view.view)}</h1>-->
 
 
 <link class="for-theme" href="${prefix}content/css/custom.css" rel="stylesheet" type="text/css" />

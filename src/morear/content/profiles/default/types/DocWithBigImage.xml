@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <object
-    i18n:domain="plone"
+    i18n:domain="morear.content"
     meta_type="Dexterity FTI"
-    name="Document"
+    name="DocWithBigImage"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Page</property>
+      name="title">Page with Image</property>
   <property
       i18n:translate=""
       name="description"></property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Document</property>
+  <property name="factory">DocWithBigImage</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -24,11 +24,11 @@
   <property name="global_allow">True</property>
 
   <!-- Schema, class and security -->
-  <property name="add_permission">plone.app.contenttypes.addDocument</property>
-  <property name="klass">plone.app.contenttypes.content.Document</property>
-  <property name="model_file">plone.app.contenttypes.schema:document.xml</property>
+  <property name="add_permission">cmf.AddPortalContent</property>
+  <property name="klass">plone.dexterity.content.Item</property>
+  <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema"></property>
+  <property name="schema">morear.content.interfaces.IDocWithBigImage</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="true">
@@ -36,21 +36,20 @@
 <!--    <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/> -->
     <element value="plone.app.dexterity.behaviors.id.IShortName"/>
 <!--    <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/> -->
-    <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
-<!--    <element value="morear.content.behavior.behaviors.IBigImage"/>
+<!--    <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
+    <element value="morear.content.behavior.behaviors.IBigImage"/>
     <element value="morear.content.behavior.behaviors.IContentMedia"/>
--->
-    <element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>
-    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
+<!--    <element value="plone.app.contenttypes.behaviors.richtext.IRichText"/> 
+    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/> -->
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Document</property>
-  <property name="default_view">document_view</property>
+  <property name="add_view_expr">string:${folder_url}/++add++DocWithBigImage</property>
+  <property name="default_view">doc_with_big_image_view</property>
   <property name="default_view_fallback">False</property>
-  <property name="immediate_view">view</property>
+  <property name="immediate_view">doc_with_big_image_view</property>
   <property name="view_methods">
-    <element value="document_view"/>
+    <element value="doc_with_big_image_view"/>
   </property>
 
   <!-- Method aliases -->

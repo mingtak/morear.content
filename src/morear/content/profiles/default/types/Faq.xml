@@ -41,11 +41,11 @@
 
   <!-- View information -->
   <property name="add_view_expr">string:${folder_url}/++add++Faq</property>
-  <property name="immediate_view">view</property>
-  <property name="default_view">view</property>
+  <property name="immediate_view">faq_view</property>
+  <property name="default_view">faq_view</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
-    <element value="view" />
+    <element value="faq_view" />
   </property>
 
   <!-- Method aliases -->
@@ -72,7 +72,7 @@
       category="object"
       condition_expr=""
       description=""
-      i18n:attributes="title description"
+      i18n:attributes="title"
       title="View"
       url_expr="string:${object_url}"
       visible="True">
@@ -83,7 +83,7 @@
       category="object"
       condition_expr=""
       description=""
-      i18n:attributes="title description"
+      i18n:attributes="title"
       title="Edit"
       url_expr="string:${object_url}/edit"
       visible="True">

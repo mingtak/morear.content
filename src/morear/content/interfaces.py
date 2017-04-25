@@ -41,13 +41,44 @@ class ICover(Interface):
     model.fieldset(
         'mainSlide',
         label=_(u"mainSlide"),
-        fields=['mainSlideUIDs',]
+        fields=['mainSlide_1', 'mainUrl_1', 'mainSlide_2', 'mainUrl_2', 'mainSlide_3', 'mainUrl_3']
     )
 
+    mainSlide_1 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=True,
+    )
+
+    mainUrl_1 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=True,
+    )
+
+    mainSlide_2 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_2 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    mainSlide_3 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_3 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    """
     mainSlideUIDs = schema.Text(
         title=_(u'Main Slider UIDs.'),
         required=True,
-    )
+    ) """
 
     model.fieldset(
         'whatsNew',
@@ -83,22 +114,96 @@ class ICover(Interface):
     model.fieldset(
         'moreDesign',
         label=_(u"moreDesign"),
-        fields=['moreDesign',]
+        fields=['moreDesignImage_1', 'moreDesignUrl_1',
+                'moreDesignImage_2', 'moreDesignUrl_2',
+                'moreDesignImage_3', 'moreDesignUrl_3',
+                'moreDesignImage_4', 'moreDesignUrl_4',
+                'moreDesignImage_5', 'moreDesignUrl_5',
+                'moreDesignImage_6', 'moreDesignUrl_6',]
+#               'moreDesign',]
     )
 
+    moreDesignImage_1 = NamedBlobImage(
+        title=_(u"More Design Image"),
+        required=True,
+    )
+
+    moreDesignUrl_1 = schema.URI(
+        title=_(u"More Design URL"),
+        required=True,
+    )
+
+    moreDesignImage_2 = NamedBlobImage(
+        title=_(u"More Design Image"),
+        required=True,
+    )
+
+    moreDesignUrl_2 = schema.URI(
+        title=_(u"More Design URL"),
+        required=True,
+    )
+
+    moreDesignImage_3 = NamedBlobImage(
+        title=_(u"More Design Image"),
+        required=True,
+    )
+
+    moreDesignUrl_3 = schema.URI(
+        title=_(u"More Design URL"),
+        required=True,
+    )
+
+    moreDesignImage_4 = NamedBlobImage(
+        title=_(u"More Design Image"),
+        required=True,
+    )
+
+    moreDesignUrl_4 = schema.URI(
+        title=_(u"More Design URL"),
+        required=True,
+    )
+
+    moreDesignImage_5 = NamedBlobImage(
+        title=_(u"More Design Image"),
+        required=True,
+    )
+
+    moreDesignUrl_5 = schema.URI(
+        title=_(u"More Design URL"),
+        required=True,
+    )
+
+    moreDesignImage_6 = NamedBlobImage(
+        title=_(u"More Design Image"),
+        required=True,
+    )
+
+    moreDesignUrl_6 = schema.URI(
+        title=_(u"More Design URL"),
+        required=True,
+    )
+
+    """
     moreDesign = schema.Text(
         title=_(u'More Design, UIDs'),
         required=True,
-    )
+    ) """
+
+
 
     model.fieldset(
         'moreFeast',
         label=_(u"More Feast Text"),
-        fields=['moreFeast_text']
+        fields=['moreFeast_text', 'spotifyEmbed']
     )
 
     moreFeast_text = schema.Text(
         title=_("More Feast Text"),
+        required=True,
+    )
+
+    spotifyEmbed = schema.Text(
+        title=_(u"Spotify Embeded Code"),
         required=True,
     )
 
@@ -107,6 +212,19 @@ class IFaq(Interface):
 
     title = schema.TextLine(
         title=_(u'Question'),
+        required=True,
+    )
+
+    description = schema.Text(
+        title=_(u'Description'),
+        required=False,
+    )
+
+
+class IDocWithBigImage(Interface):
+
+    title = schema.TextLine(
+        title=_(u'Document With Big Image'),
         required=True,
     )
 

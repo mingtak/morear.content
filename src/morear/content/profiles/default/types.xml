@@ -3,4 +3,5 @@
   <object name="Cover" meta_type="Dexterity FTI"/>
   <object name="Product" meta_type="Dexterity FTI"/>
   <object name="Faq" meta_type="Dexterity FTI"/>
+  <object name="DocWithBigImage" meta_type="Dexterity FTI"/>
 </object>
