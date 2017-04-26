@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-04-26 00:03+0000\n"
+"POT-Creation-Date: 2017-04-26 09:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Cover"
 msgstr ""
 
-#: ./interfaces.py:24
+#: ./interfaces.py:25
 msgid "Description"
 msgstr ""
 
-#: ./interfaces.py:302
+#: ./interfaces.py:320
 msgid "Document With Big Image"
 msgstr ""
 
@@ -61,6 +61,10 @@ msgstr ""
 
 #: ./profiles/default/types/Faq.xml
 msgid "Faq"
+msgstr ""
+
+#: ./interfaces.py:31
+msgid "Get a wrong image size."
 msgstr ""
 
 #: ./behavior/behaviors.py:75
@@ -80,28 +84,32 @@ msgstr ""
 msgid "Main Image"
 msgstr ""
 
-#: ./interfaces.py:58
+#: ./interfaces.py:77
 msgid "Main Slide"
 msgstr ""
 
-#: ./interfaces.py:63
+#: ./interfaces.py:82
 msgid "Main Slider URL"
 msgstr ""
 
-#: ./interfaces.py:202
+#: ./interfaces.py:220
 msgid "More Design Image"
 msgstr ""
 
-#: ./interfaces.py:207
+#: ./interfaces.py:225
 msgid "More Design URL"
 msgstr ""
 
-#: ./interfaces.py:271
+#: ./interfaces.py:289
 msgid "More Feast Text"
 msgstr ""
 
-#: ./interfaces.py:44
-msgid "Must be select same size image."
+#: ./interfaces.py:63
+msgid "Must be select image size at 1280x680."
+msgstr ""
+
+#: ./interfaces.py:210
+msgid "Must be select image size at 640x270."
 msgstr ""
 
 #: ./behavior/configure.zcml:14
@@ -116,15 +124,15 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
-#: ./interfaces.py:289
+#: ./interfaces.py:307
 msgid "Question"
 msgstr ""
 
-#: ./interfaces.py:281
+#: ./interfaces.py:299
 msgid "Spotify Embeded Code"
 msgstr ""
 
-#: ./interfaces.py:19
+#: ./interfaces.py:20
 msgid "Title"
 msgstr ""
 
@@ -138,24 +146,32 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: ./interfaces.py:179
+#: ./interfaces.py:198
 msgid "What's New Big Image, 800X400"
 msgstr ""
 
-#: ./interfaces.py:184
+#: ./interfaces.py:203
 msgid "What's New Small Image, 411X153."
 msgstr ""
 
-#: ./interfaces.py:169
+#: ./interfaces.py:188
 msgid "What's New Text."
 msgstr ""
 
-#: ./interfaces.py:174
+#: ./interfaces.py:193
 msgid "What's New URI."
 msgstr ""
 
-#: ./interfaces.py:164
+#: ./interfaces.py:183
 msgid "What's New title."
+msgstr ""
+
+#: ./interfaces.py:42
+msgid "Wrong image size, Please check Main Slider Image size, must be 1280x680 px."
+msgstr ""
+
+#: ./interfaces.py:48
+msgid "Wrong image size, Please check More Design Image size, must be 640x270 px."
 msgstr ""
 
 #: ./behavior/behaviors.py:90
@@ -180,11 +196,11 @@ msgstr ""
 msgid "keyword, split with common."
 msgstr ""
 
-#: ./interfaces.py:43
+#: ./interfaces.py:62
 msgid "mainSlide"
 msgstr ""
 
-#: ./interfaces.py:190
+#: ./interfaces.py:209
 msgid "moreDesign"
 msgstr ""
 
@@ -200,6 +216,6 @@ msgstr ""
 msgid "namedFromTimeStamp"
 msgstr ""
 
-#: ./interfaces.py:159
+#: ./interfaces.py:178
 msgid "whatsNEW"
 msgstr ""

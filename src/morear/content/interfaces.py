@@ -7,6 +7,7 @@ from zope.interface import Interface
 from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from zope.interface import invariant, Invalid
 
 
 class IMorearContentLayer(IDefaultBrowserLayer):
@@ -26,7 +27,25 @@ class IProduct(Interface):
     )
 
 
+class WrongImageSize(Invalid):
+    __doc__ = _(u"Get a wrong image size.")
+
+
 class ICover(Interface):
+
+    @invariant
+    def validateImageSize(data):
+        for i in range(10):
+            imageObj = getattr(data, 'mainSlide_%s' % str(i+1))
+            if hasattr(imageObj, 'getImageSize'):
+                if imageObj.getImageSize() != (1280, 680):
+                    raise WrongImageSize(_(u"Wrong image size, Please check Main Slider Image size, must be 1280x680 px."))
+
+        for i in range(6):
+            imageObj = getattr(data, 'moreDesignImage_%s' % str(i+1))
+            if hasattr(imageObj, 'getImageSize'):
+                if imageObj.getImageSize() != (640, 270):
+                    raise WrongImageSize(_(u"Wrong image size, Please check More Design Image size, must be 640x270 px."))
 
     title = schema.TextLine(
         title=_(u'Title'),
@@ -41,7 +60,7 @@ class ICover(Interface):
     model.fieldset(
         'mainSlide',
         label=_(u"mainSlide"),
-        description=_(u"Must be select same size image."),
+        description=_(u"Must be select image size at 1280x680."),
         fields=['mainSlide_1', 'mainUrl_1',
                 'mainSlide_2', 'mainUrl_2',
                 'mainSlide_3', 'mainUrl_3',
@@ -188,14 +207,13 @@ class ICover(Interface):
     model.fieldset(
         'moreDesign',
         label=_(u"moreDesign"),
-        description=_(u"Must be select same size image."),
+        description=_(u"Must be select image size at 640x270."),
         fields=['moreDesignImage_1', 'moreDesignUrl_1',
                 'moreDesignImage_2', 'moreDesignUrl_2',
                 'moreDesignImage_3', 'moreDesignUrl_3',
                 'moreDesignImage_4', 'moreDesignUrl_4',
                 'moreDesignImage_5', 'moreDesignUrl_5',
                 'moreDesignImage_6', 'moreDesignUrl_6',]
-#               'moreDesign',]
     )
 
     moreDesignImage_1 = NamedBlobImage(
