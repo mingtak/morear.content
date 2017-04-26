@@ -33,6 +33,7 @@
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="true">
     <element value="morear.content.behavior.behaviors.INamedFromTimeStamp"/>
+    <element value="morear.content.behavior.behaviors.IKeyword"/>
 <!--    <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/> -->
     <element value="plone.app.dexterity.behaviors.id.IShortName"/>
 <!--    <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/> -->

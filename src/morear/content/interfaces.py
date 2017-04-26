@@ -41,7 +41,17 @@ class ICover(Interface):
     model.fieldset(
         'mainSlide',
         label=_(u"mainSlide"),
-        fields=['mainSlide_1', 'mainUrl_1', 'mainSlide_2', 'mainUrl_2', 'mainSlide_3', 'mainUrl_3']
+        description=_(u"Must be select same size image."),
+        fields=['mainSlide_1', 'mainUrl_1',
+                'mainSlide_2', 'mainUrl_2',
+                'mainSlide_3', 'mainUrl_3',
+                'mainSlide_4', 'mainUrl_4',
+                'mainSlide_5', 'mainUrl_5',
+                'mainSlide_6', 'mainUrl_6',
+                'mainSlide_7', 'mainUrl_7',
+                'mainSlide_8', 'mainUrl_8',
+                'mainSlide_9', 'mainUrl_9',
+                'mainSlide_10', 'mainUrl_10',]
     )
 
     mainSlide_1 = NamedBlobImage(
@@ -74,11 +84,75 @@ class ICover(Interface):
         required=False,
     )
 
-    """
-    mainSlideUIDs = schema.Text(
-        title=_(u'Main Slider UIDs.'),
-        required=True,
-    ) """
+    mainSlide_4 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_4 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    mainSlide_5 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_5 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    mainSlide_6 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_6 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    mainSlide_7 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_7 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    mainSlide_8 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_8 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    mainSlide_9 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_9 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
+
+    mainSlide_10 = NamedBlobImage(
+        title=_(u"Main Slide"),
+        required=False,
+    )
+
+    mainUrl_10 = schema.URI(
+        title=_(u"Main Slider URL"),
+        required=False,
+    )
 
     model.fieldset(
         'whatsNew',
@@ -114,6 +188,7 @@ class ICover(Interface):
     model.fieldset(
         'moreDesign',
         label=_(u"moreDesign"),
+        description=_(u"Must be select same size image."),
         fields=['moreDesignImage_1', 'moreDesignUrl_1',
                 'moreDesignImage_2', 'moreDesignUrl_2',
                 'moreDesignImage_3', 'moreDesignUrl_3',

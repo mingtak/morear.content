@@ -20,6 +20,16 @@ import random
 #from plone.directives import form
 
 
+class IKeyword(model.Schema):
+    """ Add bigImage_* field """
+
+    keyword = schema.TextLine(
+        title=_(u'Keyword'),
+        description=_(u"keyword, split with common."),
+        required=False,
+    )
+
+
 class IBigImage(model.Schema):
     """ Add bigImage_* field """
 
@@ -77,7 +87,7 @@ class IContentMedia(model.Schema):
     )
 
     youtube = schema.TextLine(
-        title=(u'Youtube URL'),
+        title=_(u'Youtube URL'),
         required=False,
     )
 
@@ -89,6 +99,7 @@ class IContentMedia(model.Schema):
 
 alsoProvides(IBigImage, IFormFieldProvider)
 alsoProvides(IContentMedia, IFormFieldProvider)
+alsoProvides(IKeyword, IFormFieldProvider)
 
 
 def context_property(name):
@@ -99,6 +110,17 @@ def context_property(name):
     def deleter(self):
         delattr(self.context, name)
     return property(getter, setter, deleter)
+
+
+class Keyword(object):
+    implements(IKeyword)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    # -*- Your behavior property setters & getters here ... -*-
+    keyword = context_property("keyword")
 
 
 class BigImage(object):

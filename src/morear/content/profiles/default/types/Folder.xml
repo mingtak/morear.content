@@ -33,7 +33,8 @@
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
     <element value="plone.app.dexterity.behaviors.metadata.IDublinCore"/>
-    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
+    <element value="morear.content.behavior.behaviors.IKeyword"/>
+<!--    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/> -->
     <element value="plone.app.content.interfaces.INameFromTitle"/>
     <element value="plone.app.dexterity.behaviors.discussion.IAllowDiscussion"/>
     <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>

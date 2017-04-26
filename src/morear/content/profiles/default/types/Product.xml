@@ -34,11 +34,12 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="true">
+    <element value="morear.content.behavior.behaviors.IKeyword"/>
     <element value="morear.content.behavior.behaviors.INamedFromTimeStamp"/>
     <element value="plone.app.dexterity.behaviors.id.IShortName"/>
     <element value="morear.content.behavior.behaviors.IBigImage"/>
     <element value="morear.content.behavior.behaviors.IContentMedia"/>
-    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/>
+<!--    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/> -->
   </property>
 
   <!-- View information -->

@@ -27,4 +27,11 @@
         factory=".behaviors.ContentMedia"
     />
 
+    <plone:behavior
+        title="keyword"
+        description="Keyword"
+        provides=".behaviors.IKeyword"
+        factory=".behaviors.Keyword"
+    />
+
 </configure>
