@@ -8,6 +8,7 @@ from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.interface import invariant, Invalid
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 
 class IMorearContentLayer(IDefaultBrowserLayer):
@@ -301,6 +302,12 @@ class ICover(Interface):
     )
 
 
+faq_category = SimpleVocabulary(
+    [SimpleTerm(value=u'Customize', title=_(u'Customize')),
+     SimpleTerm(value=u'Shipping', title=_(u'Shipping'))]
+    )
+
+
 class IFaq(Interface):
 
     title = schema.TextLine(
@@ -311,6 +318,13 @@ class IFaq(Interface):
     description = schema.Text(
         title=_(u'Description'),
         required=False,
+    )
+
+    category = schema.Choice(
+        title=_(u'Category'),
+        vocabulary=faq_category,
+        default=u'Customize',
+        required=True,
     )
 
 

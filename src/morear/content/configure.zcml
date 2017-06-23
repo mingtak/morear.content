@@ -36,4 +36,7 @@
       factory=".setuphandlers.HiddenProfiles"
       name="morear.content-hiddenprofiles" />
 
+  <!-- catalog -->
+  <adapter name="faq_category" factory=".catalog.faq_category_indexer" />
+
 </configure>

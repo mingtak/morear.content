@@ -64,6 +64,18 @@ class FaqListingView(BrowserView):
         return self.template()
 
 
+class ProductListingView(BrowserView):
+
+    template = ViewPageTemplateFile("template/product_listing_view.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+#        portal = api.portal.get()
+
+        return self.template()
+
+
 class CoverView(BrowserView):
 
     template = ViewPageTemplateFile("template/cover_view.pt")

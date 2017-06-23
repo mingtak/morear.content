@@ -68,6 +68,14 @@
       />
 
   <browser:page
+      name="product_listing_view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".views.ProductListingView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="trans_state"
       for="*"
       class=".views.TransState"
