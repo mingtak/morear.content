@@ -277,14 +277,6 @@ class ICover(Interface):
         required=True,
     )
 
-    """
-    moreDesign = schema.Text(
-        title=_(u'More Design, UIDs'),
-        required=True,
-    ) """
-
-
-
     model.fieldset(
         'moreFeast',
         label=_(u"More Feast Text"),
@@ -292,7 +284,7 @@ class ICover(Interface):
     )
 
     moreFeast_text = schema.Text(
-        title=_("More Feast Text"),
+        title=_(u"More Feast Text"),
         required=True,
     )
 
@@ -301,6 +293,16 @@ class ICover(Interface):
         required=True,
     )
 
+    model.fieldset(
+        'aboutMorear',
+        label=_(u"About Morear Text"),
+        fields=['aboutMorear'],
+    )
+
+    aboutMorear = schema.Text(
+        title=_(u"About Morear Text"),
+        required=True,
+    )
 
 faq_category = SimpleVocabulary(
     [SimpleTerm(value=u'Customize', title=_(u'Customize')),
