@@ -341,3 +341,58 @@ class IDocWithBigImage(Interface):
         title=_(u'Description'),
         required=False,
     )
+
+
+class ILocation(Interface):
+
+    title = schema.TextLine(
+        title=_(u'Location Title'),
+        required=True,
+    )
+
+    description = schema.Text(
+        title=_(u'Description'),
+        required=False,
+    )
+
+    city = schema.TextLine(
+        title=_(u'City'),
+        required=True,
+    )
+
+    district = schema.TextLine(
+        title=_(u'District'),
+        required=True,
+    )
+
+    weekendService = schema.Bool(
+        title=_(u'Weekend Service'),
+        default=False,
+        required=True,
+    )
+
+    serviceTime = schema.TextLine(
+        title=_(u'Service Time'),
+        required=True,
+    )
+
+    phone = schema.TextLine(
+        title=_(u'Phone Number'),
+        required=True,
+    )
+
+    address = schema.TextLine(
+        title=_(u'Address'),
+        required=True,
+    )
+
+    image = NamedBlobImage(
+        title=_(u"Image"),
+        required=True,
+    )
+
+    mapCode = schema.Text(
+        title=_(u'Map Code'),
+        description=_(u'Google map embeded code.'),
+        required=True,
+    )

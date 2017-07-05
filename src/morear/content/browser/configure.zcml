@@ -68,6 +68,14 @@
       />
 
   <browser:page
+      name="search_result_view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".views.SearchResultView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="product_listing_view"
       for="plone.app.contenttypes.interfaces.IFolder"
       class=".views.ProductListingView"
@@ -81,6 +89,30 @@
       class=".views.TransState"
       layer="morear.content.interfaces.IMorearContentLayer"
       permission="cmf.ReviewPortalContent"
+      />
+
+  <browser:page
+      name="location_listing_view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".views.LocationListingView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="location_view"
+      for="morear.content.interfaces.ILocation"
+      class=".views.LocationView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="get_dists"
+      for="*"
+      class=".views.GetDist"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
       />
 
   <browser:page

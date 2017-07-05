@@ -6,5 +6,20 @@
   </index>
   <column value="faq_category"/>
 
+  <index name="city" meta_type="FieldIndex">
+    <indexed_attr value="city" />
+  </index>
+  <column value="city"/>
+
+  <index name="district" meta_type="FieldIndex">
+    <indexed_attr value="district" />
+  </index>
+  <column value="district"/>
+
+  <index name="weekendService" meta_type="BooleanIndex">
+    <indexed_attr value="weekendService" />
+  </index>
+  <column value="weekendService"/>
+
 </object>
 

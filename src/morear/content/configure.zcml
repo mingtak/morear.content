@@ -38,5 +38,8 @@
 
   <!-- catalog -->
   <adapter name="faq_category" factory=".catalog.faq_category_indexer" />
+  <adapter name="city" factory=".catalog.city_indexer" />
+  <adapter name="district" factory=".catalog.district_indexer" />
+  <adapter name="weekendService" factory=".catalog.weekendService_indexer" />
 
 </configure>
