@@ -33,7 +33,12 @@ class IParameterSet(model.Schema):
     model.fieldset(
         'headphone',
         label=_(u""),
-        fields=['driver', 'lineLength', 'surfaceColorR', 'surfaceColorL'] #'lineColor', 'shell3D', 'surfaceColorR', 'surfaceColorL', 'logo']
+        fields=['bgImage', 'driver', 'lineLength', 'surfaceColorR', 'surfaceColorL'] #'lineColor', 'shell3D', 'surfaceColorR', 'surfaceColorL', 'logo']
+    )
+
+    bgImage = NamedBlobImage(
+        title=_(u'Background Image'),
+        required=False,
     )
 
     driver = schema.Choice(
@@ -85,6 +90,7 @@ class ParameterSet(object):
         self.context = context
 
     # -*- Your behavior property setters & getters here ... -*-
+    bgImage = context_property("bgImage")
     driver = context_property("driver")
     lineLength = context_property("lineLength")
     surfaceColorR = context_property("surfaceColorR")
