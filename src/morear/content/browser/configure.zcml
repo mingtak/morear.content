@@ -29,8 +29,16 @@
 
   <browser:page
       name="product_view"
-      for="*"
+      for="morear.content.interfaces.IProduct"
       class=".views.ProductView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="product_option_view"
+      for="morear.content.interfaces.IProduct"
+      class=".views.ProductOptionView"
       layer="morear.content.interfaces.IMorearContentLayer"
       permission="zope2.View"
       />

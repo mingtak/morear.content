@@ -100,6 +100,18 @@ class ProductView(BrowserView):
         return self.template()
 
 
+class ProductOptionView(BrowserView):
+
+    template = ViewPageTemplateFile("template/product_option_view.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+#        portal = api.portal.get()
+
+        return self.template()
+
+
 class NewsListingView(BrowserView):
 
     template = ViewPageTemplateFile("template/news_listing_view.pt")
