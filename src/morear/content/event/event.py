@@ -48,3 +48,12 @@ def toFolderContents(item, event):
 
 def addCancelToFolderContents(item, event):
     item.REQUEST.response.redirect('%s/folder_contents' % item.absolute_url())
+
+
+def checkpType(item, event):
+    if item.pType == 'headphone':
+        if not (item.driver and item.lineLength and item.surfaceColorR and item.surfaceColorL):
+            api.portal.show_message(message='Wrong, Please fill all fields in headphone tab!', request=item.REQUEST, type='warning')
+
+    if item.pType == 'earplugs':pass
+    #TODO: earplugs

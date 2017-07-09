@@ -34,4 +34,15 @@
         handler=".event.toFolderContents"
     />
 
+    <subscriber
+        for="morear.content.interfaces.IProduct zope.lifecycleevent.interfaces.IObjectAddedEvent"
+        handler=".event.checkpType"
+    />
+
+    <subscriber
+        for="morear.content.interfaces.IProduct plone.dexterity.interfaces.IEditFinishedEvent"
+        handler=".event.checkpType"
+    />
+
+
 </configure>
