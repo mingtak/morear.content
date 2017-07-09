@@ -2,19 +2,19 @@
 <object
     i18n:domain="morear.content"
     meta_type="Dexterity FTI"
-    name="Product"
+    name="ParaImage"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Product</property>
+      name="title">ParaImage</property>
   <property
       i18n:translate=""
       name="description"></property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Product</property>
+  <property name="factory">ParaImage</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -30,26 +30,20 @@
   <property name="klass">plone.dexterity.content.Item</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">morear.content.interfaces.IProduct</property>
+  <property name="schema">morear.content.interfaces.IParaImage</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="true">
-    <element value="morear.content.behavior.behaviors.IKeyword"/>
     <element value="morear.content.behavior.behaviors.INamedFromTimeStamp"/>
-    <element value="plone.app.dexterity.behaviors.id.IShortName"/>
-    <element value="morear.content.behavior.behaviors.IBigImage"/>
-    <element value="morear.content.behavior.behaviors.IContentMedia"/>
-    <element value="morear.content.behavior.parameter.IParameterSet"/>
-<!--    <element value="plone.app.contenttypes.behaviors.leadimage.ILeadImage"/> -->
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Product</property>
-  <property name="immediate_view">product_view</property>
-  <property name="default_view">product_view</property>
+  <property name="add_view_expr">string:${folder_url}/++add++ParaImage</property>
+  <property name="immediate_view">view</property>
+  <property name="default_view">view</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
-    <element value="product_view" />
+    <element value="view" />
   </property>
 
   <!-- Method aliases -->

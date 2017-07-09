@@ -15,10 +15,22 @@ class IMorearContentLayer(IDefaultBrowserLayer):
     """Marker interface that defines a browser layer."""
 
 
+product_type = SimpleVocabulary(
+    [SimpleTerm(value=u'headphone', title=_(u'Headphone')),
+     SimpleTerm(value=u'earplugs', title=_(u'Earplugs'))]
+    )
+
+
 class IProduct(Interface):
 
     title = schema.TextLine(
         title=_(u'Title'),
+        required=True,
+    )
+
+    pType = schema.Choice(
+        title=_(u'Product Type'),
+        vocabulary=product_type,
         required=True,
     )
 
@@ -396,3 +408,57 @@ class ILocation(Interface):
         description=_(u'Google map embeded code.'),
         required=True,
     )
+
+
+""" 先放著不知道用不用得到
+p_type = SimpleVocabulary(
+    [SimpleTerm(value=u'Customize', title=_(u'Customize')),
+     SimpleTerm(value=u'Shipping', title=_(u'Shipping'))]
+    )
+"""
+
+class IParaImage(Interface):
+
+    title = schema.TextLine(
+        title=_(u'Parameter title'),
+        required=True,
+    )
+
+    showName = schema.TextLine(
+        title=_(u'Parameter show name'),
+        required=True,
+    )
+
+    image_s = NamedBlobImage(
+        title=_(u'Small Image'),
+        required=True,
+    )
+
+    image = NamedBlobImage(
+        title=_(u'image'),
+        required=True,
+    )
+
+    price = schema.Int(
+        title=_(u'Price'),
+        required=True,
+    )
+
+
+class IParaText(Interface):
+
+    title = schema.TextLine(
+        title=_(u'Parameter title'),
+        required=True,
+    )
+
+    showName = schema.TextLine(
+        title=_(u'Parameter show name'),
+        required=True,
+    )
+
+    price = schema.Int(
+        title=_(u'Price'),
+        required=True,
+    )
+

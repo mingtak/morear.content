@@ -34,4 +34,11 @@
         factory=".behaviors.Keyword"
     />
 
+    <plone:behavior
+        title="parameterSet"
+        description="Morear Product's Parameter Set"
+        provides=".parameter.IParameterSet"
+        factory=".parameter.ParameterSet"
+    />
+
 </configure>
