@@ -3,7 +3,7 @@ from plone.indexer.decorator import indexer
 from zope.interface import Interface
 from Products.CMFPlone.utils import safe_unicode
 
-from morear.content.interfaces import IFaq, ILocation
+from morear.content.interfaces import IFaq, ILocation, IProduct
 
 
 @indexer(IFaq)
@@ -24,3 +24,8 @@ def district_indexer(obj):
 @indexer(ILocation)
 def weekendService_indexer(obj):
     return obj.weekendService
+
+
+@indexer(IProduct)
+def pType_indexer(obj):
+    return obj.pType

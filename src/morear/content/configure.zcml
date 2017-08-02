@@ -41,5 +41,6 @@
   <adapter name="city" factory=".catalog.city_indexer" />
   <adapter name="district" factory=".catalog.district_indexer" />
   <adapter name="weekendService" factory=".catalog.weekendService_indexer" />
+  <adapter name="pType" factory=".catalog.pType_indexer" />
 
 </configure>

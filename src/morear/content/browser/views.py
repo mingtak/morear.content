@@ -107,7 +107,10 @@ class ProductOptionView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
+        portal = api.portal.get()
+
+        self.headphoneList = api.content.find(context=portal, Type='Product', pType='headphone')
+        self.earplugs = api.content.find(context=portal, Type='Product', pType='earplugs')
 
         return self.template()
 

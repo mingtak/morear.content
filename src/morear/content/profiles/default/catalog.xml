@@ -21,5 +21,10 @@
   </index>
   <column value="weekendService"/>
 
+  <index name="pType" meta_type="FieldIndex">
+    <indexed_attr value="pType" />
+  </index>
+  <column value="pType"/>
+
 </object>
 

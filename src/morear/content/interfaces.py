@@ -34,6 +34,11 @@ class IProduct(Interface):
         required=True,
     )
 
+    basePrice = schema.Int(
+        title=_(u"Base Price"),
+        required=True,
+    )
+
     description = schema.Text(
         title=_(u'Description'),
         required=False,
