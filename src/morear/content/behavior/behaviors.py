@@ -17,7 +17,27 @@ from plone.app.content.interfaces import INameFromTitle
 from plone.namedfile.field import NamedBlobImage
 from DateTime import DateTime
 import random
-#from plone.directives import form
+from plone.directives import form
+
+
+class IFeatured(model.Schema):
+    """ Add featured field """
+
+    form.mode(featured='hidden')
+    featured = schema.Bool(
+        title=_(u"Featured"),
+        description=_(u"Checked it for featured."),
+        default=False,
+        required=False,
+    )
+
+#    form.mode(headWeight='hidden')
+    headWeight = schema.Int(
+        title=_(u"Head Weight"),
+        description=_(u"Please set Head Weight value, default:10."),
+        default=10,
+        required=True,
+    )
 
 
 class IKeyword(model.Schema):
@@ -100,6 +120,7 @@ class IContentMedia(model.Schema):
 alsoProvides(IBigImage, IFormFieldProvider)
 alsoProvides(IContentMedia, IFormFieldProvider)
 alsoProvides(IKeyword, IFormFieldProvider)
+alsoProvides(IFeatured, IFormFieldProvider)
 
 
 def context_property(name):
@@ -150,6 +171,18 @@ class ContentMedia(object):
     image_3 = context_property("image_3")
     youtube = context_property("youtube")
     belowText = context_property("belowText")
+
+
+class Featured(object):
+    implements(IFeatured)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    # -*- Your behavior property setters & getters here ... -*-
+    featured = context_property("featured")
+    headWeight = context_property("headWeight")
 
 
 class INamedFromTimeStamp(INameFromTitle):

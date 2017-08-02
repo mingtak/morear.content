@@ -7,6 +7,13 @@
 
 
     <plone:behavior
+        title="featured"
+        description="Featured for content"
+        provides=".behaviors.IFeatured"
+        factory=".behaviors.Featured"
+        />
+
+    <plone:behavior
         title="namedFromTimeStamp"
         description="Named content id from time stamp"
         provides=".behaviors.INamedFromTimeStamp"

@@ -4,9 +4,40 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone import api
 from Products.CMFPlone.utils import safe_unicode
 import logging
+import transaction
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
 
 logger = logging.getLogger('morear.content')
 LIMIT=20
+
+
+class SetFeatured(BrowserView):
+
+    def __call__(self):
+        portal = api.portal.get()
+        request = self.request
+
+        if not request.form.get('uid'):
+            return
+        brain = api.content.find(context=portal, UID=request.form['uid'])
+        try:
+            item = brain[0].getObject()
+        except:return
+
+        if request.form.has_key('checked'):
+            if request.form.get('checked') == 'true':
+                item.featured = True
+            else:
+                item.featured = False
+            notify(ObjectModifiedEvent(item))
+            item.reindexObject()
+        elif request.form.has_key('headWeight'):
+            item.headWeight = int(request.form.get('headWeight', 10))
+            notify(ObjectModifiedEvent(item))
+            item.reindexObject()
+        transaction.commit()
+        return
 
 
 class TransState(BrowserView):
@@ -231,3 +262,17 @@ class SearchResultView(BrowserView):
 
         return self.template()
 
+
+class DeleteObj(BrowserView):
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+#        import pdb; pdb.set_trace()
+        uid = request.form.get('uid')
+        if not uid:
+            return
+
+        obj = api.content.find(UID=uid)[0].getObject()
+        api.content.delete(obj=obj)

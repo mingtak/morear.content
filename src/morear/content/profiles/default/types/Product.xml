@@ -35,6 +35,7 @@
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="true">
     <element value="morear.content.behavior.behaviors.IKeyword"/>
+    <element value="morear.content.behavior.behaviors.IFeatured" />
     <element value="morear.content.behavior.behaviors.INamedFromTimeStamp"/>
     <element value="plone.app.dexterity.behaviors.id.IShortName"/>
     <element value="morear.content.behavior.behaviors.IBigImage"/>

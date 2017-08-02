@@ -131,4 +131,19 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="delete_obj"
+      for="*"
+      class=".views.DeleteObj"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="cmf.ReviewPortalContent"
+  />
+
+  <browser:page
+      name="set_featured"
+      for="*"
+      class=".views.SetFeatured"
+      permission="cmf.ModifyPortalContent"
+      />
+
 </configure>
