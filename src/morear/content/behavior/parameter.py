@@ -33,7 +33,22 @@ class IParameterSet(model.Schema):
     model.fieldset(
         'headphone',
         label=_(u""),
-        fields=['bgImage_left', 'bgImage_right', 'driver', 'lineLength', 'surfaceColorR', 'surfaceColorL'] #'lineColor', 'shell3D', 'surfaceColorR', 'surfaceColorL', 'logo']
+        fields=['bgImage_left', 'bgImage_right', 'driver', 'lineLength', 'lineColor', 'shell3D',
+                'surfaceColorR', 'surfaceColorL', 'logoColor']
+    )
+
+    lineColor = RelationList(
+        title=_(u"Line Color"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaImage'),),
+        required=False,
+    )
+
+    shell3D = RelationList(
+        title=_(u"3D Print Shell"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaImage'),),
+        required=False,
     )
 
     bgImage_left = NamedBlobImage(
@@ -73,6 +88,13 @@ class IParameterSet(model.Schema):
         required=False,
     )
 
+    logoColor = RelationList(
+        title=_(u"Logo Color"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaImage'),),
+        required=False,
+    )
+
 
 alsoProvides(IParameterSet, IFormFieldProvider)
 
@@ -101,3 +123,6 @@ class ParameterSet(object):
     lineLength = context_property("lineLength")
     surfaceColorR = context_property("surfaceColorR")
     surfaceColorL = context_property("surfaceColorL")
+    lineColor = context_property("lineColor")
+    shell3D = context_property("shell3D")
+    logoColor = context_property("logoColor")
