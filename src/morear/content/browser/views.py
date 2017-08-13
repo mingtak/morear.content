@@ -12,6 +12,13 @@ logger = logging.getLogger('morear.content')
 LIMIT=20
 
 
+class CusProdToCart(BrowserView):
+
+    def __call__(self):
+        portal = api.portal.get()
+        request = self.request
+        return 'DONE'
+
 class SetFeatured(BrowserView):
 
     def __call__(self):

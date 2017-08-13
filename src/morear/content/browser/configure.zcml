@@ -146,4 +146,11 @@
       permission="cmf.ModifyPortalContent"
       />
 
+  <browser:page
+      name="cus_prod_to_cart"
+      for="*"
+      class=".views.CusProdToCart"
+      permission="zope2.View"
+      />
+
 </configure>
