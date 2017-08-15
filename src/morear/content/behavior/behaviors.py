@@ -41,7 +41,7 @@ class IFeatured(model.Schema):
 
 
 class IKeyword(model.Schema):
-    """ Add bigImage_* field """
+    """ Add Keyword field """
 
     keyword = schema.TextLine(
         title=_(u'Keyword'),
@@ -56,7 +56,7 @@ class IBigImage(model.Schema):
     model.fieldset(
         'bigImage',
         label=_(u"bigImage"),
-        fields=['bigImage_1', 'bigImage_2']
+        fields=['bigImage_1', 'bigImage_2', 'bigImage_3','bigImage_4', 'bigImage_5', ]
     )
 
     bigImage_1 = NamedBlobImage(
@@ -66,6 +66,24 @@ class IBigImage(model.Schema):
     )
 
     bigImage_2 = NamedBlobImage(
+        title=_(u"Big Image"),
+        description=_(u"Big image for page."),
+        required=False,
+    )
+
+    bigImage_3 = NamedBlobImage(
+        title=_(u"Big Image"),
+        description=_(u"Big image for page."),
+        required=False,
+    )
+
+    bigImage_4 = NamedBlobImage(
+        title=_(u"Big Image"),
+        description=_(u"Big image for page."),
+        required=False,
+    )
+
+    bigImage_5 = NamedBlobImage(
         title=_(u"Big Image"),
         description=_(u"Big image for page."),
         required=False,
@@ -154,6 +172,9 @@ class BigImage(object):
     # -*- Your behavior property setters & getters here ... -*-
     bigImage_1 = context_property("bigImage_1")
     bigImage_2 = context_property("bigImage_2")
+    bigImage_3 = context_property("bigImage_3")
+    bigImage_4 = context_property("bigImage_4")
+    bigImage_5 = context_property("bigImage_5")
 
 
 class ContentMedia(object):

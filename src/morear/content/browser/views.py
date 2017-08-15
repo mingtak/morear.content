@@ -17,6 +17,8 @@ class CusProdToCart(BrowserView):
     def __call__(self):
         portal = api.portal.get()
         request = self.request
+# 記得vm.rotateR, vm.rotateL 要*3.6
+#        import pdb; pdb.set_trace()
         return 'DONE'
 
 class SetFeatured(BrowserView):

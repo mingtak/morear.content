@@ -297,7 +297,7 @@ class ICover(Interface):
     model.fieldset(
         'moreFeast',
         label=_(u"More Feast Text"),
-        fields=['moreFeast_text', 'spotifyEmbed']
+        fields=['moreFeast_text', 'spotifyEmbed', 'moreFeast_bgImg'],
     )
 
     moreFeast_text = schema.Text(
@@ -310,16 +310,27 @@ class ICover(Interface):
         required=True,
     )
 
+    moreFeast_bgImg =  NamedBlobImage(
+        title=_(u"MoreFeast Background Image"),
+        required=True,
+    )
+
     model.fieldset(
         'aboutMorear',
         label=_(u"About Morear Text"),
-        fields=['aboutMorear'],
+        fields=['aboutMorear', 'aboutMorearImage'],
     )
 
     aboutMorear = schema.Text(
         title=_(u"About Morear Text"),
         required=True,
     )
+
+    aboutMorearImage = NamedBlobImage(
+        title=_(u"About Morear Background Image"),
+        required=True,
+    )
+
 
 faq_category = SimpleVocabulary(
     [SimpleTerm(value=u'Customize', title=_(u'Customize')),
