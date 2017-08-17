@@ -95,6 +95,51 @@ class IParameterSet(model.Schema):
         required=False,
     )
 
+    model.fieldset(
+        'earplugs',
+        label=_(u""),
+        fields=['ep_bgImage_left', 'ep_bgImage_right', 'ep_material', 'ep_typeNo', 'ep_colorR', 'ep_colorL',]
+    )
+
+    ep_bgImage_left = NamedBlobImage(
+        title=_(u'Background Image, Left'),
+        required=False,
+    )
+
+    ep_bgImage_right = NamedBlobImage(
+        title=_(u'Background Image, Right'),
+        required=False,
+    )
+
+    ep_material = RelationList(
+        title=_(u"Material"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaText'),),
+        required=False,
+    )
+
+    ep_typeNo = RelationList(
+        title=_(u"Type No."),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaText'),),
+        required=False,
+    )
+
+    ep_colorL = RelationList(
+        title=_(u"Color, Left"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaImage'),),
+        required=False,
+    )
+
+    ep_colorR = RelationList(
+        title=_(u"Color, Right"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaImage'),),
+        required=False,
+    )
+
+
 
 alsoProvides(IParameterSet, IFormFieldProvider)
 
@@ -126,3 +171,9 @@ class ParameterSet(object):
     lineColor = context_property("lineColor")
     shell3D = context_property("shell3D")
     logoColor = context_property("logoColor")
+    ep_bgImage_left = context_property('ep_bgImage_left')
+    ep_bgImage_right = context_property('ep_bgImage_right')
+    ep_material = context_property('ep_material')
+    ep_typeNo = context_property('ep_typeNo')
+    ep_colorR = context_property('ep_colorR')
+    ep_colorL = context_property('ep_colorL')
