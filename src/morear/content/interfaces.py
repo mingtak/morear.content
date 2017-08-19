@@ -16,7 +16,8 @@ class IMorearContentLayer(IDefaultBrowserLayer):
 
 
 product_type = SimpleVocabulary(
-    [SimpleTerm(value=u'headphone', title=_(u'Headphone')),
+    [SimpleTerm(value=u'normal', title=_(u'Normal')),
+     SimpleTerm(value=u'headphone', title=_(u'Headphone')),
      SimpleTerm(value=u'earplugs', title=_(u'Earplugs'))]
     )
 
@@ -42,6 +43,11 @@ class IProduct(Interface):
     description = schema.Text(
         title=_(u'Description'),
         required=False,
+    )
+
+    image = NamedBlobImage(
+        title=_(u"Cover image, show in listing"),
+        required=True,
     )
 
 
