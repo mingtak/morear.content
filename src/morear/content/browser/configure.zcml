@@ -147,9 +147,9 @@
       />
 
   <browser:page
-      name="cus_prod_to_cart"
+      name="update_cart"
       for="*"
-      class=".views.CusProdToCart"
+      class=".views.UpdateCart"
       permission="zope2.View"
       />
 

@@ -7,18 +7,102 @@ import logging
 import transaction
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
+import json
 
 logger = logging.getLogger('morear.content')
 LIMIT=20
 
 
-class CusProdToCart(BrowserView):
+class UpdateCart(BrowserView):
+
+    def addItem(self, cookies, cart, request): # 只做新增
+        response = request.response
+
+        pType = request.form.get('pType')
+        if pType == 'normal':
+            uid = request.form.get('uid')
+        else:
+            uid = request.form.get('productName')
+
+        item = api.content.find(context = self.portal, UID = uid)[0]
+        price = item.getObject().basePrice
+        qty = 1
+        total = price * qty
+
+        cartData = {
+            uid: {
+                'qty': qty,
+                'price': price,
+                'total': total,
+            }
+        }
+
+        if pType != 'normal':
+            """ TODO: parameter """
+
+        if not cart or cart == 'null':
+            response.setCookie('cart', json.dumps([cartData]))
+            return '商品已加入購物車'
+        else:
+           cart = json.loads(cart)
+           if uid in ''.join(str(cart)):
+               return '商品已存在購物車'
+           else:
+               cart.append(cartData)
+               response.setCookie('cart', json.dumps(cart))
+               return '商品已加入購物車'
+
+
+    def delItem(self): #TODO
+        """  """
+
+
+    def updateItem(self): #TODO
+        """  """
+
 
     def __call__(self):
-        portal = api.portal.get()
+        self.portal = api.portal.get()
         request = self.request
+
+        cookies = request.cookies
+        cart = cookies.get('cart', None)
+        action = request.form.get('action', None)
+
+        if action == 'add':
+            resultStr = self.addItem(cookies, cart, request)
+        else:
+            return
+
+        return resultStr
+
+
 # 記得vm.rotateR, vm.rotateL 要*3.6
-#        import pdb; pdb.set_trace()
+        import pdb; pdb.set_trace()
+
+        orderInfo = {}
+        orderInfo['UID'] = request.form.get('productName')
+        orderInfo['qty'] = 1
+        orderInfo['totalSum'] = request.form.get('totalSum', 1000000)
+
+        payment_info = {
+            'MerchantTradeNo': merchantTradeNo,
+            'ItemName': itemName,
+            'TradeDesc': '%s, Total: $%s' % (itemDescription, totalAmount),
+            'TotalAmount': totalAmount,
+            'ChoosePayment': 'ALL',
+            'PaymentType': 'aio',
+            'EncryptType': 1,
+            'PaymentInfoURL': paymentInfoURL,
+            'ClientBackURL': '%s?MerchantTradeNo=%s&LogisticsType=%s&LogisticsSubType=%s' %
+                (clientBackURL, merchantTradeNo, request.form.get('LogisticsType', 'cvs'), request.form.get('LogisticsSubType', 'UNIMART')),  #可以使用 get 帶參數
+            'ReturnURL': api.portal.get_registry_record('%s.returnURL' % prefixString),
+            'MerchantTradeDate': DateTime().strftime('%Y/%m/%d %H:%M:%S'),
+            'MerchantID': api.portal.get_registry_record('%s.merchantID' % prefixString),
+        }
+
+
+        response.setCookie('itemInCart', '{}')
         return 'DONE'
 
 class SetFeatured(BrowserView):
