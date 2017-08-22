@@ -4,6 +4,8 @@ import transaction
 
 
 def userLoginToFolderContents(event):
+    if api.user.is_anonymous():
+        return
     portal = api.portal.get()
     current = api.user.get_current()
     if api.user.has_permission('Modify portal content', user=current):

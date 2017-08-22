@@ -153,4 +153,40 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="member_login_menu"
+      for="*"
+      class=".member.MemberLoginMenu"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="member_login"
+      for="*"
+      class=".member.MemberLogin"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="member_logout"
+      for="*"
+      class=".member.MemberLogout"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="member_03"
+      for="*"
+      class=".member.Member03"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="member_04"
+      for="*"
+      class=".member.Member04"
+      permission="zope2.View"
+      />
+
+
 </configure>
