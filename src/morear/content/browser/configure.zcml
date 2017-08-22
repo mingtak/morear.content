@@ -156,35 +156,42 @@
   <browser:page
       name="member_login_menu"
       for="*"
-      class=".member.MemberLoginMenu"
+      class=".member.Member_LoginMenu"
       permission="zope2.View"
       />
 
   <browser:page
       name="member_login"
       for="*"
-      class=".member.MemberLogin"
+      class=".member.Member_Login"
       permission="zope2.View"
       />
 
   <browser:page
       name="member_logout"
       for="*"
-      class=".member.MemberLogout"
+      class=".member.Member_Logout"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="member_registry"
+      for="*"
+      class=".member.Member_Registry"
       permission="zope2.View"
       />
 
   <browser:page
       name="member_03"
       for="*"
-      class=".member.Member03"
+      class=".member.Member_03"
       permission="zope2.View"
       />
 
   <browser:page
       name="member_04"
       for="*"
-      class=".member.Member04"
+      class=".member.Member_04"
       permission="zope2.View"
       />
 

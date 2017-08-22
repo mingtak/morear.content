@@ -29,7 +29,7 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
-class MemberLoginMenu(BrowserView):
+class Member_LoginMenu(BrowserView):
 
     template = ViewPageTemplateFile("template/member_login_menu.pt")
 
@@ -41,7 +41,7 @@ class MemberLoginMenu(BrowserView):
         return self.template()
 
 
-class MemberLogin(BrowserView):
+class Member_Login(BrowserView):
 
 #    template = ViewPageTemplateFile("template/member_login.pt")
 #測試用 reCAPTCHA key pair
@@ -77,7 +77,7 @@ class MemberLogin(BrowserView):
         return
 
 
-class MemberLogout(BrowserView):
+class Member_Logout(BrowserView):
 
 #    template = ViewPageTemplateFile("template/member_logout.pt")
 
@@ -89,7 +89,73 @@ class MemberLogout(BrowserView):
         return self.template()
 
 
-class Member03(BrowserView):
+class Member_Registry(BrowserView):
+
+    template = ViewPageTemplateFile("template/member_registry.pt")
+
+    def getDB(self):
+        self.metadata = MetaData(ENGINE)
+        self.member = Table(
+            'member', self.metadata,
+            Column('id', INTEGER, primary_key=True, autoincrement=True),
+            Column('userId', String(20), unique=True),
+            Column('userName', String(50)),
+            Column('password', String(50)), # 明碼，以後考慮改 hash256
+            Column('birthday', Date),
+            Column('tel', String(10)),
+            Column('address', Text),
+            Column('commonStore', Text), # 5組，存店的uid [uid, uid....]
+            Column('commonReceive', Text), # 10組，存 收件人/地址/電話 [(name, addr, tel).....]
+            Column('registry_time', DateTime), # 註冊時間
+            Column('last_time', DateTime), # 最後修改時間
+            mysql_engine='InnoDB',
+            mysql_charset='utf8',
+            use_unicode=True,
+        )
+        self.metadata.create_all()
+
+
+    def registryAccount(self, request):
+        userId = request.form.get('userid')
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        agreePromote = request.form.get('agree_promote', False)
+        birthday = request.form.get('bday')
+        telNo = request.form.get('telNo')
+        address = request.form.get('address')
+
+        if not (userId and username and password and email):
+            return False
+
+        if api.user.get(userid=userId): # 若 not None, 表示已存在
+            return False
+
+        user = api.user.create(email=email, username=userId, roles=('Member',))
+        import pdb; pdb.set_trace() ## 還沒寫進sql
+        return True
+        self.getDB()
+
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if request.form:
+            if not self.registryAccount(request):
+                request.response.redirect(portal.absolute_url())
+                return # 註冊失敗，直接轉到首頁
+            else:
+                pass # TODO: 註冊成功，登入並轉到首頁
+
+#        import pdb; pdb.set_trace()
+
+
+        return self.template()
+
+
+class Member_03(BrowserView):
 
     template = ViewPageTemplateFile("template/member_03.pt")
 
@@ -101,7 +167,7 @@ class Member03(BrowserView):
         return self.template()
 
 
-class Member04(BrowserView):
+class Member_04(BrowserView):
 
     template = ViewPageTemplateFile("template/member_04.pt")
 
