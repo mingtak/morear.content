@@ -323,6 +323,30 @@ class NewsListingView(BrowserView):
         return self.template()
 
 
+class MusicmanListingView(NewsListingView):
+
+    template = ViewPageTemplateFile("template/musicman_listing_view.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+#        portal = api.portal.get()
+
+        return self.template()
+
+
+class LinksListingView(BrowserView):
+
+    template = ViewPageTemplateFile("template/links_listing_view.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+#        portal = api.portal.get()
+
+        return self.template()
+
+
 class IsAdmin(BrowserView):
 
     def __call__(self):

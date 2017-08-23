@@ -14,10 +14,41 @@ from plone.dexterity.interfaces import IDexterityContent
 #from plone.directives import dexterity
 from plone.app.textfield import RichText
 from plone.app.content.interfaces import INameFromTitle
-from plone.namedfile.field import NamedBlobImage
+from plone.namedfile.field import NamedBlobImage, NamedBlobFile
 from DateTime import DateTime
 import random
 from plone.directives import form
+
+
+class IMusicMan(model.Schema):
+    """ Add Music Man behavior """
+
+    model.fieldset(
+        'musicman',
+        label=_(u"musicman / recommend"),
+        fields=['mmTitle', 'mmInfo', 'mmImage', 'mmAudio', ]
+    )
+
+    mmTitle = schema.TextLine(
+        title=_(u"Music Man Title"),
+        required=False,
+    )
+
+    mmInfo = schema.Text(
+        title=_(u"Music Man Infomation"),
+        required=False,
+    )
+
+    mmImage = NamedBlobImage(
+        title=_(u"Music Man Image"),
+        required=False,
+    )
+
+    mmAudio = NamedBlobFile(
+        title=_(u"Music Man Audio"),
+        description=_(u"Audio file format: *.mp3"),
+        required=False,
+    )
 
 
 class IFeatured(model.Schema):
@@ -143,6 +174,7 @@ alsoProvides(IBigImage, IFormFieldProvider)
 alsoProvides(IContentMedia, IFormFieldProvider)
 alsoProvides(IKeyword, IFormFieldProvider)
 alsoProvides(IFeatured, IFormFieldProvider)
+alsoProvides(IMusicMan, IFormFieldProvider)
 
 
 def context_property(name):
@@ -153,6 +185,20 @@ def context_property(name):
     def deleter(self):
         delattr(self.context, name)
     return property(getter, setter, deleter)
+
+
+class MusicMan(object):
+    implements(IMusicMan)
+    adapts(IDexterityContent)
+
+    def __init__(self,context):
+        self.context = context
+
+    # -*- Your behavior property setters & getters here ... -*-
+    mmTitle = context_property("mmTitle")
+    mmInfo = context_property("mmInfo")
+    mmImage = context_property("mmImage")
+    mmAudio = context_property("mmAudio")
 
 
 class Keyword(object):

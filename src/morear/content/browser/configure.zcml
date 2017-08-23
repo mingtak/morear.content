@@ -51,6 +51,24 @@
       permission="zope2.View"
       />
 
+<!--
+  <browser:page
+      name="musicman_listing_view"
+      for="*"
+      class=".views.MusicmanListingView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+-->
+
+  <browser:page
+      name="links_listing_view"
+      for="*"
+      class=".views.LinksListingView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
   <browser:page
       name="doc_with_big_image_view"
       for="morear.content.interfaces.IDocWithBigImage"

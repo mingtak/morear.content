@@ -48,4 +48,11 @@
         factory=".parameter.ParameterSet"
     />
 
+    <plone:behavior
+        title="musicman"
+        description="Music Man"
+        provides=".behaviors.IMusicMan"
+        factory=".behaviors.MusicMan"
+    />
+
 </configure>
