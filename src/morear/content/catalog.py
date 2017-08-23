@@ -29,3 +29,8 @@ def weekendService_indexer(obj):
 @indexer(IProduct)
 def pType_indexer(obj):
     return obj.pType
+
+
+@indexer(Interface)
+def headWeight_indexer(obj):
+    return obj.headWeight

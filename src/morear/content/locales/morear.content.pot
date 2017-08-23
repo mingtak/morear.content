@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-04-26 09:08+0000\n"
+"POT-Creation-Date: 2017-08-23 13:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,79 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: morear.content\n"
 
-#: ./behavior/behaviors.py:70
+#: ./behavior/parameter.py:35
+msgid ""
+msgstr ""
+
+#: ./behavior/parameter.py:48
+msgid "3D Print Shell"
+msgstr ""
+
+#: ./interfaces.py:353
+msgid "About Morear Background Image"
+msgstr ""
+
+#: ./interfaces.py:343
+msgid "About Morear Text"
+msgstr ""
+
+#: ./behavior/behaviors.py:109
 msgid "Above Text"
 msgstr ""
 
-#: ./behavior/behaviors.py:95
+#: ./interfaces.py:437
+msgid "Address"
+msgstr ""
+
+#: ./behavior/parameter.py:55
+msgid "Background Image, Left"
+msgstr ""
+
+#: ./behavior/parameter.py:60
+msgid "Background Image, Right"
+msgstr ""
+
+#: ./interfaces.py:39
+msgid "Base Price"
+msgstr ""
+
+#: ./behavior/behaviors.py:137
 msgid "Below Text"
 msgstr ""
 
-#: ./behavior/behaviors.py:43
+#: ./behavior/behaviors.py:63
 msgid "Big Image"
 msgstr ""
 
-#: ./behavior/configure.zcml:21
+#: ./behavior/configure.zcml:28
 msgid "Big Image for Page"
 msgstr ""
 
-#: ./behavior/behaviors.py:44
-msgid "Big image for page."
+#: ./behavior/behaviors.py:64
+msgid "Big image for page. Size:1900 X 950"
 msgstr ""
 
-#: ./behavior/configure.zcml:28
+#: ./interfaces.py:378
+msgid "Category"
+msgstr ""
+
+#: ./behavior/behaviors.py:29
+msgid "Checked it for featured."
+msgstr ""
+
+#: ./interfaces.py:411
+msgid "City"
+msgstr ""
+
+#: ./behavior/parameter.py:129
+msgid "Color, Left"
+msgstr ""
+
+#: ./behavior/parameter.py:136
+msgid "Color, Right"
+msgstr ""
+
+#: ./behavior/configure.zcml:35
 msgid "Content media, include one main image, three small image, and one youtube video."
 msgstr ""
 
@@ -45,12 +97,32 @@ msgstr ""
 msgid "Cover"
 msgstr ""
 
-#: ./interfaces.py:25
+#: ./interfaces.py:49
+msgid "Cover image, show in listing"
+msgstr ""
+
+#: ./interfaces.py:360
+msgid "Customize"
+msgstr ""
+
+#: ./interfaces.py:44
 msgid "Description"
 msgstr ""
 
-#: ./interfaces.py:320
+#: ./interfaces.py:416
+msgid "District"
+msgstr ""
+
+#: ./interfaces.py:388
 msgid "Document With Big Image"
+msgstr ""
+
+#: ./behavior/parameter.py:65
+msgid "Driver"
+msgstr ""
+
+#: ./interfaces.py:21
+msgid "Earplugs"
 msgstr ""
 
 #: ./profiles/default/types/Cover.xml
@@ -63,11 +135,32 @@ msgstr ""
 msgid "Faq"
 msgstr ""
 
-#: ./interfaces.py:31
+#: ./behavior/behaviors.py:28
+msgid "Featured"
+msgstr ""
+
+#: ./behavior/configure.zcml:14
+msgid "Featured for content"
+msgstr ""
+
+#: ./interfaces.py:55
 msgid "Get a wrong image size."
 msgstr ""
 
-#: ./behavior/behaviors.py:75
+#: ./interfaces.py:448
+msgid "Google map embeded code."
+msgstr ""
+
+#: ./behavior/behaviors.py:36
+msgid "Head Weight"
+msgstr ""
+
+#: ./interfaces.py:20
+msgid "Headphone"
+msgstr ""
+
+#: ./behavior/behaviors.py:114
+#: ./interfaces.py:442
 msgid "Image"
 msgstr ""
 
@@ -75,65 +168,193 @@ msgstr ""
 msgid "Installs the morear.content add-on."
 msgstr ""
 
-#: ./behavior/behaviors.py:27
-#: ./behavior/configure.zcml:35
+#: ./behavior/behaviors.py:47
+#: ./behavior/configure.zcml:42
 msgid "Keyword"
 msgstr ""
 
-#: ./behavior/behaviors.py:65
+#: ./behavior/parameter.py:41
+msgid "Line Color"
+msgstr ""
+
+#: ./behavior/parameter.py:71
+msgid "Line Length"
+msgstr ""
+
+#: ./profiles/default/types/Location.xml
+msgid "Location"
+msgstr ""
+
+#: ./interfaces.py:401
+msgid "Location Title"
+msgstr ""
+
+#: ./behavior/parameter.py:92
+msgid "Logo Color"
+msgstr ""
+
+#: ./behavior/behaviors.py:103
 msgid "Main Image"
 msgstr ""
 
-#: ./interfaces.py:77
+#: ./interfaces.py:101
 msgid "Main Slide"
 msgstr ""
 
-#: ./interfaces.py:82
+#: ./interfaces.py:107
 msgid "Main Slider URL"
 msgstr ""
 
-#: ./interfaces.py:220
+#: ./interfaces.py:447
+msgid "Map Code"
+msgstr ""
+
+#: ./behavior/parameter.py:115
+msgid "Material"
+msgstr ""
+
+#: ./interfaces.py:254
 msgid "More Design Image"
 msgstr ""
 
-#: ./interfaces.py:225
+#: ./interfaces.py:260
 msgid "More Design URL"
 msgstr ""
 
-#: ./interfaces.py:289
+#: ./interfaces.py:321
 msgid "More Feast Text"
 msgstr ""
 
-#: ./interfaces.py:63
+#: ./interfaces.py:336
+msgid "MoreFeast Background Image"
+msgstr ""
+
+#: ./behavior/configure.zcml:49
+msgid "Morear Product's Parameter Set"
+msgstr ""
+
+#: ./interfaces.py:87
 msgid "Must be select image size at 1280x680."
 msgstr ""
 
-#: ./interfaces.py:210
+#: ./interfaces.py:244
 msgid "Must be select image size at 640x270."
 msgstr ""
 
-#: ./behavior/configure.zcml:14
+#: ./behavior/configure.zcml:21
 msgid "Named content id from time stamp"
+msgstr ""
+
+#: ./interfaces.py:19
+msgid "Normal"
+msgstr ""
+
+#: ./behavior/parameter.py:25
+msgid "One Driver"
 msgstr ""
 
 #: ./profiles/default/types/DocWithBigImage.xml
 msgid "Page with Image"
 msgstr ""
 
+#: ./profiles/default/types/ParaImage.xml
+msgid "ParaImage"
+msgstr ""
+
+#: ./profiles/default/types/ParaText.xml
+msgid "ParaText"
+msgstr ""
+
+#: ./interfaces.py:468
+msgid "Parameter show name"
+msgstr ""
+
+#: ./interfaces.py:463
+msgid "Parameter title"
+msgstr ""
+
+#: ./interfaces.py:432
+msgid "Phone Number"
+msgstr ""
+
+#: ./behavior/behaviors.py:37
+msgid "Please set Head Weight value, default:10."
+msgstr ""
+
+#: ./interfaces.py:483
+msgid "Price"
+msgstr ""
+
 #: ./profiles/default/types/Product.xml
 msgid "Product"
 msgstr ""
 
-#: ./interfaces.py:307
+#: ./interfaces.py:33
+msgid "Product Type"
+msgstr ""
+
+#: ./interfaces.py:368
 msgid "Question"
 msgstr ""
 
-#: ./interfaces.py:299
+#: ./behavior/parameter.py:42
+msgid "Related"
+msgstr ""
+
+#: ./interfaces.py:427
+msgid "Service Time"
+msgstr ""
+
+#: ./interfaces.py:361
+msgid "Shipping"
+msgstr ""
+
+#: ./interfaces.py:354
+msgid "Size: 1280 X 290"
+msgstr ""
+
+#: ./interfaces.py:337
+msgid "Size: 1280 X 400"
+msgstr ""
+
+#: ./interfaces.py:102
+msgid "Size: 1280 X 680"
+msgstr ""
+
+#: ./behavior/behaviors.py:104
+msgid "Size: 600 X 450"
+msgstr ""
+
+#: ./interfaces.py:255
+msgid "Size: 640X270"
+msgstr ""
+
+#: ./interfaces.py:473
+msgid "Small Image"
+msgstr ""
+
+#: ./interfaces.py:331
 msgid "Spotify Embeded Code"
 msgstr ""
 
-#: ./interfaces.py:20
+#: ./behavior/parameter.py:85
+msgid "Surface Color, Left"
+msgstr ""
+
+#: ./behavior/parameter.py:78
+msgid "Surface Color, Right"
+msgstr ""
+
+#: ./interfaces.py:28
 msgid "Title"
+msgstr ""
+
+#: ./behavior/parameter.py:26
+msgid "Two Driver"
+msgstr ""
+
+#: ./behavior/parameter.py:122
+msgid "Type No."
 msgstr ""
 
 #: ./configure.zcml:32
@@ -146,61 +367,73 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: ./interfaces.py:198
+#: ./interfaces.py:421
+msgid "Weekend Service"
+msgstr ""
+
+#: ./interfaces.py:232
 msgid "What's New Big Image, 800X400"
 msgstr ""
 
-#: ./interfaces.py:203
+#: ./interfaces.py:237
 msgid "What's New Small Image, 411X153."
 msgstr ""
 
-#: ./interfaces.py:188
+#: ./interfaces.py:222
 msgid "What's New Text."
 msgstr ""
 
-#: ./interfaces.py:193
+#: ./interfaces.py:227
 msgid "What's New URI."
 msgstr ""
 
-#: ./interfaces.py:183
+#: ./interfaces.py:217
 msgid "What's New title."
 msgstr ""
 
-#: ./interfaces.py:42
+#: ./interfaces.py:66
 msgid "Wrong image size, Please check Main Slider Image size, must be 1280x680 px."
 msgstr ""
 
-#: ./interfaces.py:48
+#: ./interfaces.py:72
 msgid "Wrong image size, Please check More Design Image size, must be 640x270 px."
 msgstr ""
 
-#: ./behavior/behaviors.py:90
+#: ./behavior/behaviors.py:132
 msgid "Youtube URL"
 msgstr ""
 
-#: ./behavior/behaviors.py:38
-#: ./behavior/configure.zcml:21
+#: ./behavior/behaviors.py:58
+#: ./behavior/configure.zcml:28
 msgid "bigImage"
 msgstr ""
 
-#: ./behavior/behaviors.py:60
-#: ./behavior/configure.zcml:28
+#: ./behavior/behaviors.py:98
+#: ./behavior/configure.zcml:35
 msgid "contentMedia"
 msgstr ""
 
-#: ./behavior/configure.zcml:35
+#: ./behavior/configure.zcml:14
+msgid "featured"
+msgstr ""
+
+#: ./interfaces.py:478
+msgid "image"
+msgstr ""
+
+#: ./behavior/configure.zcml:42
 msgid "keyword"
 msgstr ""
 
-#: ./behavior/behaviors.py:28
+#: ./behavior/behaviors.py:48
 msgid "keyword, split with common."
 msgstr ""
 
-#: ./interfaces.py:62
+#: ./interfaces.py:86
 msgid "mainSlide"
 msgstr ""
 
-#: ./interfaces.py:209
+#: ./interfaces.py:243
 msgid "moreDesign"
 msgstr ""
 
@@ -212,10 +445,14 @@ msgstr ""
 msgid "morear.content (uninstall)"
 msgstr ""
 
-#: ./behavior/configure.zcml:14
+#: ./behavior/configure.zcml:21
 msgid "namedFromTimeStamp"
 msgstr ""
 
-#: ./interfaces.py:178
+#: ./behavior/configure.zcml:49
+msgid "parameterSet"
+msgstr ""
+
+#: ./interfaces.py:212
 msgid "whatsNEW"
 msgstr ""

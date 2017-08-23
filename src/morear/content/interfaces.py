@@ -99,6 +99,7 @@ class ICover(Interface):
 
     mainSlide_1 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=True,
     )
 
@@ -109,6 +110,7 @@ class ICover(Interface):
 
     mainSlide_2 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -119,6 +121,7 @@ class ICover(Interface):
 
     mainSlide_3 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -129,6 +132,7 @@ class ICover(Interface):
 
     mainSlide_4 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -139,6 +143,7 @@ class ICover(Interface):
 
     mainSlide_5 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -149,6 +154,7 @@ class ICover(Interface):
 
     mainSlide_6 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -159,6 +165,7 @@ class ICover(Interface):
 
     mainSlide_7 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -169,6 +176,7 @@ class ICover(Interface):
 
     mainSlide_8 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -179,6 +187,7 @@ class ICover(Interface):
 
     mainSlide_9 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -189,6 +198,7 @@ class ICover(Interface):
 
     mainSlide_10 = NamedBlobImage(
         title=_(u"Main Slide"),
+        description=_(u"Size: 1280 X 680"),
         required=False,
     )
 
@@ -242,6 +252,7 @@ class ICover(Interface):
 
     moreDesignImage_1 = NamedBlobImage(
         title=_(u"More Design Image"),
+        description=_(u"Size: 640X270"),
         required=True,
     )
 
@@ -252,6 +263,7 @@ class ICover(Interface):
 
     moreDesignImage_2 = NamedBlobImage(
         title=_(u"More Design Image"),
+        description=_(u"Size: 640X270"),
         required=True,
     )
 
@@ -262,6 +274,7 @@ class ICover(Interface):
 
     moreDesignImage_3 = NamedBlobImage(
         title=_(u"More Design Image"),
+        description=_(u"Size: 640X270"),
         required=True,
     )
 
@@ -272,6 +285,7 @@ class ICover(Interface):
 
     moreDesignImage_4 = NamedBlobImage(
         title=_(u"More Design Image"),
+        description=_(u"Size: 640X270"),
         required=True,
     )
 
@@ -282,6 +296,7 @@ class ICover(Interface):
 
     moreDesignImage_5 = NamedBlobImage(
         title=_(u"More Design Image"),
+        description=_(u"Size: 640X270"),
         required=True,
     )
 
@@ -292,6 +307,7 @@ class ICover(Interface):
 
     moreDesignImage_6 = NamedBlobImage(
         title=_(u"More Design Image"),
+        description=_(u"Size: 640X270"),
         required=True,
     )
 
@@ -318,6 +334,7 @@ class ICover(Interface):
 
     moreFeast_bgImg =  NamedBlobImage(
         title=_(u"MoreFeast Background Image"),
+        description=_(u"Size: 1280 X 400"),
         required=True,
     )
 
@@ -334,6 +351,7 @@ class ICover(Interface):
 
     aboutMorearImage = NamedBlobImage(
         title=_(u"About Morear Background Image"),
+        description=_(u"Size: 1280 X 290"),
         required=True,
     )
 

@@ -384,7 +384,7 @@ class LocationListingView(LocationView):
 
         keyword = safe_unicode(request.form.get('keyword', None))
         if keyword:
-            searchCond['SearchableText': keyword]
+            searchCond['SearchableText'] = keyword
 
         self.brain = catalog(searchCond)
         return self.template()

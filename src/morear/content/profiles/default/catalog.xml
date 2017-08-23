@@ -26,5 +26,10 @@
   </index>
   <column value="pType"/>
 
+  <index name="headWeight" meta_type="FieldIndex">
+    <indexed_attr value="headWeight" />
+  </index>
+  <column value="headWeight"/>
+
 </object>
 

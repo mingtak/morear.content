@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-04-26 09:08+0000\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,75 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./behavior/behaviors.py:70
+#: ./behavior/parameter.py:48
+msgid "3D Print Shell"
+msgstr "3D列印耳殼"
+
+#: ./interfaces.py:353
+msgid "About Morear Background Image"
+msgstr "About Morear 背景圖片"
+
+#: ./interfaces.py:343
+msgid "About Morear Text"
+msgstr "About Morear 文字"
+
+#: ./behavior/behaviors.py:109
 msgid "Above Text"
 msgstr "在上面的文字描述"
 
-#: ./behavior/behaviors.py:95
+#: ./interfaces.py:437
+msgid "Address"
+msgstr "地址"
+
+#: ./behavior/parameter.py:55
+msgid "Background Image, Left"
+msgstr "左邊背景圖片"
+
+#: ./behavior/parameter.py:60
+msgid "Background Image, Right"
+msgstr "右邊背景圖片"
+
+#: ./interfaces.py:39
+msgid "Base Price"
+msgstr "價格"
+
+#: ./behavior/behaviors.py:137
 msgid "Below Text"
 msgstr "在下面的文字描述"
 
-#: ./behavior/behaviors.py:43
+#: ./behavior/behaviors.py:63
 msgid "Big Image"
 msgstr "大圖(全寬)"
 
-#: ./behavior/configure.zcml:21
+#: ./behavior/configure.zcml:28
 msgid "Big Image for Page"
 msgstr "帶大圖的頁面"
 
-#: ./behavior/behaviors.py:44
-msgid "Big image for page."
-msgstr "帶大圖的頁面"
+#: ./behavior/behaviors.py:64
+msgid "Big image for page. Size:1900 X 950"
+msgstr "內容大圖, 尺寸: 1900X950 px"
 
-#: ./behavior/configure.zcml:28
+#: ./interfaces.py:378
+msgid "Category"
+msgstr "分類"
+
+#: ./behavior/behaviors.py:29
+msgid "Checked it for featured."
+msgstr "精選"
+
+#: ./interfaces.py:411
+msgid "City"
+msgstr "縣市"
+
+#: ./behavior/parameter.py:129
+msgid "Color, Left"
+msgstr "左邊顏色"
+
+#: ./behavior/parameter.py:136
+msgid "Color, Right"
+msgstr "右邊顏色"
+
+#: ./behavior/configure.zcml:35
 msgid "Content media, include one main image, three small image, and one youtube video."
 msgstr "多媒體內容，包含一個主要圖檔，三個小圖及一個youtube"
 
@@ -42,13 +90,33 @@ msgstr "多媒體內容，包含一個主要圖檔，三個小圖及一個youtub
 msgid "Cover"
 msgstr "首頁"
 
-#: ./interfaces.py:25
+#: ./interfaces.py:49
+msgid "Cover image, show in listing"
+msgstr "要顯示在首頁列表的圖片"
+
+#: ./interfaces.py:360
+msgid "Customize"
+msgstr "客製化"
+
+#: ./interfaces.py:44
 msgid "Description"
 msgstr "簡要描述"
 
-#: ./interfaces.py:320
+#: ./interfaces.py:416
+msgid "District"
+msgstr "鄉鎮市區"
+
+#: ./interfaces.py:388
 msgid "Document With Big Image"
 msgstr "帶大圖的頁面"
+
+#: ./behavior/parameter.py:65
+msgid "Driver"
+msgstr "單體"
+
+#: ./interfaces.py:21
+msgid "Earplugs"
+msgstr "耳塞"
 
 #: ./profiles/default/types/Cover.xml
 #: ./profiles/default/types/DocWithBigImage.xml
@@ -60,11 +128,32 @@ msgstr "編輯"
 msgid "Faq"
 msgstr "問與答"
 
-#: ./interfaces.py:31
+#: ./behavior/behaviors.py:28
+msgid "Featured"
+msgstr "精選"
+
+#: ./behavior/configure.zcml:14
+msgid "Featured for content"
+msgstr "精選內容"
+
+#: ./interfaces.py:55
 msgid "Get a wrong image size."
 msgstr "上傳的圖檔尺寸不符限制"
 
-#: ./behavior/behaviors.py:75
+#: ./interfaces.py:448
+msgid "Google map embeded code."
+msgstr "Google Map 嵌入碼"
+
+#: ./behavior/behaviors.py:36
+msgid "Head Weight"
+msgstr "頭條權重"
+
+#: ./interfaces.py:20
+msgid "Headphone"
+msgstr "耳機"
+
+#: ./behavior/behaviors.py:114
+#: ./interfaces.py:442
 msgid "Image"
 msgstr "圖檔"
 
@@ -72,66 +161,194 @@ msgstr "圖檔"
 msgid "Installs the morear.content add-on."
 msgstr "安裝 morear.content 模組"
 
-#: ./behavior/behaviors.py:27
-#: ./behavior/configure.zcml:35
+#: ./behavior/behaviors.py:47
+#: ./behavior/configure.zcml:42
 msgid "Keyword"
 msgstr "關鍵字設定"
 
-#: ./behavior/behaviors.py:65
+#: ./behavior/parameter.py:41
+msgid "Line Color"
+msgstr "耳機線顏色"
+
+#: ./behavior/parameter.py:71
+msgid "Line Length"
+msgstr "耳機線長度"
+
+#: ./profiles/default/types/Location.xml
+msgid "Location"
+msgstr "據點"
+
+#: ./interfaces.py:401
+msgid "Location Title"
+msgstr "據點名稱"
+
+#: ./behavior/parameter.py:92
+msgid "Logo Color"
+msgstr "Logo 顏色"
+
+#: ./behavior/behaviors.py:103
 msgid "Main Image"
 msgstr "主要圖檔"
 
-#: ./interfaces.py:77
+#: ./interfaces.py:101
 msgid "Main Slide"
 msgstr "主要 Slider"
 
-#: ./interfaces.py:82
+#: ./interfaces.py:107
 msgid "Main Slider URL"
 msgstr "主要 Slider 連結"
 
-#: ./interfaces.py:220
+#: ./interfaces.py:447
+msgid "Map Code"
+msgstr "地圖嵌入碼"
+
+#: ./behavior/parameter.py:115
+msgid "Material"
+msgstr "材質"
+
+#: ./interfaces.py:254
 msgid "More Design Image"
 msgstr "More Design 圖檔"
 
-#: ./interfaces.py:225
+#: ./interfaces.py:260
 msgid "More Design URL"
 msgstr "More Design 連結"
 
-#: ./interfaces.py:289
+#: ./interfaces.py:321
 msgid "More Feast Text"
 msgstr "More Feast 文字"
 
-#: ./interfaces.py:63
+#: ./interfaces.py:336
+msgid "MoreFeast Background Image"
+msgstr "MoreFeast 背景圖片"
+
+#: ./behavior/configure.zcml:49
+msgid "Morear Product's Parameter Set"
+msgstr "Morear 產品參數設定"
+
+#: ./interfaces.py:87
 msgid "Must be select image size at 1280x680."
 msgstr "請選擇圖檔尺寸 1280x680"
 
-#: ./interfaces.py:210
+#: ./interfaces.py:244
 msgid "Must be select image size at 640x270."
 msgstr "請選擇圖檔尺寸 640x270"
 
-#: ./behavior/configure.zcml:14
+#: ./behavior/configure.zcml:21
 msgid "Named content id from time stamp"
 msgstr "由時間戳記命名 id"
+
+#: ./interfaces.py:19
+msgid "Normal"
+msgstr "配件"
+
+#: ./behavior/parameter.py:25
+msgid "One Driver"
+msgstr "一單體"
 
 #: ./profiles/default/types/DocWithBigImage.xml
 msgid "Page with Image"
 msgstr "帶大圖的頁面"
 
+#: ./profiles/default/types/ParaImage.xml
+msgid "ParaImage"
+msgstr "帶圖參數"
+
+#: ./profiles/default/types/ParaText.xml
+msgid "ParaText"
+msgstr "文字參數"
+
+#: ./interfaces.py:468
+msgid "Parameter show name"
+msgstr "參數顯示名稱"
+
+#: ./interfaces.py:463
+msgid "Parameter title"
+msgstr "參數標題"
+
+#: ./interfaces.py:432
+msgid "Phone Number"
+msgstr "電話號碼"
+
+#: ./behavior/behaviors.py:37
+msgid "Please set Head Weight value, default:10."
+msgstr "請設定頭條權重，預設值:10"
+
+#: ./interfaces.py:483
+msgid "Price"
+msgstr "價格"
+
 #: ./profiles/default/types/Product.xml
 msgid "Product"
 msgstr "產品"
 
-#: ./interfaces.py:307
+#: ./interfaces.py:33
+msgid "Product Type"
+msgstr "產品別"
+
+#: ./interfaces.py:368
 msgid "Question"
 msgstr "問題"
 
-#: ./interfaces.py:299
-msgid "Spotify Embeded Code"
-msgstr "Spotify 嵌入碼"
+#: ./behavior/parameter.py:42
+msgid "Related"
+msgstr "關連"
 
-#: ./interfaces.py:20
+#: ./interfaces.py:427
+msgid "Service Time"
+msgstr "服務時間"
+
+#: ./interfaces.py:361
+msgid "Shipping"
+msgstr "配送運貨說明"
+
+#: ./interfaces.py:354
+msgid "Size: 1280 X 290"
+msgstr "尺寸:1280X290 px"
+
+#: ./interfaces.py:337
+msgid "Size: 1280 X 400"
+msgstr "尺寸:1280X400 px"
+
+#: ./interfaces.py:102
+msgid "Size: 1280 X 680"
+msgstr "尺寸:1280X680 px"
+
+#: ./behavior/behaviors.py:104
+msgid "Size: 600 X 450"
+msgstr "尺寸:600X450 px"
+
+#: ./interfaces.py:255
+msgid "Size: 640X270"
+msgstr "尺寸:1280X270 px"
+
+#: ./interfaces.py:473
+msgid "Small Image"
+msgstr "小圖示"
+
+#: ./interfaces.py:331
+msgid "Spotify Embeded Code"
+msgstr "Spotify 嵌入碼(線上音樂廳)"
+
+#: ./behavior/parameter.py:85
+msgid "Surface Color, Left"
+msgstr "小圖示"
+
+#: ./behavior/parameter.py:78
+msgid "Surface Color, Right"
+msgstr "面板顏色"
+
+#: ./interfaces.py:28
 msgid "Title"
 msgstr "標題"
+
+#: ./behavior/parameter.py:26
+msgid "Two Driver"
+msgstr "二單體"
+
+#: ./behavior/parameter.py:122
+msgid "Type No."
+msgstr "型號"
 
 #: ./configure.zcml:32
 msgid "Uninstalls the morear.content add-on."
@@ -143,61 +360,73 @@ msgstr "御除 morear.content 模組"
 msgid "View"
 msgstr "檢視"
 
-#: ./interfaces.py:198
+#: ./interfaces.py:421
+msgid "Weekend Service"
+msgstr "周末服務"
+
+#: ./interfaces.py:232
 msgid "What's New Big Image, 800X400"
 msgstr "What's New 的大圖, 800X400 px"
 
-#: ./interfaces.py:203
+#: ./interfaces.py:237
 msgid "What's New Small Image, 411X153."
 msgstr "What's New 的小圖, 411X153 px"
 
-#: ./interfaces.py:188
+#: ./interfaces.py:222
 msgid "What's New Text."
 msgstr "What's New 的文字"
 
-#: ./interfaces.py:193
+#: ./interfaces.py:227
 msgid "What's New URI."
 msgstr "What's New 的連結"
 
-#: ./interfaces.py:183
+#: ./interfaces.py:217
 msgid "What's New title."
 msgstr "What's New 的標題"
 
-#: ./interfaces.py:42
+#: ./interfaces.py:66
 msgid "Wrong image size, Please check Main Slider Image size, must be 1280x680 px."
 msgstr "尺寸錯誤，請確認圖檔尺寸為 1280x680."
 
-#: ./interfaces.py:48
+#: ./interfaces.py:72
 msgid "Wrong image size, Please check More Design Image size, must be 640x270 px."
 msgstr "尺寸錯誤，請確認圖檔尺寸為 640x270."
 
-#: ./behavior/behaviors.py:90
+#: ./behavior/behaviors.py:132
 msgid "Youtube URL"
 msgstr "Youtube 網址"
 
-#: ./behavior/behaviors.py:38
-#: ./behavior/configure.zcml:21
+#: ./behavior/behaviors.py:58
+#: ./behavior/configure.zcml:28
 msgid "bigImage"
 msgstr "大圖"
 
-#: ./behavior/behaviors.py:60
-#: ./behavior/configure.zcml:28
+#: ./behavior/behaviors.py:98
+#: ./behavior/configure.zcml:35
 msgid "contentMedia"
 msgstr "多媒體內容"
 
-#: ./behavior/configure.zcml:35
+#: ./behavior/configure.zcml:14
+msgid "featured"
+msgstr "精選"
+
+#: ./interfaces.py:478
+msgid "image"
+msgstr "圖片"
+
+#: ./behavior/configure.zcml:42
 msgid "keyword"
 msgstr "關鍵字"
 
-#: ./behavior/behaviors.py:28
+#: ./behavior/behaviors.py:48
 msgid "keyword, split with common."
 msgstr "關鍵字設定,請以半型逗號分隔"
 
-#: ./interfaces.py:62
+#: ./interfaces.py:86
 msgid "mainSlide"
 msgstr "主要 Slider"
 
-#: ./interfaces.py:209
+#: ./interfaces.py:243
 msgid "moreDesign"
 msgstr "More Design"
 
@@ -209,10 +438,14 @@ msgstr ""
 msgid "morear.content (uninstall)"
 msgstr ""
 
-#: ./behavior/configure.zcml:14
+#: ./behavior/configure.zcml:21
 msgid "namedFromTimeStamp"
 msgstr "由時間戳記命名"
 
-#: ./interfaces.py:178
+#: ./behavior/configure.zcml:49
+msgid "parameterSet"
+msgstr "參數設定集"
+
+#: ./interfaces.py:212
 msgid "whatsNEW"
 msgstr "What's New"
