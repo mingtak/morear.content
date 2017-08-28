@@ -59,6 +59,7 @@
     <element value="faq_listing_view"/>
     <element value="location_listing_view"/>
     <element value="product_listing_view"/>
+    <element value="links_listing_view"/>
   </property>
 
   <!-- Method aliases -->

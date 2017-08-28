@@ -199,6 +199,7 @@
       permission="zope2.View"
       />
 
+<!-- member_03, 04 目前尚無用途 -->
   <browser:page
       name="member_03"
       for="*"
@@ -210,6 +211,14 @@
       name="member_04"
       for="*"
       class=".member.Member_04"
+      permission="zope2.View"
+      />
+
+<!-- shopping cart -->
+  <browser:page
+      name="shopping_cart"
+      for="*"
+      class=".shopping.Shopping_Cart"
       permission="zope2.View"
       />
 
