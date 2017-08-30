@@ -114,7 +114,7 @@ class Member_Registry(BrowserView):
 
     template = ViewPageTemplateFile("template/member_registry.pt")
 
-    def getDB(self):
+    def getDB(self): #移到event.py，這裏應用用不到了
         self.metadata = MetaData(ENGINE)
         self.member = Table(
             'member', self.metadata,
@@ -156,7 +156,7 @@ class Member_Registry(BrowserView):
 
 #        import pdb; pdb.set_trace() ## 還沒寫進sql
         return user
-        self.getDB()
+#        self.getDB() #移到event.py，這裏應用用不到了
 
 
     def __call__(self):
@@ -171,7 +171,7 @@ class Member_Registry(BrowserView):
         if request.form:
             user = self.registryAccount(request)
             if user:
-                context.acl_users.session._setupSession(userid, context.REQUEST.RESPONSE)
+                context.acl_users.session._setupSession(user.id, context.REQUEST.RESPONSE)
                 request.response.redirect(portal.absolute_url())
                 # notify event hander
                 notify(UserLoggedInEvent(user))

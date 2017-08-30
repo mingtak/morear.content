@@ -5,6 +5,11 @@
 
 
     <subscriber
+        for="Products.PluggableAuthService.interfaces.events.IPrincipalCreatedEvent"
+        handler=".member_event.userCreated"
+    />
+
+    <subscriber
         for="Products.PlonePAS.events.UserLoggedInEvent"
         handler=".event.userLoginToFolderContents"
     />
