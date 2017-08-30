@@ -24,14 +24,13 @@ ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=u
 
 
 class OperatorDB:
-    def memberDataToDB(self, conn, userData):
+    def memberDataToDB(self, conn, userData, user):
         """  Member Data 直接寫入資料庫  """
         ins = self.member.insert()
-    #    import pdb; pdb.set_trace()
         ins = ins.values(
             registry_time=DATETIME().strftime('%Y/%m/%d %H:%M:%S'),
             last_update=DATETIME().strftime('%Y/%m/%d %H:%M:%S'),
-            userId=userData.get('userid'),
+            userId=userData.get('userid', user.getId()),
             fullname=userData.get('username'),
             password=userData.get('password'),
             birthday=userData.get('bday'),
@@ -84,9 +83,6 @@ def userCreated(event):
     operatorDB.getDB()
     conn = ENGINE.connect() # DB連線
 
-    operatorDB.memberDataToDB(conn, userData)
+    operatorDB.memberDataToDB(conn, userData, user)
 
     conn.close()
-#    import pdb; pdb.set_trace()
-
-
