@@ -222,5 +222,19 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="shopping_cart_step2"
+      for="*"
+      class=".shopping.Shopping_Cart_Step2"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="shopping_cart_step2_payment"
+      for="*"
+      class=".shopping.Shopping_Cart_Step2_Payment"
+      permission="zope2.View"
+      />
+
 
 </configure>
