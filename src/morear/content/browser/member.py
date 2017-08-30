@@ -7,6 +7,7 @@ import logging
 import transaction
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
+from Products.PlonePAS.events import UserLoggedInEvent, UserInitialLoginInEvent
 import json
 import random
 import urllib, urllib2
@@ -29,6 +30,22 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
+class Member_Reg_Accept_Form(BrowserView):
+
+    template = ViewPageTemplateFile("template/member_reg_accept_form.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if not api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        return self.template()
+
+
 class Member_LoginMenu(BrowserView):
 
     template = ViewPageTemplateFile("template/member_login_menu.pt")
@@ -36,7 +53,11 @@ class Member_LoginMenu(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
+        portal = api.portal.get()
+
+        if not api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
 
         return self.template()
 
@@ -131,9 +152,10 @@ class Member_Registry(BrowserView):
         if api.user.get(userid=userId): # 若 not None, 表示已存在
             return False
 
-        user = api.user.create(email=email, username=userId, roles=('Member',))
-        import pdb; pdb.set_trace() ## 還沒寫進sql
-        return True
+        user = api.user.create(email=email, username=userId, roles=('Member',), properties={'fullname':username,})
+
+#        import pdb; pdb.set_trace() ## 還沒寫進sql
+        return user
         self.getDB()
 
 
@@ -142,17 +164,36 @@ class Member_Registry(BrowserView):
         request = self.request
         portal = api.portal.get()
 
+        if not api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
         if request.form:
-            if not self.registryAccount(request):
+            user = self.registryAccount(request)
+            if user:
+                context.acl_users.session._setupSession(userid, context.REQUEST.RESPONSE)
                 request.response.redirect(portal.absolute_url())
-                return # 註冊失敗，直接轉到首頁
-            else:
-                pass # TODO: 註冊成功，登入並轉到首頁
+                # notify event hander
+                notify(UserLoggedInEvent(user))
 
-#        import pdb; pdb.set_trace()
-
+            request.response.redirect(portal.absolute_url())
 
         return self.template()
+
+
+class Member_Exist(BrowserView):
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        userId = request.form.get('u', None)
+        if not userId:
+            return None
+        if api.user.get(userid=userId):
+            return 'true'
+        else:
+            return 'false'
+
 
 
 class Member_03(BrowserView):

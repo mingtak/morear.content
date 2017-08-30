@@ -199,6 +199,20 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="member_reg_accept_form"
+      for="*"
+      class=".member.Member_Reg_Accept_Form"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="member_exist"
+      for="*"
+      class=".member.Member_Exist"
+      permission="zope2.View"
+      />
+
 <!-- member_03, 04 目前尚無用途 -->
   <browser:page
       name="member_03"
