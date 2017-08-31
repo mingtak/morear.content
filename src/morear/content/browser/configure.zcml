@@ -213,6 +213,13 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="member_update"
+      for="*"
+      class=".member.Member_Update"
+      permission="zope2.View"
+      />
+
 <!-- member_03, 04 目前尚無用途 -->
   <browser:page
       name="member_03"

@@ -20,6 +20,7 @@ from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 
 from DateTime import DateTime as DATETIME # 名稱衝突，改取別名
+from ..event.member_event import OperatorDB
 
 
 logger = logging.getLogger('morear.content')
@@ -114,28 +115,6 @@ class Member_Registry(BrowserView):
 
     template = ViewPageTemplateFile("template/member_registry.pt")
 
-    def getDB(self): #移到event.py，這裏應用用不到了
-        self.metadata = MetaData(ENGINE)
-        self.member = Table(
-            'member', self.metadata,
-            Column('id', INTEGER, primary_key=True, autoincrement=True),
-            Column('userId', String(20), unique=True),
-            Column('userName', String(50)),
-            Column('password', String(50)), # 明碼，以後考慮改 hash256
-            Column('birthday', Date),
-            Column('tel', String(10)),
-            Column('address', Text),
-            Column('commonStore', Text), # 5組，存店的uid [uid, uid....]
-            Column('commonReceive', Text), # 10組，存 收件人/地址/電話 [(name, addr, tel).....]
-            Column('registry_time', DateTime), # 註冊時間
-            Column('last_time', DateTime), # 最後修改時間
-            mysql_engine='InnoDB',
-            mysql_charset='utf8',
-            use_unicode=True,
-        )
-        self.metadata.create_all()
-
-
     def registryAccount(self, request):
         userId = request.form.get('userid')
         username = request.form.get('username')
@@ -156,7 +135,6 @@ class Member_Registry(BrowserView):
 
 #        import pdb; pdb.set_trace() ## 還沒寫進sql
         return user
-#        self.getDB() #移到event.py，這裏應用用不到了
 
 
     def __call__(self):
@@ -177,6 +155,49 @@ class Member_Registry(BrowserView):
                 notify(UserLoggedInEvent(user))
 
             request.response.redirect(portal.absolute_url())
+
+        return self.template()
+
+
+class Member_Update(Member_Registry):
+
+    template = ViewPageTemplateFile("template/member_update.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        self.user = api.user.get_current()
+        self.userId = self.user.getId()
+
+        operatorDB = OperatorDB()
+        operatorDB.getDB()
+        conn = ENGINE.connect() # DB連線
+
+        if not request.form: # 條件未上
+            sqlStr = "select tel, address from `member` where userId = '%s'" % self.userId
+            execResult = conn.execute(sqlStr)
+            self.userInfo = execResult.fetchall()[0]
+#            import pdb; pdb.set_trace()
+            return self.template()
+        else:
+            fullname = request.form.get('fullname')
+            tel = request.form.get('telNo')
+            address = request.form.get('address')
+            sqlStr = "update member set fullname = '%s', tel = '%s', address = '%s' where userId = '%s'" % (fullname, tel, address, self.userId)
+            conn.execute(sqlStr)
+            conn.close()
+            self.user.setProperties({'fullname': fullname})
+            request.response.redirect('%s/members/@@member_update' % portal.absolute_url())
+            return
+
+        conn.close()
+
 
         return self.template()
 
