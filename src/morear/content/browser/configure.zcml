@@ -257,5 +257,11 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="add_common_store"
+      for="*"
+      class=".views.AddCommonStore"
+      permission="zope2.View"
+      />
 
 </configure>

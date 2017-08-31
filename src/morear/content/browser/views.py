@@ -18,6 +18,7 @@ from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 
 from DateTime import DateTime as DATETIME # 名稱衝突，改取別名
+from ..event.member_event import OperatorDB
 
 
 logger = logging.getLogger('morear.content')
@@ -465,3 +466,41 @@ class DeleteObj(BrowserView):
 
         obj = api.content.find(UID=uid)[0].getObject()
         api.content.delete(obj=obj)
+
+
+class AddCommonStore(BrowserView):
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        operatorDB = OperatorDB()
+        operatorDB.getDB()
+        conn = ENGINE.connect() # DB連線
+
+        user = api.user.get_current()
+        userId = user.getId()
+
+        # 取讀 commonStore
+        sqlStr = "select commonStore from member where userId = '%s'" % userId
+        execute = conn.execute(sqlStr)
+        result = execute.fetchall()[0][0]
+        storeUID = request.form.get('storeUID')
+
+        if result is None:
+            commonStore = json.dumps([storeUID])
+            sqlStr = "update member set commonStore = '%s' where userId = '%s'" % (commonStore, userId)
+        elif storeUID not in result:
+            result = json.loads(result)
+            result.append(storeUID)
+            result = json.dumps(result)
+            sqlStr = "update member set commonStore = '%s' where userId = '%s'" % (result, userId)
+        conn.execute(sqlStr)
+
+#        import pdb; pdb.set_trace()
+        conn.close()
