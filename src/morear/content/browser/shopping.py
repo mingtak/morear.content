@@ -19,6 +19,7 @@ from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 
 from DateTime import DateTime as DATETIME # 名稱衝突，改取別名
+#from ..event.member_event import OperatorDB
 
 
 logger = logging.getLogger('morear.content')
@@ -39,11 +40,24 @@ class Shopping_Cart_Step2_Payment(BrowserView):
         request = self.request
 
         self.is_anonymous = api.user.is_anonymous()
-
         if self.is_anonymous:
             request.response.redirect(self.portal.absolute_url())
             return
 
+        user = api.user.get_current()
+        userId = user.getId()
+
+        conn = ENGINE.connect() # DB連線
+        sqlStr = "select commonStore from member where userId = '%s'" % userId
+        execute = conn.execute(sqlStr)
+        commonStore = execute.fetchall()[0][0]
+        if commonStore is None:
+            self.brain = []
+        else:
+            commonStore = json.loads(commonStore)
+            self.brain = api.content.find(context=self.portal, Type="Location", UID=commonStore)
+
+        conn.close()
         return self.template()
 
 

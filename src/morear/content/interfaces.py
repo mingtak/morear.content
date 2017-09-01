@@ -423,7 +423,7 @@ class ILocation(Interface):
         required=True,
     )
 
-    serviceTime = schema.TextLine(
+    serviceTime = schema.Text(
         title=_(u'Service Time'),
         required=True,
     )
@@ -449,6 +449,10 @@ class ILocation(Interface):
         required=True,
     )
 
+    note = schema.Text(
+        title=_(u'Note Text'),
+        required=False,
+    )
 
 """ 先放著不知道用不用得到
 p_type = SimpleVocabulary(
