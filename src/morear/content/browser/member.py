@@ -175,8 +175,6 @@ class Member_Update(Member_Registry):
         self.user = api.user.get_current()
         self.userId = self.user.getId()
 
-        operatorDB = OperatorDB()
-        operatorDB.getDB()
         conn = ENGINE.connect() # DB連線
 
         if not request.form: # 條件未上
