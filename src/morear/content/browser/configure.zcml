@@ -220,6 +220,14 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="member_contact_mana"
+      for="*"
+      class=".member.Member_Contact_Mana"
+      permission="zope2.View"
+      />
+
+
 <!-- member_03, 04 目前尚無用途 -->
   <browser:page
       name="member_03"
@@ -261,6 +269,20 @@
       name="add_common_store"
       for="*"
       class=".views.AddCommonStore"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="del_common_store"
+      for="*"
+      class=".views.DelCommonStore"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="add_receive"
+      for="*"
+      class=".views.AddReceive"
       permission="zope2.View"
       />
 

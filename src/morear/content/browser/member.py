@@ -31,6 +31,39 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
+class Member_Contact_Mana(BrowserView):
+
+    template = ViewPageTemplateFile("template/member_contact_mana.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        userId = api.user.get_current().getId()
+        conn = ENGINE.connect()
+        execStr = "select commonStore, commonReceive from member where userId = '%s'" % userId
+        execScript = conn.execute(execStr)
+        execResult = execScript.fetchall()
+
+        # 轉置矩陣
+        commonStore, commonReceive = map(tuple, zip(*execResult))
+        self.storeBrain, self.receiveList = (None, None)
+        if commonStore[0]:
+            self.storeBrain = api.content.find(context=portal, UID=json.loads(commonStore[0]))
+        if commonReceive[0]:
+            self.receiveList = json.loads(commonReceive[0])
+
+#        import pdb; pdb.set_trace()
+
+        conn.close()
+        return self.template()
+
+
 class Member_Reg_Accept_Form(BrowserView):
 
     template = ViewPageTemplateFile("template/member_reg_accept_form.pt")
@@ -86,29 +119,47 @@ class Member_Login(BrowserView):
         recaptResult = response.read()
 
         if json.loads(recaptResult).get('success'):
-            """ TODO: 檢查密碼 """
             userId = request.form.get('member_id')
             userPwd = request.form.get('member_pwd')
+            conn = ENGINE.connect()
+            execStr = "select password from member where userId = '%s'" % userId
+            query = conn.execute(execStr)
+            result = query.fetchall()
 
+            # 登入失敗:f, 成功:s
+            if not result:
+                request.response.redirect('%s/members/@@member_login_menu?r=f' % portal.absolute_url())
+                return
+
+            pwd = result[0][0]
+            if userPwd == pwd:
+                # 登入成功
+                self.context.acl_users.session._setupSession(userId.encode("utf-8"), self.context.REQUEST.RESPONSE)
+                request.response.redirect(portal.absolute_url())
+                userObject = api.user.get(userid=userId)
+                notify(UserLoggedInEvent(userObject))
+            else:
+                request.response.redirect('%s/members/@@member_login_menu?r=f' % portal.absolute_url())
+            conn.close()
+            return
         else:
-            return '驗證失敗'
-        request.response.redirect(portal.absolute_url())
-
-#        import pdb; pdb.set_trace()
+            request.response.redirect('%s/members/@@member_login_menu?r=f' % portal.absolute_url())
+            return
 
         return
 
 
 class Member_Logout(BrowserView):
 
-#    template = ViewPageTemplateFile("template/member_logout.pt")
-
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
+        portal = api.portal.get()
 
-        return self.template()
+        # 清除cookie使登出
+        request.response.setCookie('__ac', '')
+        request.response.redirect(portal.absolute_url())
+        return
 
 
 class Member_Registry(BrowserView):
@@ -177,7 +228,7 @@ class Member_Update(Member_Registry):
 
         conn = ENGINE.connect() # DB連線
 
-        if not request.form: # 條件未上
+        if not request.form or request.form.has_key('u'): # 條件未上
             sqlStr = "select tel, address from `member` where userId = '%s'" % self.userId
             execResult = conn.execute(sqlStr)
             self.userInfo = execResult.fetchall()[0]
@@ -191,7 +242,7 @@ class Member_Update(Member_Registry):
             conn.execute(sqlStr)
             conn.close()
             self.user.setProperties({'fullname': fullname})
-            request.response.redirect('%s/members/@@member_update' % portal.absolute_url())
+            request.response.redirect('%s/members/@@member_update?u' % portal.absolute_url())
             return
 
         conn.close()
