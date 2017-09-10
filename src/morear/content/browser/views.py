@@ -558,10 +558,11 @@ class AddReceive(BrowserView):
         city = request.form.get('city')
         addr = request.form.get('addr')
         phone = request.form.get('phone')
+        email = request.form.get('email')
 
-        execStr = "INSERT INTO receiveInfo(userId, name, city, addr, phone) \
-                   VALUES ('%s','%s','%s','%s','%s')" % \
-                   (userId, name, city, addr, phone)
+        execStr = "INSERT INTO receiveInfo(userId, name, city, addr, phone, email) \
+                   VALUES ('%s','%s','%s','%s','%s', '%s')" % \
+                   (userId, name, city, addr, phone, email)
         execSql = conn.execute(execStr)
 
         conn.close()
@@ -587,8 +588,9 @@ class DelReceive(BrowserView):
         city = request.form.get('city')
         addr = request.form.get('addr')
         phone = request.form.get('phone')
+        email = request.form.get('email')
 
 #        import pdb;pdb.set_trace()
-        execStr = "DELETE FROM receiveInfo WHERE userId = '%s' and name = '%s' and city = '%s' and addr = '%s' and phone = '%s'" % \
-                  (userId, name, city, addr, phone)
+        execStr = "DELETE FROM receiveInfo WHERE userId = '%s' and name = '%s' and city = '%s' and addr = '%s' and phone = '%s' and email = '%s'" % \
+                  (userId, name, city, addr, phone, email)
         execSql = conn.execute(execStr)

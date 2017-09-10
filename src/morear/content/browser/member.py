@@ -56,7 +56,7 @@ class Member_Contact_Mana(BrowserView):
         if commonStore[0]:
             self.storeBrain = api.content.find(context=portal, UID=json.loads(commonStore[0]))
 
-        execStr = "select name, city, addr, phone from receiveInfo where userId = '%s'" % userId # commonReceive, fail, not use.
+        execStr = "select name, city, addr, phone, email from receiveInfo where userId = '%s'" % userId # commonReceive, fail, not use.
         execScript = conn.execute(execStr)
         self.receiveList = execScript.fetchall()
 
