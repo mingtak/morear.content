@@ -554,20 +554,10 @@ class AddReceive(BrowserView):
 
         conn = ENGINE.connect() # DB連線
 
-        execStr = 'select commonReceive from member where userId = "%s"' % userId
-        execSql = conn.execute(execStr)
-        execResult = execSql.fetchall()
-        if execResult[0][0]:
-            result = json.loads(execResult[0][0])
-        else:
-            result = []
-
         name = request.form.get('name')
         city = request.form.get('city')
         addr = request.form.get('addr')
         phone = request.form.get('phone')
-        result.append((name, city, addr, phone))
-        jsonStr = json.dumps(result)
 
         execStr = "INSERT INTO receiveInfo(userId, name, city, addr, phone) \
                    VALUES ('%s','%s','%s','%s','%s')" % \
@@ -576,3 +566,29 @@ class AddReceive(BrowserView):
 
         conn.close()
 
+
+class DelReceive(BrowserView):
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        user = api.user.get_current()
+        userId = user.getId()
+
+        conn = ENGINE.connect() # DB連線
+
+        name = request.form.get('name')
+        city = request.form.get('city')
+        addr = request.form.get('addr')
+        phone = request.form.get('phone')
+
+#        import pdb;pdb.set_trace()
+        execStr = "DELETE FROM receiveInfo WHERE userId = '%s' and name = '%s' and city = '%s' and addr = '%s' and phone = '%s'" % \
+                  (userId, name, city, addr, phone)
+        execSql = conn.execute(execStr)

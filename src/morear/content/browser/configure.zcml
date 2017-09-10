@@ -286,4 +286,11 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="del_receive"
+      for="*"
+      class=".views.DelReceive"
+      permission="zope2.View"
+      />
+
 </configure>
