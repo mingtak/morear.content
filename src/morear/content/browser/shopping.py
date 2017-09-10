@@ -48,14 +48,21 @@ class Shopping_Cart_Step2_Payment(BrowserView):
         userId = user.getId()
 
         conn = ENGINE.connect() # DB連線
-        sqlStr = "select commonStore from member where userId = '%s'" % userId
-        execute = conn.execute(sqlStr)
-        commonStore = execute.fetchall()[0][0]
+        execStr = "select commonStore from member where userId = '%s'" % userId # 取得常用取貨門市
+        execSql = conn.execute(execStr)
+        commonStore = execSql.fetchall()[0][0]
         if commonStore is None:
             self.brain = []
         else:
             commonStore = json.loads(commonStore)
             self.brain = api.content.find(context=self.portal, Type="Location", UID=commonStore)
+
+        execStr = "select id, name, city, addr, phone, email from receiveInfo where userId = '%s'" % userId
+        execSql = conn.execute(execStr)
+        execResult = execSql.fetchall()
+        self.receiveList = []
+        if execResult:
+            self.receiveList = execResult
 
         conn.close()
         return self.template()
