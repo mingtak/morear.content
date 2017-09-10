@@ -46,19 +46,19 @@ class Member_Contact_Mana(BrowserView):
 
         userId = api.user.get_current().getId()
         conn = ENGINE.connect()
-        execStr = "select commonStore, commonReceive from member where userId = '%s'" % userId
+        execStr = "select commonStore, commonReceive from member where userId = '%s'" % userId # commonReceive, fail, not use.
         execScript = conn.execute(execStr)
         execResult = execScript.fetchall()
 
         # 轉置矩陣
         commonStore, commonReceive = map(tuple, zip(*execResult))
-        self.storeBrain, self.receiveList = (None, None)
+        self.storeBrain = None
         if commonStore[0]:
             self.storeBrain = api.content.find(context=portal, UID=json.loads(commonStore[0]))
-        if commonReceive[0]:
-            self.receiveList = json.loads(commonReceive[0])
 
-#        import pdb; pdb.set_trace()
+        execStr = "select name, city, addr, phone from receiveInfo where userId = '%s'" % userId # commonReceive, fail, not use.
+        execScript = conn.execute(execStr)
+        self.receiveList = execScript.fetchall()
 
         conn.close()
         return self.template()

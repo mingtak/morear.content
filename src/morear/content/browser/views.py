@@ -569,7 +569,7 @@ class AddReceive(BrowserView):
         result.append((name, city, addr, phone))
         jsonStr = json.dumps(result)
 
-        execStr = "INSERT INTO receveInfo(userId, name, city, addr, phone) \
+        execStr = "INSERT INTO receiveInfo(userId, name, city, addr, phone) \
                    VALUES ('%s','%s','%s','%s','%s')" % \
                    (userId, name, city, addr, phone)
         execSql = conn.execute(execStr)
