@@ -266,6 +266,13 @@
       />
 
   <browser:page
+      name="shopping_client_back_url"
+      for="*"
+      class=".shopping.Shopping_Client_Back_Url"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="add_common_store"
       for="*"
       class=".views.AddCommonStore"

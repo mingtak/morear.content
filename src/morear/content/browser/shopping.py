@@ -30,6 +30,25 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
+class Shopping_Client_Back_Url(BrowserView):
+
+    template = ViewPageTemplateFile("template/shopping_client_back_url.pt")
+
+    def __call__(self):
+        self.portal = api.portal.get()
+        context = self.context
+        request = self.request
+
+        self.is_anonymous = api.user.is_anonymous()
+        if self.is_anonymous:
+            request.response.redirect(self.portal.absolute_url())
+            return
+
+        self.userId = api.user.get_current().getId()
+        self.orderId = request.form.get('orderId')
+        return self.template()
+
+
 class Shopping_Cart_Step2_Payment(BrowserView):
 
     template = ViewPageTemplateFile("template/shopping_cart_step2_payment.pt")
