@@ -46,6 +46,7 @@ class Shopping_Client_Back_Url(BrowserView):
 
         self.userId = api.user.get_current().getId()
         self.orderId = request.form.get('orderId')
+        request.response.setCookie('cart', json.dumps([]))
         return self.template()
 
 
@@ -63,11 +64,20 @@ class Shopping_Cart_Step2_Payment(BrowserView):
             request.response.redirect(self.portal.absolute_url())
             return
 
-        user = api.user.get_current()
-        userId = user.getId()
+        self.user = api.user.get_current()
+        userId = self.user.getId()
 
         conn = ENGINE.connect() # DB連線
-        execStr = "select commonStore from member where userId = '%s'" % userId # 取得常用取貨門市
+
+        # 取得帳號資料
+        execStr = "select fullname, tel, city, address from member where userId = '%s'" % userId
+#        import pdb; pdb.set_trace()
+        execSql = conn.execute(execStr)
+        execResult = execSql.fetchall()[0]
+        self.user_info = execResult
+
+        # 取得常用取貨門市
+        execStr = "select commonStore from member where userId = '%s'" % userId
         execSql = conn.execute(execStr)
         commonStore = execSql.fetchall()[0][0]
         if commonStore is None:

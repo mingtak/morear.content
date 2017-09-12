@@ -332,11 +332,11 @@ msgstr "Spotify 嵌入碼(線上音樂廳)"
 
 #: ./behavior/parameter.py:85
 msgid "Surface Color, Left"
-msgstr "小圖示"
+msgstr "面板顏色(左)"
 
 #: ./behavior/parameter.py:78
 msgid "Surface Color, Right"
-msgstr "面板顏色"
+msgstr "面板顏色(右)"
 
 #: ./interfaces.py:28
 msgid "Title"

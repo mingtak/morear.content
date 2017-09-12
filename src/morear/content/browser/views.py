@@ -237,6 +237,28 @@ class DocWithBigImageView(BrowserView):
         return self.template()
 
 
+class Download_View(BrowserView):
+
+    template = ViewPageTemplateFile("template/download_view.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+#        portal = api.portal.get()
+
+        self.items = context.getChildNodes()
+        self.categories = []
+#        import pdb; pdb.set_trace()
+        for item in self.items:
+            subject = item.subject
+            if subject:
+                for cat in subject:
+                    if cat not in self.categories:
+                        self.categories.append(cat)
+
+        return self.template()
+
+
 class FaqView(BrowserView):
 
     template = ViewPageTemplateFile("template/faq_view.pt")

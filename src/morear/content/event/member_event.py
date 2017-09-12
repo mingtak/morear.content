@@ -27,6 +27,7 @@ class OperatorDB:
     def memberDataToDB(self, conn, userData, user):
         """  Member Data 直接寫入資料庫  """
         ins = self.member.insert()
+#        import pdb; pdb.set_trace()
         ins = ins.values(
             registry_time=DATETIME().strftime('%Y/%m/%d %H:%M:%S'),
             last_update=DATETIME().strftime('%Y/%m/%d %H:%M:%S'),
@@ -35,6 +36,7 @@ class OperatorDB:
             password=userData.get('password'),
             birthday=userData.get('bday'),
             tel=userData.get('telNo'),
+            city=userData.get('city'),
             address=userData.get('address'),
             agree_promote=userData.get('agree_promote'),
         )
@@ -60,6 +62,7 @@ class OperatorDB:
             Column('password', String(50)), # 明碼，以後考慮改 hash256
             Column('birthday', Date),
             Column('tel', String(10)),
+            Column('city', String(20)),
             Column('address', Text),
             Column('agree_promote', Boolean), # 行銷同意確認
             Column('commonStore', Text), # 5組，存店的uid [uid, uid....]

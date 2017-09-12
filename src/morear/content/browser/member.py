@@ -174,6 +174,7 @@ class Member_Registry(BrowserView):
         agreePromote = request.form.get('agree_promote', False)
         birthday = request.form.get('bday')
         telNo = request.form.get('telNo')
+        city = request.form.get('city')
         address = request.form.get('address')
 
         if not (userId and username and password and email):
@@ -183,8 +184,6 @@ class Member_Registry(BrowserView):
             return False
 
         user = api.user.create(email=email, username=userId, roles=('Member',), properties={'fullname':username,})
-
-#        import pdb; pdb.set_trace() ## 還沒寫進sql
         return user
 
 
@@ -229,7 +228,7 @@ class Member_Update(Member_Registry):
         conn = ENGINE.connect() # DB連線
 
         if not request.form or request.form.has_key('u'): # 條件未上
-            sqlStr = "select tel, address from `member` where userId = '%s'" % self.userId
+            sqlStr = "select tel, city, address from `member` where userId = '%s'" % self.userId
             execResult = conn.execute(sqlStr)
             self.userInfo = execResult.fetchall()[0]
 #            import pdb; pdb.set_trace()
@@ -237,8 +236,10 @@ class Member_Update(Member_Registry):
         else:
             fullname = request.form.get('fullname')
             tel = request.form.get('telNo')
+            city = request.form.get('city')
             address = request.form.get('address')
-            sqlStr = "update member set fullname = '%s', tel = '%s', address = '%s' where userId = '%s'" % (fullname, tel, address, self.userId)
+            sqlStr = "update member set fullname = '%s', tel = '%s', city = '%s', address = '%s' where userId = '%s'" %\
+                     (fullname, tel, city, address, self.userId)
             conn.execute(sqlStr)
             conn.close()
             self.user.setProperties({'fullname': fullname})

@@ -172,6 +172,13 @@
       />
 
   <browser:page
+      name="download_view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".views.Download_View"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="member_login_menu"
       for="*"
       class=".member.Member_LoginMenu"
