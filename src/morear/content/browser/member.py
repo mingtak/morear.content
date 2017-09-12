@@ -31,6 +31,58 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
+class Member_Order_List(BrowserView):
+
+    template = ViewPageTemplateFile("template/member_order_list.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        userId = api.user.get_current().getId()
+        conn = ENGINE.connect()
+        execStr = "SELECT orderInfo.orderId, orderInfo.createDate, orderItem.p_UID, orderItem.qty, orderItem.unitPrice\
+                   FROM orderInfo, orderItem\
+                   WHERE orderInfo.orderId = orderItem.orderId\
+                   AND userId = '%s'\
+                   ORDER BY orderInfo.createDate" % userId
+        execSql = conn.execute(execStr)
+        execResult = execSql.fetchall()
+#        logger.info(execResult)
+        conn.close()
+
+        self.orders = []
+        self.items = {}
+        self.orderInfo = {}
+        for item in execResult:
+            if item[0] not in self.orders:
+                self.orders.append(item[0])
+            if not self.items.has_key(item[0]):
+                self.items[item[0]] = []
+                self.orderInfo[item[0]]= {'itemNames': '', 'total': 0}
+            itemTitle = api.content.find(context=portal, UID=item[2])[0].Title
+            self.items[item[0]].append({'date': item[1],
+                                        'p_uid': item[2],
+                                        'itemTitle': itemTitle,
+                                        'qty': item[3],
+                                        'unitPrice': item[4],
+                                        'subTotal': item[3] * item[4],
+                                       })
+
+            self.orderInfo[item[0]]['itemNames'] += ' %s /' % itemTitle
+            self.orderInfo[item[0]]['total'] += item[3] * item[4]
+
+        logger.info(self.orders)
+        logger.info(self.items)
+        logger.info(self.orderInfo)
+        return self.template()
+
+
 class Member_Contact_Mana(BrowserView):
 
     template = ViewPageTemplateFile("template/member_contact_mana.pt")

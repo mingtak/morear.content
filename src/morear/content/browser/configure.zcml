@@ -179,6 +179,13 @@
       />
 
   <browser:page
+      name="member_order_list"
+      for="*"
+      class=".member.Member_Order_List"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="member_login_menu"
       for="*"
       class=".member.Member_LoginMenu"
