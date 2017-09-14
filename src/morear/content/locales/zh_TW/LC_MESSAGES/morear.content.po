@@ -92,7 +92,7 @@ msgstr "首頁"
 
 #: ./interfaces.py:49
 msgid "Cover image, show in listing"
-msgstr "要顯示在首頁列表的圖片"
+msgstr "要顯示在首頁列表的圖片,尺寸 600X450"
 
 #: ./interfaces.py:360
 msgid "Customize"

@@ -41,7 +41,7 @@ class Member_Order_List(BrowserView):
         portal = api.portal.get()
 
         if api.user.is_anonymous():
-            request.response.redirect(portal.absolute_url())
+            request.response.redirect('%s/members/@@member_login_menu' % portal.absolute_url())
             return
 
         userId = api.user.get_current().getId()

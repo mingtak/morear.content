@@ -314,4 +314,19 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="site_map"
+      for="*"
+      class=".views.Site_Map"
+      permission="zope2.View"
+      />
+
+  <!-- configlet -->
+  <browser:page
+    name="morearSettingControlPanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    permission="cmf.ManagePortal"
+    class=".morearSetting.MorearSettingControlPanelView"
+  />
+
 </configure>

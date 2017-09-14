@@ -36,6 +36,7 @@
   <property name="behaviors" purge="true">
     <element value="morear.content.behavior.behaviors.INamedFromTimeStamp"/>
     <element value="plone.app.contenttypes.behaviors.richtext.IRichText"/>
+    <element value="plone.app.dexterity.behaviors.metadata.ICategorization"/>
     <element value="plone.app.dexterity.behaviors.id.IShortName"/>
   </property>
 

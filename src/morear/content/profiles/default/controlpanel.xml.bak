@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+<object
+    name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="morear.content">
+
+    <configlet
+        title="Morear setup"
+        action_id="morear.content.browser.morearSetting"
+        appId="morear.content"
+        category="Products"
+        condition_expr=""
+        url_expr="string:${portal_url}/@@morearSettingControlPanel"
+        icon_expr="string:/favicon.ico"
+        visible="True"
+        i18n:attributes="title">
+            <permission>Manage portal</permission>
+    </configlet>
+
+</object>
+
+-->

@@ -280,6 +280,16 @@ class FaqListingView(BrowserView):
         request = self.request
 #        portal = api.portal.get()
 
+        self.items = context.getChildNodes()
+        self.categories = []
+#        import pdb; pdb.set_trace()
+        for item in self.items:
+            subject = item.subject
+            if subject:
+                for cat in subject:
+                    if cat not in self.categories:
+                        self.categories.append(cat)
+
         return self.template()
 
 
@@ -616,3 +626,11 @@ class DelReceive(BrowserView):
         execStr = "DELETE FROM receiveInfo WHERE userId = '%s' and name = '%s' and city = '%s' and addr = '%s' and phone = '%s' and email = '%s'" % \
                   (userId, name, city, addr, phone, email)
         execSql = conn.execute(execStr)
+
+
+class Site_Map(BrowserView):
+
+    template = ViewPageTemplateFile("template/site_map.pt")
+
+    def __call__(self):
+        return self.template()
