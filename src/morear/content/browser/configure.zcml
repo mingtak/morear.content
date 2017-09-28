@@ -44,6 +44,14 @@
       />
 
   <browser:page
+      name="re_show_option_view"
+      for="morear.content.interfaces.IProduct"
+      class=".views.ReShowOptionView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="news_listing_view"
       for="*"
       class=".views.NewsListingView"

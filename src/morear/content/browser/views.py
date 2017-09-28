@@ -344,6 +344,40 @@ class ProductOptionView(BrowserView):
         return self.template()
 
 
+class ReShowOptionView(BrowserView):
+
+    template = ViewPageTemplateFile("template/re_show_option_view.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        self.headphoneList = api.content.find(context=portal, Type='Product', pType='headphone')
+        self.earplugs = api.content.find(context=portal, Type='Product', pType='earplugs')
+
+        orderId = request.form.get('oid', None)
+        parameterNo = request.form.get('para', None)
+
+        if orderId is None or parameterNo is None:
+            request.response.redirect(portal.absolute_url())
+            return
+
+        conn = ENGINE.connect()
+        execStr = "SELECT parameter FROM parameter WHERE id = %s" % parameterNo
+        execSql = conn.execute(execStr)
+        execResult = execSql.fetchall()[0][0]
+#        import pdb; pdb.set_trace()
+        self.parameter = json.loads(execResult)
+
+        conn.close()
+        return self.template()
+
+
 class NewsListingView(BrowserView):
 
     template = ViewPageTemplateFile("template/news_listing_view.pt")
