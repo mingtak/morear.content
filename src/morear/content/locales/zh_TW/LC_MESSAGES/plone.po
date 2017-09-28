@@ -2945,7 +2945,7 @@ msgstr "最新的設定值"
 
 #: plone.app.contenttypes/plone/app/contenttypes/behaviors/configure.zcml:18
 msgid "Lead Image"
-msgstr "縮圖"
+msgstr "縮圖, 尺寸 600X450px"
 
 #: plone.app.querystring/plone/app/querystring/profiles/default/registry.xml
 #: plone.app.querystring/plone/app/querystring/profiles/upgrades/to_6/registry.xml
@@ -9936,7 +9936,7 @@ msgstr "語系"
 #. Default: "Lead Image"
 #: plone.app.contenttypes/plone/app/contenttypes/behaviors/leadimage.py:17
 msgid "label_leadimage"
-msgstr "縮圖"
+msgstr "縮圖, 尺寸 600X450px"
 
 #. Default: "Lead Image Caption"
 #: plone.app.contenttypes/plone/app/contenttypes/behaviors/leadimage.py:23

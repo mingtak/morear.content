@@ -46,7 +46,7 @@ class Shopping_Client_Back_Url(BrowserView):
 
         self.userId = api.user.get_current().getId()
         self.orderId = request.form.get('orderId')
-        request.response.setCookie('cart', json.dumps([]))
+        request.response.setCookie('cart', json.dumps([]), path='/')
         return self.template()
 
 

@@ -187,7 +187,7 @@ class Member_Login(BrowserView):
             if userPwd == pwd:
                 # 登入成功
                 self.context.acl_users.session._setupSession(userId.encode("utf-8"), self.context.REQUEST.RESPONSE)
-                request.response.redirect(portal.absolute_url())
+                request.response.redirect('%s?auth' % portal.absolute_url())
                 userObject = api.user.get(userid=userId)
                 notify(UserLoggedInEvent(userObject))
             else:
