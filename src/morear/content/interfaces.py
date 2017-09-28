@@ -40,6 +40,12 @@ class IProduct(Interface):
         required=True,
     )
 
+    snPrefix = schema.TextLine(
+        title=_(u'SN Prefix'),
+        description=_(u'Headphone / earplugs mustbe fill.'),
+        required=False,
+    )
+
     description = schema.Text(
         title=_(u'Description'),
         required=False,

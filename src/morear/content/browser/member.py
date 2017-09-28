@@ -35,6 +35,16 @@ class Member_Order_List(BrowserView):
 
     template = ViewPageTemplateFile("template/member_order_list.pt")
 
+    def getOrder(self, orderNumber):
+        conn = ENGINE.connect()
+        execStr = "SELECT orderId, p_UID, qty, unitPrice, parameterNo, sNumber FROM orderItem WHERE orderId = '%s'" % orderNumber
+        execSql = conn.execute(execStr)
+        execResult = execSql.fetchall()
+#        import pdb; pdb.set_trace()
+        conn.close()
+        return execResult
+
+
     def __call__(self):
         context = self.context
         request = self.request

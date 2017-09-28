@@ -21,10 +21,12 @@ import random
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 
+"""
 driverType = SimpleVocabulary(
     [SimpleTerm(value=u'One Driver', title=_(u'One Driver')),
      SimpleTerm(value=u'Two Driver', title=_(u'Two Driver'))]
     )
+"""
 
 
 class IParameterSet(model.Schema):
@@ -61,9 +63,17 @@ class IParameterSet(model.Schema):
         required=False,
     )
 
+    """
     driver = schema.Choice(
         title=_(u'Driver'),
         vocabulary=driverType,
+        required=False,
+    )
+    """
+
+    driver = RelationChoice(
+        title=_(u'Driver'),
+        source=CatalogSource(Type='ParaText'),
         required=False,
     )
 
