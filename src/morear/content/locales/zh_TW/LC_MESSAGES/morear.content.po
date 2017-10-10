@@ -320,7 +320,7 @@ msgstr "尺寸:600X450 px"
 
 #: ./interfaces.py:255
 msgid "Size: 640X270"
-msgstr "尺寸:1280X270 px"
+msgstr "尺寸:640X270 px"
 
 #: ./interfaces.py:473
 msgid "Small Image"

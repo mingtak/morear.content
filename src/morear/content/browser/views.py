@@ -514,7 +514,10 @@ class SearchResultView(BrowserView):
         portal = api.portal.get()
 
         self.keyword = request.form.get('keyword', '')
-        self.brain = api.content.find(portal=portal, SearchableText=self.keyword)
+        self.brain = []
+#        import pdb; pdb.set_trace()
+        if self.keyword.strip():
+            self.brain = api.content.find(portal=portal, SearchableText=self.keyword.strip())
 
         return self.template()
 

@@ -11,6 +11,7 @@ from Products.PlonePAS.events import UserLoggedInEvent, UserInitialLoginInEvent
 import json
 import random
 import urllib, urllib2
+import string
 
 from sqlalchemy import create_engine, MetaData, Table, Column, BigInteger, String,\
                        ForeignKey, Boolean, Text, Date, DateTime, JSON, BLOB
@@ -29,6 +30,131 @@ BASEMODEL = declarative_base()
 # 加上charset='utf8'解決phpmyadmin的中文問題
 # create_engine 內的字串，之後要改到 registry 讀取
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
+
+
+class Member_Forget_Pwd(BrowserView):
+
+    template = ViewPageTemplateFile("template/member_forget_pwd.pt")
+
+    def modifyPwd(self, hash):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        conn = ENGINE.connect()
+        execStr = "SELECT userId FROM forgetpwd WHERE hash = '%s'" % hash
+        execResult = conn.execute(execStr)
+        result = execResult.fetchall()
+
+        execStr = "DELETE FROM forgetpwd WHERE hash = '%s'" % hash
+        conn.execute(execStr)
+
+        conn.close()
+        userId = result[0][0]
+        context.acl_users.session._setupSession(userId.encode("utf-8"), request.response)
+#        import pdb; pdb.set_trace()
+        request.response.redirect('%s/members/@@member_modify_pwd' % portal.absolute_url())
+        return
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        hash = request.form.get('hash', None)
+        if hash:
+            try:
+                self.modifyPwd(hash)
+            except:
+                request.response.redirect(portal.absolute_url())
+            return
+
+        gRespon = request.form.get('g-recaptcha-response', None)
+        if gRespon is None:
+            return self.template()
+
+        email = request.form.get('email')
+        if not email:
+            return request.response.redirect(portal.absolute_url())
+
+
+#        import pdb; pdb.set_trace()
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        data = urllib.urlencode({
+            'secret': '6LdUty0UAAAAAMSKideRk_b6LYpwH0CRVnJnrXqc',
+            'response': request.form.get('g-recaptcha-response'),
+        })
+        req = urllib2.Request(url, data)
+        response = urllib2.urlopen(req)
+        recaptResult = response.read()
+
+        if not json.loads(recaptResult).get('success'):
+            return 'false'
+
+        conn = ENGINE.connect()
+        users = api.user.get_users()
+        for user in users:
+            userId = user.getProperty('id')
+            if userId.startswith('gg') or userId.startswith('fb'):
+                continue
+            if email == user.getProperty('email'):
+                hash = ''.join(random.choice(string.uppercase + string.lowercase + string.digits) for _ in range(60))
+                requestTime = DATETIME().strftime('%Y/%m/%d %H:%M:%S')
+                url = '%s/members/@@member_forget_pwd?hash=%s' % (portal.absolute_url(), hash)
+                execStr = "INSERT INTO forgetpwd(userId, hash, request_time) VALUES ('%s','%s','%s')" % (userId, hash, requestTime)
+                conn.execute(execStr)
+                api.portal.send_email(
+                    recipient=email,
+                    sender="me@morear.tw",
+                    subject="%s 您好，Morear 系統通知:變更密碼設定" % userId,
+                    body='%s 您好，剛才由系統發出忘記並重新設定密碼請求，如非您本人提出，請忽略本信件並刪除，若要重新設定密碼，請點擊以下連結: %s' % \
+                          (userId, url),
+                )
+
+        conn.close()
+        return 'true'
+
+
+class Member_Modify_Pwd(BrowserView):
+
+    template = ViewPageTemplateFile("template/member_modify_pwd.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        if api.user.is_anonymous():
+            request.response.redirect(portal.absolute_url())
+            return
+
+        if not request.form.get('g-recaptcha-response', False):
+            return self.template()
+
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        data = urllib.urlencode({
+            'secret': '6LdUty0UAAAAAMSKideRk_b6LYpwH0CRVnJnrXqc',
+            'response': request.form.get('g-recaptcha-response'),
+        })
+        req = urllib2.Request(url, data)
+        response = urllib2.urlopen(req)
+        recaptResult = response.read()
+
+#        import pdb; pdb.set_trace()
+        if json.loads(recaptResult).get('success'):
+            password = request.form.get('password')
+            user = api.user.get_current()
+            userId = user.getId()
+            nowStr = DATETIME().strftime('%Y/%m/%d %H:%M:%S')
+
+            conn = ENGINE.connect()
+            execStr = "UPDATE member SET `password` = '%s', `last_update` = '%s' WHERE userId = '%s'" % (password, nowStr, userId)
+            conn.execute(execStr)
+
+            user.setSecurityProfile(password=password)
+
+
+        return self.template()
 
 
 class Member_Order_List(BrowserView):
@@ -60,7 +186,7 @@ class Member_Order_List(BrowserView):
                    FROM orderInfo, orderItem\
                    WHERE orderInfo.orderId = orderItem.orderId\
                    AND userId = '%s'\
-                   ORDER BY orderInfo.createDate" % userId
+                   ORDER BY orderInfo.createDate DESC" % userId
         execSql = conn.execute(execStr)
         execResult = execSql.fetchall()
 #        logger.info(execResult)

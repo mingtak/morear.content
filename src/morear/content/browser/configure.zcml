@@ -187,6 +187,20 @@
       />
 
   <browser:page
+      name="member_forget_pwd"
+      for="*"
+      class=".member.Member_Forget_Pwd"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="member_modify_pwd"
+      for="*"
+      class=".member.Member_Modify_Pwd"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="member_order_list"
       for="*"
       class=".member.Member_Order_List"

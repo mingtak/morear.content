@@ -36,7 +36,7 @@ class IParameterSet(model.Schema):
         'headphone',
         label=_(u""),
         fields=['bgImage_left', 'bgImage_right', 'driver', 'lineLength', 'lineColor', 'shell3D',
-                'surfaceColorR', 'surfaceColorL', 'logoColor']
+                'surfaceColorR', 'surfaceColorL', 'logoColorR', 'logoColorL']
     )
 
     lineColor = RelationList(
@@ -98,8 +98,15 @@ class IParameterSet(model.Schema):
         required=False,
     )
 
-    logoColor = RelationList(
-        title=_(u"Logo Color"),
+    logoColorR = RelationList(
+        title=_(u"Logo Color, Right"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaImage'),),
+        required=False,
+    )
+
+    logoColorL = RelationList(
+        title=_(u"Logo Color, Left"),
         value_type=RelationChoice(title=_(u"Related"),
                                   source=CatalogSource(Type='ParaImage'),),
         required=False,
@@ -180,7 +187,8 @@ class ParameterSet(object):
     surfaceColorL = context_property("surfaceColorL")
     lineColor = context_property("lineColor")
     shell3D = context_property("shell3D")
-    logoColor = context_property("logoColor")
+    logoColorR = context_property("logoColorR")
+    logoColorL = context_property("logoColorL")
     ep_bgImage_left = context_property('ep_bgImage_left')
     ep_bgImage_right = context_property('ep_bgImage_right')
     ep_material = context_property('ep_material')
