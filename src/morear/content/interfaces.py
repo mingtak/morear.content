@@ -9,6 +9,8 @@ from plone.supermodel import model
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.interface import invariant, Invalid
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+from z3c.relationfield.schema import RelationList, RelationChoice
+from plone.app.vocabularies.catalog import CatalogSource
 
 
 class IMorearContentLayer(IDefaultBrowserLayer):
@@ -38,6 +40,13 @@ class IProduct(Interface):
     basePrice = schema.Int(
         title=_(u"Base Price"),
         required=True,
+    )
+
+    urgentCase = RelationList(
+        title=_(u"Urgent Case"),
+        value_type=RelationChoice(title=_(u"Related"),
+                                  source=CatalogSource(Type='ParaText'),),
+        required=False,
     )
 
     snPrefix = schema.TextLine(
