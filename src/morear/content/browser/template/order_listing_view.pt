@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    lang="en"
+    metal:use-macro="context/main_template/macros/master"
+    i18n:domain="morear.content">
+<body>
+
+
+<metal:content-core fill-slot="content-core">
+<metal:content-core define-macro="content-core"
+                    tal:define="toc context/table_of_contents|nothing;">
+
+<?python
+from plone import api
+portal = api.portal.get()
+?>
+
+<h3>訂單管理</h3>
+<table>
+    <tr>
+        <td>會員帳號</td>
+        <td>訂單編號</td>
+        <td>內容摘要</td>
+    </tr>
+    <tr tal:repeat="order view/results">
+        <tal:order define="orderItems python:view.getOrderItems(order[1])">
+            <td>${python:order[0]}</td>
+            <td>${python:order[1]}</td>
+            <td>
+                <tal:item repeat="item orderItems">
+                    <span tal:define="obj python:api.content.find(UID=item[0])[0]">
+                        <a target="_blank" href="${obj/getURL}">${obj/Title}</a> 數量: ${python:item[1]} <span tal:condition="not:repeat/item/end">/</span>
+                    </span>
+                </tal:item>
+            </td>
+        </tal:order>
+
+    </tr>
+</table>
+
+
+
+
+
+</metal:content-core>
+</metal:content-core>
+
+</body>
+</html>
+

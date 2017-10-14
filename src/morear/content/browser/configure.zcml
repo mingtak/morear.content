@@ -19,6 +19,15 @@
       />
 
   <!-- browser view -->
+
+  <browser:page
+      name="order_listing_view"
+      for="*"
+      class=".views.OrderListingView"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="cmf.ManagePortal"
+      />
+
   <browser:page
       name="cover_view"
       for="*"
@@ -340,6 +349,13 @@
       name="site_map"
       for="*"
       class=".views.Site_Map"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      name="get_partner"
+      for="*"
+      class=".views.GetPartner"
       permission="zope2.View"
       />
 

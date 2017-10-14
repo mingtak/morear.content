@@ -9,6 +9,7 @@ from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 import json
 import random
+import urllib2
 
 from sqlalchemy import create_engine, MetaData, Table, Column, BigInteger, String,\
                        ForeignKey, Boolean, Text, Date, DateTime, JSON, BLOB
@@ -27,6 +28,55 @@ BASEMODEL = declarative_base()
 # 加上charset='utf8'解決phpmyadmin的中文問題
 # create_engine 內的字串，之後要改到 registry 讀取
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
+
+
+class OrderListingView(BrowserView):
+
+    template = ViewPageTemplateFile("template/order_listing_view.pt")
+
+    def getOrderItems(self, orderId):
+        self.conn = ENGINE.connect() # DB連線
+
+        execStr = "SELECT p_UID, qty FROM orderItem WHERE orderId = '%s'" % orderId
+        execResult = self.conn.execute(execStr)
+        self.conn.close()
+        return execResult.fetchall()
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        self.conn = ENGINE.connect() # DB連線
+
+        execStr = "SELECT userId, orderId FROM orderInfo WHERE 1 ORDER BY createDate DESC"
+        execResult = self.conn.execute(execStr)
+        self.results = execResult.fetchall()
+        self.conn.close()
+
+        return self.template()
+
+
+class GetPartner(BrowserView):
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+#        import pdb; pdb.set_trace()
+        if request.form.has_key('city'):
+#            import pdb; pdb.set_trace()
+            return urllib2.urlopen('http://210.68.106.227/cities/available').read()
+
+        if request.form.has_key('cityId'):
+            cityId = request.form.get('cityId')
+            return urllib2.urlopen('http://210.68.106.227/cities/%s/districts/available' % cityId).read()
+
+        if request.form.has_key('districtId'):
+            districtId = request.form.get('districtId')
+            return urllib2.urlopen('http://210.68.106.227/stores?districtId=%s' % districtId).read()
+
+#        import pdb; pdb.set_trace()
 
 
 class UpdateCart(BrowserView):

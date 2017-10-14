@@ -49,6 +49,14 @@ class IProduct(Interface):
         required=False,
     )
 
+    discount = schema.Int(
+        title=_(u"Discount, base on basePrice percentage(%), default value 100 is no discount."),
+        default=100,
+        max=100,
+        min=1,
+        required=True,
+    )
+
     snPrefix = schema.TextLine(
         title=_(u'SN Prefix'),
         description=_(u'Headphone / earplugs mustbe fill.'),
