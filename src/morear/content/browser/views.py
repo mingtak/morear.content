@@ -30,6 +30,52 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
+class OrderDetailInfo(BrowserView):
+
+    template = ViewPageTemplateFile("template/order_detail_info.pt")
+
+
+    def getOrderItem(self, orderId):
+        self.conn = ENGINE.connect() # DB連線
+
+        self.orderItemList = ['p_UID', 'qty', 'unitPrice', 'parameterNo', 'sNumber']
+
+        execStr = "SELECT p_UID, qty, unitPrice, parameterNo, sNumber\
+                   FROM orderItem WHERE orderId = '%s'" % orderId
+        execResult = self.conn.execute(execStr)
+        self.conn.close()
+        return execResult.fetchall()
+
+    def getOrderInfo(self, orderId):
+        self.conn = ENGINE.connect() # DB連線
+
+        self.orderInfoList = ['userId', 'b_email', 'orderId', 'b_name', 'b_city', 'b_addr', 'b_phone',
+            'pickupType', 'pickupTime', 'r_name', 'r_email', 'r_city', 'r_addr', 'r_phone',
+            'i_2list', 'i_invoiceNo', 'i_city', 'i_addr', 'pickupStoreUID', 'ecpayNo', 'createDate']
+
+        execStr = "SELECT userId, b_email, orderId, b_name, b_city, b_addr, b_phone,\
+                          pickupType, pickupTime, r_name, r_email, r_city, r_addr, r_phone,\
+                          i_2list, i_invoiceNo, i_city, i_addr, pickupStoreUID, ecpayNo, createDate\
+                   FROM orderInfo WHERE orderId = '%s'" % orderId
+        execResult = self.conn.execute(execStr)
+        self.conn.close()
+        return execResult.fetchall()[0]
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        self.conn = ENGINE.connect() # DB連線
+
+        execStr = "SELECT userId, orderId FROM orderInfo WHERE 1 ORDER BY createDate DESC"
+        execResult = self.conn.execute(execStr)
+        self.results = execResult.fetchall()
+        self.conn.close()
+
+        return self.template()
+
+
 class OrderListingView(BrowserView):
 
     template = ViewPageTemplateFile("template/order_listing_view.pt")
