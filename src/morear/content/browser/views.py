@@ -33,6 +33,36 @@ ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=u
 
 
 
+class PrintItem(BrowserView):
+
+    template = ViewPageTemplateFile("template/print_item.pt")
+
+    def execSql(self, execStr):
+        self.conn = ENGINE.connect() # DB連線
+        execResult = self.conn.execute(execStr)
+        self.conn.close()
+        return execResult.fetchall()
+
+    def getParameter(self, parameterNo):
+        """  """
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+
+        orderId = request.form.get('orderId', None)
+        sn = request.form.get('sn', None)
+        if not (orderId and sn):
+            return request.response.redirect(portal.absolute_url())
+
+        execStr = "SELECT userId, orderId FROM orderInfo WHERE 1 ORDER BY createDate DESC"
+        self.results = self.execSql(execStr)
+
+        return self.template()
+
+
 class OrderDetailInfo(BrowserView):
 
     template = ViewPageTemplateFile("template/order_detail_info.pt")

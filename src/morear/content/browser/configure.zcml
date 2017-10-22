@@ -21,6 +21,14 @@
   <!-- browser view -->
 
   <browser:page
+      name="print_item"
+      for="*"
+      class=".views.PrintItem"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="cmf.ManagePortal"
+      />
+
+  <browser:page
       name="order_listing_view"
       for="*"
       class=".views.OrderListingView"
