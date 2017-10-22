@@ -162,15 +162,15 @@ class UpdateCart(BrowserView):
     def parameterToDB(self, parameter):
         """  parameter 直接寫入資料庫， return content id ==> SELECT LAST_INSERT_ID(); """
 
+        conn = ENGINE.connect() # DB連線
+        execStr = "INSERT INTO parameter (date, parameter) VALUES ('%s', '%s')" % (DATETIME().strftime('%Y/%m/%d'), json.dumps(parameter))
+        conn.execute(execStr)
+        # 取得寫入 id
+        execStr = "SELECT LAST_INSERT_ID()"
+        insertedId = conn.execute(execStr).fetchone()[0]
 
-        ins = self.parameter.insert()
-#        import pdb; pdb.set_trace()
-        ins = ins.values(date=DATETIME().strftime('%Y/%m/%d'), parameter=json.dumps(parameter))
-        try:
-            execSql = self.conn.execute(ins)
-            insertedId = int(execSql.lastrowid)
-        except:
-            pass
+        conn.close()
+        import pdb; pdb.set_trace()
 
         return insertedId
 
