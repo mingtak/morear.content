@@ -51,14 +51,21 @@ class PrintItem(BrowserView):
         request = self.request
         portal = api.portal.get()
 
-
         orderId = request.form.get('orderId', None)
+        p_UID = request.form.get('p_UID', None)
         sn = request.form.get('sn', None)
-        if not (orderId and sn):
+        if not (orderId and p_UID and sn):
             return request.response.redirect(portal.absolute_url())
 
-        execStr = "SELECT userId, orderId FROM orderInfo WHERE 1 ORDER BY createDate DESC"
-        self.results = self.execSql(execStr)
+        execStr = "SELECT * FROM orderInfo WHERE orderId = '%s'" % orderId
+        self.orderInfo = self.execSql(execStr)
+
+        execStr = "SELECT * FROM orderItem WHERE orderId = '%s' AND p_UID = '%s'" % (orderId, p_UID)
+        self.orderItem = self.execSql(execStr)
+
+        parameterNo = self.orderItem[0]['parameterNo']
+        execStr = "SELECT * FROM parameter WHERE id = '%s'" % parameterNo
+        self.parameters = self.execSql(execStr)
 
         return self.template()
 
