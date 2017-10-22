@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-10-19 09:27+0000\n"
+"POT-Creation-Date: 2017-10-22 15:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -440,24 +440,28 @@ msgstr ""
 msgid "Youtube URL"
 msgstr ""
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_addr"
 msgstr ""
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_city"
 msgstr ""
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_email"
 msgstr ""
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_name"
 msgstr ""
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_phone"
+msgstr ""
+
+#: ./__init__.py:43
+msgid "basePrice"
 msgstr ""
 
 #: ./behavior/behaviors.py:89
@@ -470,31 +474,87 @@ msgstr ""
 msgid "contentMedia"
 msgstr ""
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "createDate"
 msgstr ""
 
-#: ./browser/views.py:55
+#: ./__init__.py:15
+msgid "cusImgL"
+msgstr ""
+
+#: ./__init__.py:40
+msgid "cusImgR"
+msgstr ""
+
+#: ./__init__.py:35
+msgid "discount"
+msgstr ""
+
+#: ./__init__.py:66
+msgid "earplugsAmount"
+msgstr ""
+
+#: ./browser/views.py:115
 msgid "ecpayNo"
+msgstr ""
+
+#: ./__init__.py:64
+msgid "ep_colorL"
+msgstr ""
+
+#: ./__init__.py:68
+msgid "ep_colorLPrice"
+msgstr ""
+
+#: ./__init__.py:62
+msgid "ep_colorPrice"
+msgstr ""
+
+#: ./__init__.py:58
+msgid "ep_colorR"
+msgstr ""
+
+#: ./__init__.py:47
+msgid "ep_colorRPrice"
+msgstr ""
+
+#: ./__init__.py:53
+msgid "ep_material"
+msgstr ""
+
+#: ./__init__.py:55
+msgid "ep_materialPrice"
+msgstr ""
+
+#: ./__init__.py:59
+msgid "ep_typeNo"
+msgstr ""
+
+#: ./__init__.py:57
+msgid "ep_typeNoPrice"
+msgstr ""
+
+#: ./__init__.py:37
+msgid "extSer"
 msgstr ""
 
 #: ./behavior/configure.zcml:14
 msgid "featured"
 msgstr ""
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_2list"
 msgstr ""
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_addr"
 msgstr ""
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_city"
 msgstr ""
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_invoiceNo"
 msgstr ""
 
@@ -508,6 +568,54 @@ msgstr ""
 
 #: ./behavior/behaviors.py:79
 msgid "keyword, split with common."
+msgstr ""
+
+#: ./__init__.py:19
+msgid "laserPriceL"
+msgstr ""
+
+#: ./__init__.py:11
+msgid "laserPriceR"
+msgstr ""
+
+#: ./__init__.py:17
+msgid "laserTextL"
+msgstr ""
+
+#: ./__init__.py:13
+msgid "laserTextR"
+msgstr ""
+
+#: ./__init__.py:26
+msgid "leftRightL"
+msgstr ""
+
+#: ./__init__.py:27
+msgid "leftRightR"
+msgstr ""
+
+#: ./__init__.py:22
+msgid "lineLength"
+msgstr ""
+
+#: ./__init__.py:31
+msgid "linePrice"
+msgstr ""
+
+#: ./__init__.py:9
+msgid "logoColorL"
+msgstr ""
+
+#: ./__init__.py:29
+msgid "logoColorPriceL"
+msgstr ""
+
+#: ./__init__.py:24
+msgid "logoColorPriceR"
+msgstr ""
+
+#: ./__init__.py:20
+msgid "logoColorR"
 msgstr ""
 
 #: ./interfaces.py:109
@@ -538,15 +646,23 @@ msgstr ""
 msgid "namedFromTimeStamp"
 msgstr ""
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "orderId"
 msgstr ""
 
-#: ./browser/views.py:42
+#: ./__init__.py:36
+msgid "outBoxText"
+msgstr ""
+
+#: ./__init__.py:41
+msgid "pType"
+msgstr ""
+
+#: ./browser/views.py:106
 msgid "p_UID"
 msgstr ""
 
-#: ./browser/views.py:42
+#: ./browser/views.py:106
 msgid "parameterNo"
 msgstr ""
 
@@ -554,54 +670,119 @@ msgstr ""
 msgid "parameterSet"
 msgstr ""
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "pickupStoreUID"
 msgstr ""
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "pickupTime"
 msgstr ""
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "pickupType"
 msgstr ""
 
-#: ./browser/views.py:42
+#: ./__init__.py:33
+msgid "productName"
+msgstr ""
+
+#: ./browser/views.py:106
 msgid "qty"
 msgstr ""
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_addr"
 msgstr ""
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_city"
 msgstr ""
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_email"
 msgstr ""
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_name"
 msgstr ""
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_phone"
 msgstr ""
 
-#: ./browser/views.py:42
+#: ./__init__.py:23
+msgid "rotateL"
+msgstr ""
+
+#: ./__init__.py:30
+msgid "rotateR"
+msgstr ""
+
+#: ./__init__.py:44
+#: ./browser/views.py:106
 msgid "sNumber"
 msgstr ""
 
-#: ./browser/views.py:42
+#: ./__init__.py:39
+msgid "service_person"
+msgstr ""
+
+#: ./__init__.py:32
+msgid "shell3D"
+msgstr ""
+
+#: ./__init__.py:38
+msgid "shell3DPrice"
+msgstr ""
+
+#: ./__init__.py:21
+msgid "surfaceL"
+msgstr ""
+
+#: ./__init__.py:34
+msgid "surfacePrice"
+msgstr ""
+
+#: ./__init__.py:10
+msgid "surfaceR"
+msgstr ""
+
+#: ./__init__.py:42
+msgid "totalSum"
+msgstr ""
+
+#: ./browser/views.py:106
 msgid "unitPrice"
 msgstr ""
 
-#: ./browser/views.py:53
+#: ./__init__.py:12
+msgid "upDownL"
+msgstr ""
+
+#: ./__init__.py:18
+msgid "upDownR"
+msgstr ""
+
+#: ./__init__.py:16
+msgid "urgentCase"
+msgstr ""
+
+#: ./__init__.py:14
+msgid "urgentCasePrice"
+msgstr ""
+
+#: ./browser/views.py:113
 msgid "userId"
 msgstr ""
 
 #: ./interfaces.py:235
 msgid "whatsNEW"
+msgstr ""
+
+#: ./__init__.py:28
+msgid "zoomL"
+msgstr ""
+
+#: ./__init__.py:25
+msgid "zoomR"
 msgstr ""

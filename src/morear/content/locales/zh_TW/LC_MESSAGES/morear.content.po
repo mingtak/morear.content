@@ -433,25 +433,29 @@ msgstr "尺寸錯誤，請確認圖檔尺寸為 640x270."
 msgid "Youtube URL"
 msgstr "Youtube 網址"
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_addr"
 msgstr "訂貨人地址"
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_city"
 msgstr "訂貨人縣市"
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_email"
 msgstr "訂貨人email"
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_name"
 msgstr "訂貨人姓名"
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "b_phone"
 msgstr "訂貨人電話"
+
+#: ./__init__.py:43
+msgid "basePrice"
+msgstr "商品定價"
 
 #: ./behavior/behaviors.py:89
 #: ./behavior/configure.zcml:28
@@ -463,31 +467,87 @@ msgstr "大圖"
 msgid "contentMedia"
 msgstr "多媒體內容"
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "createDate"
 msgstr "建立日期"
 
-#: ./browser/views.py:55
+#: ./__init__.py:15
+msgid "cusImgL"
+msgstr "客製化圖案(左)"
+
+#: ./__init__.py:40
+msgid "cusImgR"
+msgstr "客製化圖案(右)"
+
+#: ./__init__.py:35
+msgid "discount"
+msgstr "折扣"
+
+#: ./__init__.py:66
+msgid "earplugsAmount"
+msgstr "耳塞數量"
+
+#: ./browser/views.py:115
 msgid "ecpayNo"
 msgstr "綠界訂單編號"
+
+#: ./__init__.py:64
+msgid "ep_colorL"
+msgstr "耳塞顏色(左)"
+
+#: ./__init__.py:68
+msgid "ep_colorLPrice"
+msgstr "耳塞顏色價格(左)"
+
+#: ./__init__.py:62
+msgid "ep_colorPrice"
+msgstr "耳塞顏色價格(合計)"
+
+#: ./__init__.py:58
+msgid "ep_colorR"
+msgstr "耳塞顏色(右)"
+
+#: ./__init__.py:47
+msgid "ep_colorRPrice"
+msgstr "耳塞顏色價格(右)"
+
+#: ./__init__.py:53
+msgid "ep_material"
+msgstr "耳塞材質"
+
+#: ./__init__.py:55
+msgid "ep_materialPrice"
+msgstr "耳塞材質價格"
+
+#: ./__init__.py:59
+msgid "ep_typeNo"
+msgstr "耳塞型號"
+
+#: ./__init__.py:57
+msgid "ep_typeNoPrice"
+msgstr "耳塞型號價格"
+
+#: ./__init__.py:37
+msgid "extSer"
+msgstr "特殊需求"
 
 #: ./behavior/configure.zcml:14
 msgid "featured"
 msgstr "精選"
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_2list"
 msgstr "是否二聯式發票"
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_addr"
 msgstr "發票地址(詳細地址)"
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_city"
 msgstr "發票地址(縣市)"
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "i_invoiceNo"
 msgstr "發票統一編號"
 
@@ -502,6 +562,54 @@ msgstr "關鍵字"
 #: ./behavior/behaviors.py:79
 msgid "keyword, split with common."
 msgstr "關鍵字設定,請以半型逗號分隔"
+
+#: ./__init__.py:19
+msgid "laserPriceL"
+msgstr "刻字價格(左)"
+
+#: ./__init__.py:11
+msgid "laserPriceR"
+msgstr "刻字價格(右)"
+
+#: ./__init__.py:17
+msgid "laserTextL"
+msgstr "刻字(左)"
+
+#: ./__init__.py:13
+msgid "laserTextR"
+msgstr "刻字(右)"
+
+#: ./__init__.py:26
+msgid "leftRightL"
+msgstr "客製圖案位置/左右(左)"
+
+#: ./__init__.py:27
+msgid "leftRightR"
+msgstr "客製圖案位置/左右(右)"
+
+#: ./__init__.py:22
+msgid "lineLength"
+msgstr "耳機線材"
+
+#: ./__init__.py:31
+msgid "linePrice"
+msgstr "耳機線材價格"
+
+#: ./__init__.py:9
+msgid "logoColorL"
+msgstr "Logo樣式(左)"
+
+#: ./__init__.py:29
+msgid "logoColorPriceL"
+msgstr "Logo樣式價格(左)"
+
+#: ./__init__.py:24
+msgid "logoColorPriceR"
+msgstr "Logo樣式價格(右)"
+
+#: ./__init__.py:20
+msgid "logoColorR"
+msgstr "Logo樣式(右)"
 
 #: ./interfaces.py:109
 msgid "mainSlide"
@@ -531,15 +639,23 @@ msgstr "音樂達人/店長推薦"
 msgid "namedFromTimeStamp"
 msgstr "由時間戳記命名"
 
-#: ./browser/views.py:53
+#: ./browser/views.py:113
 msgid "orderId"
 msgstr "訂單編號"
 
-#: ./browser/views.py:42
+#: ./__init__.py:36
+msgid "outBoxText"
+msgstr "外箱文字"
+
+#: ./__init__.py:41
+msgid "pType"
+msgstr "產品類別"
+
+#: ./browser/views.py:106
 msgid "p_UID"
 msgstr "產品名稱"
 
-#: ./browser/views.py:42
+#: ./browser/views.py:106
 msgid "parameterNo"
 msgstr "詳細參數"
 
@@ -547,54 +663,119 @@ msgstr "詳細參數"
 msgid "parameterSet"
 msgstr "參數設定集"
 
-#: ./browser/views.py:55
+#: ./browser/views.py:115
 msgid "pickupStoreUID"
 msgstr "配送門市"
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "pickupTime"
 msgstr "配送時間"
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "pickupType"
 msgstr "配送方式"
 
-#: ./browser/views.py:42
+#: ./__init__.py:33
+msgid "productName"
+msgstr "產品名稱"
+
+#: ./browser/views.py:106
 msgid "qty"
 msgstr "數量"
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_addr"
 msgstr "收件人地址(詳細地址)"
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_city"
 msgstr "收件人地址(縣市)"
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_email"
 msgstr "收件人email"
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_name"
 msgstr "收件人姓名"
 
-#: ./browser/views.py:54
+#: ./browser/views.py:114
 msgid "r_phone"
 msgstr "收件人電話"
 
-#: ./browser/views.py:42
+#: ./__init__.py:23
+msgid "rotateL"
+msgstr "客製圖案位置/旋轉角度(左)"
+
+#: ./__init__.py:30
+msgid "rotateR"
+msgstr "客製圖案位置/旋轉角度(右)"
+
+#: ./__init__.py:44
+#: ./browser/views.py:106
 msgid "sNumber"
 msgstr "產品序號"
 
-#: ./browser/views.py:42
+#: ./__init__.py:39
+msgid "service_person"
+msgstr "服務人員姓名"
+
+#: ./__init__.py:32
+msgid "shell3D"
+msgstr "主體顏色"
+
+#: ./__init__.py:38
+msgid "shell3DPrice"
+msgstr "主體顏色價格"
+
+#: ./__init__.py:21
+msgid "surfaceL"
+msgstr "面板顏色/樣式(左)"
+
+#: ./__init__.py:34
+msgid "surfacePrice"
+msgstr "面板顏色/樣式 價格"
+
+#: ./__init__.py:10
+msgid "surfaceR"
+msgstr "面板顏色/樣式(右)"
+
+#: ./__init__.py:42
+msgid "totalSum"
+msgstr "總計"
+
+#: ./browser/views.py:106
 msgid "unitPrice"
 msgstr "商品單價"
 
-#: ./browser/views.py:53
+#: ./__init__.py:12
+msgid "upDownL"
+msgstr "客製圖案位置/上下(左)"
+
+#: ./__init__.py:18
+msgid "upDownR"
+msgstr "客製圖案位置/上下(右)"
+
+#: ./__init__.py:16
+msgid "urgentCase"
+msgstr "急件"
+
+#: ./__init__.py:14
+msgid "urgentCasePrice"
+msgstr "急件價格"
+
+#: ./browser/views.py:113
 msgid "userId"
 msgstr "使用者帳號"
 
 #: ./interfaces.py:235
 msgid "whatsNEW"
 msgstr "What's New"
+
+#: ./__init__.py:28
+msgid "zoomL"
+msgstr "客製圖案位置/縮放(左)"
+
+#: ./__init__.py:25
+msgid "zoomR"
+msgstr "客製圖案位置/縮放(右)"
