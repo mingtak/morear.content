@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from morear.content import _
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone import api
@@ -30,48 +31,65 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
+
+
 class OrderDetailInfo(BrowserView):
 
     template = ViewPageTemplateFile("template/order_detail_info.pt")
 
-
-    def getOrderItem(self, orderId):
+    def execSql(self, execStr):
         self.conn = ENGINE.connect() # DB連線
-
-        self.orderItemList = ['p_UID', 'qty', 'unitPrice', 'parameterNo', 'sNumber']
-
-        execStr = "SELECT p_UID, qty, unitPrice, parameterNo, sNumber\
-                   FROM orderItem WHERE orderId = '%s'" % orderId
         execResult = self.conn.execute(execStr)
         self.conn.close()
         return execResult.fetchall()
 
-    def getOrderInfo(self, orderId):
-        self.conn = ENGINE.connect() # DB連線
+    def getParameter(self, parameterNo):
+        self.paraName = {'logoColorL': 'Logo樣式(左)', 'surfaceR': '面板顏色/樣式(右)', 'laserPriceR': '刻字價格(右)',
+            'upDownL': '客製面板圖案/下上(左)', 'laserTextR': '刻字(右)', 'urgentCasePrice': '急件價格', 'cusImgL': '客製面板圖案(左)',
+            'urgentCase': '急件', 'laserTextL': '刻字(左)', 'upDownR': '客製面板圖案/下上(右)', 'message': 'message', 'laserPriceL': '刻字價格(左)',
+            'logoColorR': 'Logo樣式(右)', 'surfaceL': '面板顏色/樣式(左)', 'lineLength': '耳機線材', 'rotateL': '客製面板圖案/旋轉角度(左)',
+            'logoColorPriceR': 'Logo樣式價格(右)', 'zoomR': '客製面板圖案/縮放%(右)', 'leftRightL': '客製面板圖案/左右(左)',
+            'leftRightR': '客製面板圖案/下上(右)', 'zoomL': '客製面板圖案/縮放%(左)', 'logoColorPriceL': 'Logo樣式價格(左)',
+            'rotateR': '客製面板圖案/旋轉角度(右)', 'linePrice': '耳機線材價格', 'shell3D': '主體顏色', 'productName': '產品名稱',
+            'surfacePrice': '面板顏色/樣式價格', 'discount': '折扣', 'outBoxText': '外箱文字(廢棄)', 'extSer': '特殊需求',
+            'shell3DPrice': '主體顏色價格', 'service_person': '服務人員', 'cusImgR': '客製面板圖案(右)', 'pType': '產品類型', 'totalSum': '總價',
+            'basePrice': '商品定價', 'action': '行動(廢棄)', 'sNumber': '序號',
+            # 以下耳塞專用參數
+            'ep_colorRPrice': '耳塞顏色價格(右)', 'ep_material': '耳塞材質', 'ep_materialPrice': '耳塞材質價格',
+            'ep_typeNoPrice': '耳塞濾音器型號價格', 'ep_colorR': '耳塞顏色(右)', 'ep_typeNo': '耳塞濾音器型號',
+            'ep_colorPrice': '耳塞顏色價格(合計)', 'ep_colorL': '耳塞顏色(左)', 'earplugsAmount': '耳塞數量(廢棄)',
+            'ep_colorLPrice': '耳塞顏色價格',}
 
-        self.orderInfoList = ['userId', 'b_email', 'orderId', 'b_name', 'b_city', 'b_addr', 'b_phone',
-            'pickupType', 'pickupTime', 'r_name', 'r_email', 'r_city', 'r_addr', 'r_phone',
-            'i_2list', 'i_invoiceNo', 'i_city', 'i_addr', 'pickupStoreUID', 'ecpayNo', 'createDate']
+        execStr = "SELECT parameter\
+                   FROM parameter\
+                   WHERE id = %s" % parameterNo
+        return self.execSql(execStr)[0]
+
+    def getOrderItem(self, orderId):
+        self.orderItemList = [_(u'p_UID'), _(u'qty'), _(u'unitPrice'), _(u'parameterNo'), _(u'sNumber')]
+
+        execStr = "SELECT p_UID, qty, unitPrice, parameterNo, sNumber\
+                   FROM orderItem WHERE orderId = '%s'" % orderId
+        return self.execSql(execStr)
+
+    def getOrderInfo(self, orderId):
+        self.orderInfoList = [_(u'userId'), _(u'b_email'), _(u'orderId'), _(u'b_name'), _(u'b_city'), _(u'b_addr'), _(u'b_phone'),
+            _(u'pickupType'), _(u'pickupTime'), _(u'r_name'), _(u'r_email'), _(u'r_city'), _(u'r_addr'), _(u'r_phone'),
+            _(u'i_2list'), _(u'i_invoiceNo'), _(u'i_city'), _(u'i_addr'), _(u'pickupStoreUID'), _(u'ecpayNo'), _(u'createDate')]
 
         execStr = "SELECT userId, b_email, orderId, b_name, b_city, b_addr, b_phone,\
                           pickupType, pickupTime, r_name, r_email, r_city, r_addr, r_phone,\
                           i_2list, i_invoiceNo, i_city, i_addr, pickupStoreUID, ecpayNo, createDate\
                    FROM orderInfo WHERE orderId = '%s'" % orderId
-        execResult = self.conn.execute(execStr)
-        self.conn.close()
-        return execResult.fetchall()[0]
+        return self.execSql(execStr)[0]
 
     def __call__(self):
         context = self.context
         request = self.request
         portal = api.portal.get()
 
-        self.conn = ENGINE.connect() # DB連線
-
         execStr = "SELECT userId, orderId FROM orderInfo WHERE 1 ORDER BY createDate DESC"
-        execResult = self.conn.execute(execStr)
-        self.results = execResult.fetchall()
-        self.conn.close()
+        self.results = self.execSql(execStr)
 
         return self.template()
 
