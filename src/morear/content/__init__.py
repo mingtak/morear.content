@@ -67,3 +67,6 @@ _(u'earplugsAmount')
 _(u'totalSum')
 _(u'ep_colorLPrice')
 _(u'basePrice')
+
+# 其它補充
+_(u'contact_custom')

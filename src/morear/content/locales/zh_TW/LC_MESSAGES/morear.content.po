@@ -433,23 +433,23 @@ msgstr "尺寸錯誤，請確認圖檔尺寸為 640x270."
 msgid "Youtube URL"
 msgstr "Youtube 網址"
 
-#: ./browser/views.py:113
+#: ./browser/views.py:125
 msgid "b_addr"
 msgstr "訂貨人地址"
 
-#: ./browser/views.py:113
+#: ./browser/views.py:125
 msgid "b_city"
 msgstr "訂貨人縣市"
 
-#: ./browser/views.py:113
+#: ./browser/views.py:125
 msgid "b_email"
 msgstr "訂貨人email"
 
-#: ./browser/views.py:113
+#: ./browser/views.py:125
 msgid "b_name"
 msgstr "訂貨人姓名"
 
-#: ./browser/views.py:113
+#: ./browser/views.py:125
 msgid "b_phone"
 msgstr "訂貨人電話"
 
@@ -462,12 +462,16 @@ msgstr "商品定價"
 msgid "bigImage"
 msgstr "大圖"
 
+#: ./__init__.py:72
+msgid "contact_custom"
+msgstr "聯絡客戶事項（備註欄）"
+
 #: ./behavior/behaviors.py:129
 #: ./behavior/configure.zcml:35
 msgid "contentMedia"
 msgstr "多媒體內容"
 
-#: ./browser/views.py:115
+#: ./browser/views.py:127
 msgid "createDate"
 msgstr "建立日期"
 
@@ -487,7 +491,7 @@ msgstr "折扣"
 msgid "earplugsAmount"
 msgstr "耳塞數量"
 
-#: ./browser/views.py:115
+#: ./browser/views.py:127
 msgid "ecpayNo"
 msgstr "綠界訂單編號"
 
@@ -535,19 +539,19 @@ msgstr "特殊需求"
 msgid "featured"
 msgstr "精選"
 
-#: ./browser/views.py:115
+#: ./browser/views.py:127
 msgid "i_2list"
 msgstr "是否二聯式發票"
 
-#: ./browser/views.py:115
+#: ./browser/views.py:127
 msgid "i_addr"
 msgstr "發票地址(詳細地址)"
 
-#: ./browser/views.py:115
+#: ./browser/views.py:127
 msgid "i_city"
 msgstr "發票地址(縣市)"
 
-#: ./browser/views.py:115
+#: ./browser/views.py:127
 msgid "i_invoiceNo"
 msgstr "發票統一編號"
 
@@ -639,7 +643,7 @@ msgstr "音樂達人/店長推薦"
 msgid "namedFromTimeStamp"
 msgstr "由時間戳記命名"
 
-#: ./browser/views.py:113
+#: ./browser/views.py:125
 msgid "orderId"
 msgstr "訂單編號"
 
@@ -651,11 +655,11 @@ msgstr "外箱文字"
 msgid "pType"
 msgstr "產品類別"
 
-#: ./browser/views.py:106
+#: ./browser/views.py:118
 msgid "p_UID"
 msgstr "產品名稱"
 
-#: ./browser/views.py:106
+#: ./browser/views.py:118
 msgid "parameterNo"
 msgstr "詳細參數"
 
@@ -663,15 +667,15 @@ msgstr "詳細參數"
 msgid "parameterSet"
 msgstr "參數設定集"
 
-#: ./browser/views.py:115
+#: ./browser/views.py:127
 msgid "pickupStoreUID"
 msgstr "配送門市"
 
-#: ./browser/views.py:114
+#: ./browser/views.py:126
 msgid "pickupTime"
 msgstr "配送時間"
 
-#: ./browser/views.py:114
+#: ./browser/views.py:126
 msgid "pickupType"
 msgstr "配送方式"
 
@@ -679,27 +683,27 @@ msgstr "配送方式"
 msgid "productName"
 msgstr "產品名稱"
 
-#: ./browser/views.py:106
+#: ./browser/views.py:118
 msgid "qty"
 msgstr "數量"
 
-#: ./browser/views.py:114
+#: ./browser/views.py:126
 msgid "r_addr"
 msgstr "收件人地址(詳細地址)"
 
-#: ./browser/views.py:114
+#: ./browser/views.py:126
 msgid "r_city"
 msgstr "收件人地址(縣市)"
 
-#: ./browser/views.py:114
+#: ./browser/views.py:126
 msgid "r_email"
 msgstr "收件人email"
 
-#: ./browser/views.py:114
+#: ./browser/views.py:126
 msgid "r_name"
 msgstr "收件人姓名"
 
-#: ./browser/views.py:114
+#: ./browser/views.py:126
 msgid "r_phone"
 msgstr "收件人電話"
 
@@ -712,7 +716,7 @@ msgid "rotateR"
 msgstr "客製圖案位置/旋轉角度(右)"
 
 #: ./__init__.py:44
-#: ./browser/views.py:106
+#: ./browser/views.py:118
 msgid "sNumber"
 msgstr "產品序號"
 
@@ -744,7 +748,7 @@ msgstr "面板顏色/樣式(右)"
 msgid "totalSum"
 msgstr "總計"
 
-#: ./browser/views.py:106
+#: ./browser/views.py:118
 msgid "unitPrice"
 msgstr "商品單價"
 
@@ -764,7 +768,7 @@ msgstr "急件"
 msgid "urgentCasePrice"
 msgstr "急件價格"
 
-#: ./browser/views.py:113
+#: ./browser/views.py:125
 msgid "userId"
 msgstr "使用者帳號"
 

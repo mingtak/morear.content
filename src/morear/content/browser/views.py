@@ -33,6 +33,18 @@ ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=u
 
 
 
+class UpdateContactCustom(BrowserView):
+
+    def __call__(self):
+        conn = ENGINE.connect() # DB連線
+        orderId = self.request.form.get('orderId')
+        inlineText = self.request.form.get('inlineText')
+        execStr = "UPDATE orderInfo SET contact_custom = '%s' WHERE orderId = '%s'" % (inlineText, orderId)
+        conn.execute(execStr)
+        conn.close()
+        return
+
+
 class PrintItem(BrowserView):
 
     template = ViewPageTemplateFile("template/print_item.pt")
@@ -118,6 +130,11 @@ class OrderDetailInfo(BrowserView):
                           pickupType, pickupTime, r_name, r_email, r_city, r_addr, r_phone,\
                           i_2list, i_invoiceNo, i_city, i_addr, pickupStoreUID, ecpayNo, createDate\
                    FROM orderInfo WHERE orderId = '%s'" % orderId
+        return self.execSql(execStr)[0]
+
+    def getContactCustom(self):
+        orderId = self.request.form.get('id')
+        execStr = "SELECT contact_custom FROM orderInfo WHERE orderId = '%s'" % orderId
         return self.execSql(execStr)[0]
 
     def __call__(self):
@@ -207,7 +224,7 @@ class UpdateCart(BrowserView):
         insertedId = conn.execute(execStr).fetchone()[0]
 
         conn.close()
-        import pdb; pdb.set_trace()
+#        import pdb; pdb.set_trace()
 
         return insertedId
 
