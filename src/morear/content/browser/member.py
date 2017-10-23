@@ -412,6 +412,9 @@ class Member_Update(Member_Registry):
 
         self.user = api.user.get_current()
         self.userId = self.user.getId()
+#        import pdb; pdb.set_trace()
+        #　email寫在zodb裏，要特別處理
+        self.userEmail = self.user.getProperty('email')
 
         conn = ENGINE.connect() # DB連線
 
@@ -430,7 +433,11 @@ class Member_Update(Member_Registry):
                      (fullname, tel, city, address, self.userId)
             conn.execute(sqlStr)
             conn.close()
-            self.user.setProperties({'fullname': fullname})
+
+            # email
+            email = request.form.get('email_info')
+            self.user.setProperties({'fullname': fullname, 'email': email})
+
             request.response.redirect('%s/members/@@member_update?u' % portal.absolute_url())
             return
 
