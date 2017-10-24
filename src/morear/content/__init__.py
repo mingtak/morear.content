@@ -68,5 +68,17 @@ _(u'totalSum')
 _(u'ep_colorLPrice')
 _(u'basePrice')
 
+# 狀態
+_('waiting_pay')
+_('payed')
+_('waiting_ear')
+_('processing')
+_('processed')
+_('shipping')
+_('shipping_finished')
+_('wait_30days')
+_('reprocess')
+_('finished')
+
 # 其它補充
 _(u'contact_custom')

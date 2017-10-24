@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-10-23 01:30+0000\n"
+"POT-Creation-Date: 2017-10-24 01:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -440,23 +440,23 @@ msgstr ""
 msgid "Youtube URL"
 msgstr ""
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_addr"
 msgstr ""
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_city"
 msgstr ""
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_email"
 msgstr ""
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_name"
 msgstr ""
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_phone"
 msgstr ""
 
@@ -469,7 +469,7 @@ msgstr ""
 msgid "bigImage"
 msgstr ""
 
-#: ./__init__.py:72
+#: ./__init__.py:84
 msgid "contact_custom"
 msgstr ""
 
@@ -478,7 +478,7 @@ msgstr ""
 msgid "contentMedia"
 msgstr ""
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "createDate"
 msgstr ""
 
@@ -498,7 +498,7 @@ msgstr ""
 msgid "earplugsAmount"
 msgstr ""
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "ecpayNo"
 msgstr ""
 
@@ -546,19 +546,23 @@ msgstr ""
 msgid "featured"
 msgstr ""
 
-#: ./browser/views.py:127
+#: ./__init__.py:81
+msgid "finished"
+msgstr ""
+
+#: ./browser/views.py:125
 msgid "i_2list"
 msgstr ""
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "i_addr"
 msgstr ""
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "i_city"
 msgstr ""
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "i_invoiceNo"
 msgstr ""
 
@@ -650,7 +654,7 @@ msgstr ""
 msgid "namedFromTimeStamp"
 msgstr ""
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "orderId"
 msgstr ""
 
@@ -662,11 +666,11 @@ msgstr ""
 msgid "pType"
 msgstr ""
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "p_UID"
 msgstr ""
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "parameterNo"
 msgstr ""
 
@@ -674,44 +678,60 @@ msgstr ""
 msgid "parameterSet"
 msgstr ""
 
-#: ./browser/views.py:127
+#: ./__init__.py:73
+msgid "payed"
+msgstr ""
+
+#: ./browser/views.py:125
 msgid "pickupStoreUID"
 msgstr ""
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "pickupTime"
 msgstr ""
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "pickupType"
+msgstr ""
+
+#: ./__init__.py:76
+msgid "processed"
+msgstr ""
+
+#: ./__init__.py:75
+msgid "processing"
 msgstr ""
 
 #: ./__init__.py:33
 msgid "productName"
 msgstr ""
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "qty"
 msgstr ""
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_addr"
 msgstr ""
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_city"
 msgstr ""
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_email"
 msgstr ""
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_name"
 msgstr ""
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_phone"
+msgstr ""
+
+#: ./__init__.py:80
+msgid "reprocess"
 msgstr ""
 
 #: ./__init__.py:23
@@ -723,7 +743,7 @@ msgid "rotateR"
 msgstr ""
 
 #: ./__init__.py:44
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "sNumber"
 msgstr ""
 
@@ -737,6 +757,14 @@ msgstr ""
 
 #: ./__init__.py:38
 msgid "shell3DPrice"
+msgstr ""
+
+#: ./__init__.py:77
+msgid "shipping"
+msgstr ""
+
+#: ./__init__.py:78
+msgid "shipping_finished"
 msgstr ""
 
 #: ./__init__.py:21
@@ -755,7 +783,7 @@ msgstr ""
 msgid "totalSum"
 msgstr ""
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "unitPrice"
 msgstr ""
 
@@ -775,8 +803,20 @@ msgstr ""
 msgid "urgentCasePrice"
 msgstr ""
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "userId"
+msgstr ""
+
+#: ./__init__.py:79
+msgid "wait_30days"
+msgstr ""
+
+#: ./__init__.py:74
+msgid "waiting_ear"
+msgstr ""
+
+#: ./__init__.py:72
+msgid "waiting_pay"
 msgstr ""
 
 #: ./interfaces.py:235

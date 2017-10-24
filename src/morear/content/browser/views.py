@@ -31,6 +31,47 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
+class GetOrderStateLog(BrowserView):
+
+    def __call__(self):
+        orderId = self.request.form.get('orderId')
+        conn = ENGINE.connect() # DB連線
+        execStr = "SELECT * FROM orderState WHERE orderId='%s'" % orderId
+        execResult = conn.execute(execStr)
+        conn.close()
+        return execResult.fetchall()[0]['stateLog']
+
+
+class ChangeOrderState(BrowserView):
+
+    template = ViewPageTemplateFile("template/change_order_state.pt")
+    state_zh = {'waiting_pay':u'待付款' ,'payed':u'已付款' ,'waiting_ear':u'待收耳型', 'processing':u'製作中', 'processed':u'製作完成',
+                'shipping':u'配送中', 'shipping_finished':u'已完成配送', 'wait_30days':u'30天鑑賞期', 'reprocess':u'重製中', 'finished':u'已完成',}
+
+    def execSql(self, execStr):
+        self.conn = ENGINE.connect() # DB連線
+        execResult = self.conn.execute(execStr)
+        self.conn.close()
+        if execResult.returns_rows:
+            return execResult.fetchall()
+
+    def __call__(self):
+        orderId = self.request.form.get('orderId')
+        toState = int(self.request.form.get('toState'))
+        # get state_name
+        execStr = "SELECT * FROM statusCode WHERE id=%s" % toState
+        stateName = self.execSql(execStr)[0]['state_name']
+
+        # get orderState
+        execStr = "SELECT * FROM orderState WHERE orderId='%s'" % orderId
+        orderState = self.execSql(execStr)[0]['stateLog']
+
+        orderState += u'%s: 更新狀態至 「%s」\n' %(DATETIME().strftime('%c'), self.state_zh[stateName])
+        # update state
+        execStr = u"UPDATE orderState SET stateCode = %s, stateLog = '%s' WHERE orderId = '%s'" % \
+                   (toState, orderState, orderId)
+        self.execSql(execStr)
+        return self.template()
 
 
 class UpdateContactCustom(BrowserView):
@@ -152,25 +193,31 @@ class OrderListingView(BrowserView):
 
     template = ViewPageTemplateFile("template/order_listing_view.pt")
 
-    def getOrderItems(self, orderId):
+    def execSql(self, execStr):
         self.conn = ENGINE.connect() # DB連線
-
-        execStr = "SELECT p_UID, qty FROM orderItem WHERE orderId = '%s'" % orderId
         execResult = self.conn.execute(execStr)
         self.conn.close()
         return execResult.fetchall()
+
+    def getOrderItems(self, orderId):
+        execStr = "SELECT p_UID, qty FROM orderItem WHERE orderId = '%s'" % orderId
+        return self.execSql(execStr)
+
+    def getOrderState(self, orderId):
+        execStr = "SELECT * FROM orderState WHERE orderId = '%s'" % orderId
+        return self.execSql(execStr)
+
+    def getStateCode(self, stateId):
+        execStr = "SELECT * FROM statusCode WHERE id = %s" % stateId
+        return self.execSql(execStr)
 
     def __call__(self):
         context = self.context
         request = self.request
         portal = api.portal.get()
 
-        self.conn = ENGINE.connect() # DB連線
-
         execStr = "SELECT userId, orderId FROM orderInfo WHERE 1 ORDER BY createDate DESC"
-        execResult = self.conn.execute(execStr)
-        self.results = execResult.fetchall()
-        self.conn.close()
+        self.results = self.execSql(execStr)
 
         return self.template()
 

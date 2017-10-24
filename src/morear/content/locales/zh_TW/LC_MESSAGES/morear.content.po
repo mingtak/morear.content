@@ -433,23 +433,23 @@ msgstr "尺寸錯誤，請確認圖檔尺寸為 640x270."
 msgid "Youtube URL"
 msgstr "Youtube 網址"
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_addr"
 msgstr "訂貨人地址"
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_city"
 msgstr "訂貨人縣市"
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_email"
 msgstr "訂貨人email"
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_name"
 msgstr "訂貨人姓名"
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "b_phone"
 msgstr "訂貨人電話"
 
@@ -462,7 +462,7 @@ msgstr "商品定價"
 msgid "bigImage"
 msgstr "大圖"
 
-#: ./__init__.py:72
+#: ./__init__.py:84
 msgid "contact_custom"
 msgstr "聯絡客戶事項（備註欄）"
 
@@ -471,7 +471,7 @@ msgstr "聯絡客戶事項（備註欄）"
 msgid "contentMedia"
 msgstr "多媒體內容"
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "createDate"
 msgstr "建立日期"
 
@@ -491,7 +491,7 @@ msgstr "折扣"
 msgid "earplugsAmount"
 msgstr "耳塞數量"
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "ecpayNo"
 msgstr "綠界訂單編號"
 
@@ -539,19 +539,23 @@ msgstr "特殊需求"
 msgid "featured"
 msgstr "精選"
 
-#: ./browser/views.py:127
+#: ./__init__.py:81
+msgid "finished"
+msgstr "已完成"
+
+#: ./browser/views.py:125
 msgid "i_2list"
 msgstr "是否二聯式發票"
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "i_addr"
 msgstr "發票地址(詳細地址)"
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "i_city"
 msgstr "發票地址(縣市)"
 
-#: ./browser/views.py:127
+#: ./browser/views.py:125
 msgid "i_invoiceNo"
 msgstr "發票統一編號"
 
@@ -643,7 +647,7 @@ msgstr "音樂達人/店長推薦"
 msgid "namedFromTimeStamp"
 msgstr "由時間戳記命名"
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "orderId"
 msgstr "訂單編號"
 
@@ -655,11 +659,11 @@ msgstr "外箱文字"
 msgid "pType"
 msgstr "產品類別"
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "p_UID"
 msgstr "產品名稱"
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "parameterNo"
 msgstr "詳細參數"
 
@@ -667,45 +671,61 @@ msgstr "詳細參數"
 msgid "parameterSet"
 msgstr "參數設定集"
 
-#: ./browser/views.py:127
+#: ./__init__.py:73
+msgid "payed"
+msgstr "已付款"
+
+#: ./browser/views.py:125
 msgid "pickupStoreUID"
 msgstr "配送門市"
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "pickupTime"
 msgstr "配送時間"
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "pickupType"
 msgstr "配送方式"
+
+#: ./__init__.py:76
+msgid "processed"
+msgstr "製作完成"
+
+#: ./__init__.py:75
+msgid "processing"
+msgstr "製作中"
 
 #: ./__init__.py:33
 msgid "productName"
 msgstr "產品名稱"
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "qty"
 msgstr "數量"
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_addr"
 msgstr "收件人地址(詳細地址)"
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_city"
 msgstr "收件人地址(縣市)"
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_email"
 msgstr "收件人email"
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_name"
 msgstr "收件人姓名"
 
-#: ./browser/views.py:126
+#: ./browser/views.py:124
 msgid "r_phone"
 msgstr "收件人電話"
+
+#: ./__init__.py:80
+msgid "reprocess"
+msgstr "重製中"
 
 #: ./__init__.py:23
 msgid "rotateL"
@@ -716,7 +736,7 @@ msgid "rotateR"
 msgstr "客製圖案位置/旋轉角度(右)"
 
 #: ./__init__.py:44
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "sNumber"
 msgstr "產品序號"
 
@@ -731,6 +751,14 @@ msgstr "主體顏色"
 #: ./__init__.py:38
 msgid "shell3DPrice"
 msgstr "主體顏色價格"
+
+#: ./__init__.py:77
+msgid "shipping"
+msgstr "配送中"
+
+#: ./__init__.py:78
+msgid "shipping_finished"
+msgstr "已完成配送"
 
 #: ./__init__.py:21
 msgid "surfaceL"
@@ -748,7 +776,7 @@ msgstr "面板顏色/樣式(右)"
 msgid "totalSum"
 msgstr "總計"
 
-#: ./browser/views.py:118
+#: ./browser/views.py:116
 msgid "unitPrice"
 msgstr "商品單價"
 
@@ -768,9 +796,21 @@ msgstr "急件"
 msgid "urgentCasePrice"
 msgstr "急件價格"
 
-#: ./browser/views.py:125
+#: ./browser/views.py:123
 msgid "userId"
 msgstr "使用者帳號"
+
+#: ./__init__.py:79
+msgid "wait_30days"
+msgstr "30天鑑賞期"
+
+#: ./__init__.py:74
+msgid "waiting_ear"
+msgstr "待收耳型"
+
+#: ./__init__.py:72
+msgid "waiting_pay"
+msgstr "待付款"
 
 #: ./interfaces.py:235
 msgid "whatsNEW"
