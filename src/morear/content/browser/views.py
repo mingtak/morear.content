@@ -29,7 +29,8 @@ BASEMODEL = declarative_base()
 # 加上charset='utf8'解決phpmyadmin的中文問題
 # create_engine 內的字串，之後要改到 registry 讀取
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
-
+STATE_ZH = {'waiting_pay':u'待付款' ,'payed':u'已付款' ,'waiting_ear':u'待收耳型', 'processing':u'製作中', 'processed':u'製作完成',
+            'shipping':u'配送中', 'shipping_finished':u'已完成配送', 'wait_30days':u'30天鑑賞期', 'reprocess':u'重製中', 'finished':u'已完成',}
 
 class GetOrderState(BrowserView):
 
@@ -44,19 +45,24 @@ class GetOrderState(BrowserView):
         conn = ENGINE.connect() # DB連線
         execStr = "SELECT * FROM orderState WHERE orderId='%s'" % orderId
         execResult = conn.execute(execStr)
-        conn.close()
         result = execResult.fetchall()[0]
+        currentCode = result['stateCode']
+        execStr = "SELECT * FROM statusCode WHERE id=%s" % currentCode
+        execResult = conn.execute(execStr)
+        currentState = STATE_ZH[execResult.fetchall()[0]['state_name']]
+        conn.close()
+
+        result = dict(result)
+        result['state_name'] = currentState
         if 'Manager' in api.user.get_roles(user=currentUser):
-            return json.dumps(dict(result))
+            return json.dumps(result)
         else:
-            return result['stateCode']
+            return json.dumps({'state_name': currentState, 'orderId': orderId})
 
 
 class ChangeOrderState(BrowserView):
 
     template = ViewPageTemplateFile("template/change_order_state.pt")
-    state_zh = {'waiting_pay':u'待付款' ,'payed':u'已付款' ,'waiting_ear':u'待收耳型', 'processing':u'製作中', 'processed':u'製作完成',
-                'shipping':u'配送中', 'shipping_finished':u'已完成配送', 'wait_30days':u'30天鑑賞期', 'reprocess':u'重製中', 'finished':u'已完成',}
 
     def execSql(self, execStr):
         self.conn = ENGINE.connect() # DB連線
@@ -76,7 +82,7 @@ class ChangeOrderState(BrowserView):
         execStr = "SELECT * FROM orderState WHERE orderId='%s'" % orderId
         orderState = self.execSql(execStr)[0]['stateLog']
 
-        orderState += u'%s: 更新狀態至 「%s」\n' %(DATETIME().strftime('%c'), self.state_zh[stateName])
+        orderState += u'%s: 更新狀態至 「%s」\n' %(DATETIME().strftime('%c'), STATE_ZH[stateName])
         # update state
         execStr = u"UPDATE orderState SET stateCode = %s, stateLog = '%s' WHERE orderId = '%s'" % \
                    (toState, orderState, orderId)
