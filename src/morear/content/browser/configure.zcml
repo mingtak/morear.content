@@ -29,11 +29,11 @@
       />
 
   <browser:page
-      name="get_order_state_log"
+      name="get_order_state"
       for="*"
-      class=".views.GetOrderStateLog"
+      class=".views.GetOrderState"
       layer="morear.content.interfaces.IMorearContentLayer"
-      permission="cmf.ManagePortal"
+      permission="zope2.View"
       />
 
   <browser:page

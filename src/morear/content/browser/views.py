@@ -31,15 +31,25 @@ BASEMODEL = declarative_base()
 ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
 
 
-class GetOrderStateLog(BrowserView):
+class GetOrderState(BrowserView):
 
     def __call__(self):
+
+        portal = api.portal.get()
+        if api.user.is_anonymous():
+            self.request.response.redirect(portal.absolute_url())
+
+        currentUser = api.user.get_current()
         orderId = self.request.form.get('orderId')
         conn = ENGINE.connect() # DB連線
         execStr = "SELECT * FROM orderState WHERE orderId='%s'" % orderId
         execResult = conn.execute(execStr)
         conn.close()
-        return execResult.fetchall()[0]['stateLog']
+        result = execResult.fetchall()[0]
+        if 'Manager' in api.user.get_roles(user=currentUser):
+            return json.dumps(dict(result))
+        else:
+            return result['stateCode']
 
 
 class ChangeOrderState(BrowserView):
