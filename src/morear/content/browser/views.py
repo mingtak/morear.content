@@ -32,6 +32,63 @@ ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=u
 STATE_ZH = {'waiting_pay':u'待付款' ,'payed':u'已付款' ,'waiting_ear':u'待收耳型', 'processing':u'製作中', 'processed':u'製作完成',
             'shipping':u'配送中', 'shipping_finished':u'已完成配送', 'wait_30days':u'30天鑑賞期', 'reprocess':u'重製中', 'finished':u'已完成',}
 
+PAYMENT_TYPE = {'WebATM_TAISHIN':'台新銀行', 'WebATM_ESUN':'玉山銀行', 'WebATM_BOT':'台灣銀行', 'WebATM_FUBON':'台北富邦',
+                'WebATM_CHINATRUST':'中國信託', 'WebATM_FIRST':'第一銀行', 'WebATM_CATHAY':'國泰世華', 'WebATM_MEGA':'兆豐銀行',
+                'WebATM_LAND':'土地銀行', 'WebATM_TACHONG':'大眾銀行', 'WebATM_SINOPAC':'永豐銀行', 'ATM_TAISHIN':'台新銀行',
+                'ATM_ESUN':'玉山銀行', 'ATM_BOT':'台灣銀行', 'ATM_FUBON':'台北富邦', 'ATM_CHINATRUST':'中國信託','ATM_FIRST':'第一銀行',
+                'ATM_LAND':'土地銀行', 'ATM_CATHAY':'國泰世華銀行', 'ATM_TACHONG':'大眾銀行', 'ATM_HUANAN':'華南銀行'}
+
+
+class ShowPaymentInfo(BrowserView):
+
+    template = ViewPageTemplateFile("template/show_payment_info.pt")
+
+    def execSql(self, execStr):
+        conn = ENGINE.connect() # DB連線
+        execResult = conn.execute(execStr)
+        conn.close()
+        if execResult.returns_rows:
+            return execResult.fetchall()
+
+    def __call__(self):
+        portal = api.portal.get()
+        orderId = self.request.form.get('orderId')
+
+        execStr = "SELECT * FROM paymentInfo WHERE orderId = '%s'" % orderId
+        self.paymentType = PAYMENT_TYPE
+        try:
+            self.result = self.execSql(execStr)[0]
+        except:
+            self.result = None
+        return self.template()
+
+
+class DeleteOrder(BrowserView):
+
+    def execSql(self, execStr):
+        conn = ENGINE.connect() # DB連線
+        execResult = conn.execute(execStr)
+        conn.close()
+        if execResult.returns_rows:
+            return execResult.fetchall()
+
+    def __call__(self):
+        portal = api.portal.get()
+        orderId = self.request.form.get('orderId')
+
+        execStr = "SELECT parameterNo FROM orderItem WHERE orderId = '%s'" % orderId
+        paraList = self.execSql(execStr)
+        paraStr = ','.join(str(v[0]) for v in paraList)
+
+        execStr = "DELETE FROM orderInfo WHERE orderId = '%s';\
+                   DELETE FROM orderItem WHERE orderId = '%s';\
+                   DELETE FROM orderState WHERE orderId = '%s';\
+                   DELETE FROM parameter WHERE id in (%s);" %\
+                   (orderId, orderId, orderId, paraStr)
+        self.execSql(execStr)
+        return
+
+
 class GetOrderState(BrowserView):
 
     def __call__(self):
@@ -232,7 +289,21 @@ class OrderListingView(BrowserView):
         request = self.request
         portal = api.portal.get()
 
-        execStr = "SELECT userId, orderId FROM orderInfo WHERE 1 ORDER BY createDate DESC"
+        condList = []
+        condStr = '1'
+        if request.form.get('by_condition', False):
+            if request.form.get('sort_on_userid'):
+                condList.append("userId = '%s'" % request.form.get('sort_on_userid'))
+            if request.form.get('sort_on_orderid'):
+                condList.append("orderId = '%s'" % request.form.get('sort_on_orderid'))
+            if request.form.get('sort_on_date_min'):
+                condList.append("createDate >= '%s'" % request.form.get('sort_on_date_min'))
+            if request.form.get('sort_on_date_max'):
+                condList.append("createDate <= '%s 23:59:59'" % request.form.get('sort_on_date_max'))
+
+            if condList:
+                condStr = ' AND '.join(condList)
+        execStr = "SELECT userId, orderId FROM orderInfo WHERE %s ORDER BY createDate DESC" % condStr
         self.results = self.execSql(execStr)
 
         return self.template()
