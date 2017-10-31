@@ -21,6 +21,14 @@
   <!-- browser view -->
 
   <browser:page
+      name="mana_login"
+      for="*"
+      class=".views.ManaLogin"
+      layer="morear.content.interfaces.IMorearContentLayer"
+      permission="zope2.View"
+      />
+
+  <browser:page
       name="print_item"
       for="*"
       class=".views.PrintItem"

@@ -38,6 +38,17 @@ PAYMENT_TYPE = {'WebATM_TAISHIN':'台新銀行', 'WebATM_ESUN':'玉山銀行', '
                 'ATM_ESUN':'玉山銀行', 'ATM_BOT':'台灣銀行', 'ATM_FUBON':'台北富邦', 'ATM_CHINATRUST':'中國信託','ATM_FIRST':'第一銀行',
                 'ATM_LAND':'土地銀行', 'ATM_CATHAY':'國泰世華銀行', 'ATM_TACHONG':'大眾銀行', 'ATM_HUANAN':'華南銀行'}
 
+class ManaLogin(BrowserView):
+
+    template = ViewPageTemplateFile("template/mana_login.pt")
+
+    def __call__(self):
+        portal = api.portal.get()
+        if not api.user.is_anonymous():
+            self.request.response.redirect(portal.absolute_url())
+
+        return self.template()
+
 
 class ShowPaymentInfo(BrowserView):
 
