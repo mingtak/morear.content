@@ -23,7 +23,10 @@ def district_indexer(obj):
 
 @indexer(ILocation)
 def weekendService_indexer(obj):
-    return obj.weekendService
+    if obj.weekendService:
+        return True
+    else:
+        return False
 
 
 @indexer(IProduct)

@@ -45,7 +45,7 @@ portal = api.portal.get()
                         <input type="text" size="15" name="__ac_name" id="__ac_name" value="">
                 </div>
                 <div class="field">
-                        <label for="__ac_password">密碼</label>
+                        <label for="__ac_password">登入密碼</label>
                         <input type="password" size="15" name="__ac_password" id="__ac_password">
                 </div>
                     <div class="formControls">

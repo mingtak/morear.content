@@ -342,6 +342,63 @@ class GetPartner(BrowserView):
 #        import pdb; pdb.set_trace()
 
 
+class PartnerListing(BrowserView):
+
+    template = ViewPageTemplateFile("template/partner_listing.pt")
+
+    def __call__(self):
+        context = self.context
+        request = self.request
+        portal = api.portal.get()
+
+        id = request.form.get('id')
+        company = request.form.get('company')
+        city = request.form.get('city')
+
+        self.companies = urllib2.urlopen('http://210.68.106.227/companies', timeout=3)
+        self.companies = json.loads(self.companies.read())
+
+        self.cities = urllib2.urlopen('http://210.68.106.227/cities/available', timeout=3)
+        self.cities = json.loads(self.cities.read())
+
+        self.stores = urllib2.urlopen('http://210.68.106.227/stores', timeout=3)
+        self.stores = json.loads(self.stores.read())
+        self.partner = []
+
+        if id:
+            for item in self.stores:
+                if int(id) == int(item['id']):
+                    self.result = [item]
+                    return self.template()
+
+        if company and city:
+            for item in self.stores:
+                if int(company) == int(item['company']['id']):
+                    self.partner.append(item)
+#            import pdb; pdb.set_trace()
+            for i in range(len(self.partner)-1, 0, -1):
+                if int(city) != int(self.partner[i]['city']['id']):
+                    self.partner.remove(self.partner[i])
+        if company and not city:
+            for item in self.stores:
+                if int(company) == int(item['company']['id']):
+                    self.partner.append(item)
+        if city and not company:
+            for item in self.stores:
+                if int(city) == int(item['city']['id']):
+                    self.partner.append(item)
+
+        self.result = []
+        for item in self.partner:
+            if item not in self.result:
+                self.result.append(item)
+
+        if not self.result:
+            self.result = self.stores
+
+        return self.template()
+
+
 class UpdateCart(BrowserView):
 
     def getDB(self):
@@ -775,16 +832,18 @@ class LocationListingView(LocationView):
 
         searchCond = {'Type': 'Location'}
         city = safe_unicode(request.form.get('city', None))
-        if city and safe_unicode('請選擇') not in city:
+        if city and safe_unicode('選擇縣市') not in city:
             searchCond['city'] = city
 
         district = safe_unicode(request.form.get('dist', None))
-        if district and safe_unicode('請選擇') not in district:
+        if district and safe_unicode('選擇區域') not in district:
             searchCond['district'] = district
 
         weekendService = request.form.get('weekend', '')
-        if '假日' in weekendService: # 只找平日營業
-            searchCond['weekendService'] = True
+        if '假日營業' in weekendService:
+            searchCond['weekendService'] = [True, False]
+        else:
+            searchCond['weekendService'] = False
 
         keyword = safe_unicode(request.form.get('keyword', None))
         if keyword:

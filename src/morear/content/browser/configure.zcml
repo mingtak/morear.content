@@ -423,6 +423,13 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="partner_listing"
+      for="*"
+      class=".views.PartnerListing"
+      permission="zope2.View"
+      />
+
   <!-- configlet -->
   <browser:page
     name="morearSettingControlPanel"
