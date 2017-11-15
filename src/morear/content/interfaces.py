@@ -464,12 +464,6 @@ class ILocation(Interface):
         required=False,
     )
 
-""" 先放著不知道用不用得到
-p_type = SimpleVocabulary(
-    [SimpleTerm(value=u'Customize', title=_(u'Customize')),
-     SimpleTerm(value=u'Shipping', title=_(u'Shipping'))]
-    )
-"""
 
 class IParaImage(Interface):
 

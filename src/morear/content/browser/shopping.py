@@ -19,15 +19,13 @@ from sqlalchemy import create_engine, MetaData, Table
 from sqlalchemy.ext.declarative import declarative_base
 
 from DateTime import DateTime as DATETIME # 名稱衝突，改取別名
-#from ..event.member_event import OperatorDB
+from morear.content import DBSTR
 
 
 logger = logging.getLogger('morear.content')
 LIMIT=20
 BASEMODEL = declarative_base()
-# 加上charset='utf8'解決phpmyadmin的中文問題
-# create_engine 內的字串，之後要改到 registry 讀取
-ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
+ENGINE = create_engine(DBSTR, echo=True)
 
 
 class Shopping_Client_Back_Url(BrowserView):
@@ -71,7 +69,6 @@ class Shopping_Cart_Step2_Payment(BrowserView):
 
         # 取得帳號資料
         execStr = "select fullname, tel, city, address from member where userId = '%s'" % userId
-#        import pdb; pdb.set_trace()
         execSql = conn.execute(execStr)
         execResult = execSql.fetchall()[0]
         self.user_info = execResult
@@ -141,12 +138,10 @@ class Shopping_Cart(BrowserView):
         if self.cart:
             self.cart = json.loads(self.cart)
             for item in self.cart:
-#                import pdb;pdb.set_trace()
                 self.totalPrice += int(item.values()[0].get('total', 0))
         else:
             self.cart = {}
 
-#        import pdb; pdb.set_trace()
         self.conn.close()
         return self.template()
 

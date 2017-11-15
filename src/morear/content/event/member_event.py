@@ -15,19 +15,17 @@ import random
 import logging
 from plone import api
 import transaction
+from morear.content import DBSTR
 
 logger = logging.getLogger('morear.content')
 BASEMODEL = declarative_base()
-# 加上charset='utf8'解決phpmyadmin的中文問題
-# create_engine 內的字串，之後要改到 registry 讀取
-ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
+ENGINE = create_engine(DBSTR, echo=True)
 
 
 class OperatorDB:
     def memberDataToDB(self, conn, userData, user):
         """  Member Data 直接寫入資料庫  """
         ins = self.member.insert()
-#        import pdb; pdb.set_trace()
         ins = ins.values(
             registry_time=DATETIME().strftime('%Y/%m/%d %H:%M:%S'),
             last_update=DATETIME().strftime('%Y/%m/%d %H:%M:%S'),
@@ -59,7 +57,7 @@ class OperatorDB:
             Column('id', INTEGER, primary_key=True, autoincrement=True),
             Column('userId', String(20), unique=True),
             Column('fullname', String(50)),
-            Column('password', String(50)), # 明碼，以後考慮改 hash256
+            Column('password', String(50)), # 明碼
             Column('birthday', Date),
             Column('tel', String(10)),
             Column('city', String(20)),

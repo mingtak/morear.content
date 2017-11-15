@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from morear.content import _
-# from plone.autoform import directives
 from plone.supermodel import directives
 from zope import schema
 from plone.autoform.interfaces import IFormFieldProvider
@@ -11,22 +10,12 @@ from zope.interface import provider
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.app.vocabularies.catalog import CatalogSource
 from plone.dexterity.interfaces import IDexterityContent
-#from plone.directives import dexterity
 from plone.app.textfield import RichText
 from plone.app.content.interfaces import INameFromTitle
 from plone.namedfile.field import NamedBlobImage
 from DateTime import DateTime
 import random
-#from plone.directives import form
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
-
-
-"""
-driverType = SimpleVocabulary(
-    [SimpleTerm(value=u'One Driver', title=_(u'One Driver')),
-     SimpleTerm(value=u'Two Driver', title=_(u'Two Driver'))]
-    )
-"""
 
 
 class IParameterSet(model.Schema):

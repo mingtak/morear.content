@@ -21,14 +21,14 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from DateTime import DateTime as DATETIME # 名稱衝突，改取別名
 from ..event.member_event import OperatorDB
+from morear.content import DBSTR, RECAPTCHA_SECRET, RECAPTCHA_URL
 
 
 logger = logging.getLogger('morear.content')
 LIMIT=20
 BASEMODEL = declarative_base()
-# 加上charset='utf8'解決phpmyadmin的中文問題
-# create_engine 內的字串，之後要改到 registry 讀取
-ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
+ENGINE = create_engine(DBSTR, echo=True)
+
 STATE_ZH = {'waiting_pay':u'待付款' ,'payed':u'已付款' ,'waiting_ear':u'待收耳型', 'processing':u'製作中', 'processed':u'製作完成',
             'shipping':u'配送中', 'shipping_finished':u'已完成配送', 'wait_30days':u'30天鑑賞期', 'reprocess':u'重製中', 'finished':u'已完成',}
 
@@ -326,9 +326,7 @@ class GetPartner(BrowserView):
         context = self.context
         request = self.request
         portal = api.portal.get()
-#        import pdb; pdb.set_trace()
         if request.form.has_key('city'):
-#            import pdb; pdb.set_trace()
             return urllib2.urlopen('http://210.68.106.227/cities/available').read()
 
         if request.form.has_key('cityId'):
@@ -338,8 +336,6 @@ class GetPartner(BrowserView):
         if request.form.has_key('districtId'):
             districtId = request.form.get('districtId')
             return urllib2.urlopen('http://210.68.106.227/stores?districtId=%s' % districtId).read()
-
-#        import pdb; pdb.set_trace()
 
 
 class PartnerListing(BrowserView):
@@ -375,7 +371,7 @@ class PartnerListing(BrowserView):
             for item in self.stores:
                 if int(company) == int(item['company']['id']):
                     self.partner.append(item)
-#            import pdb; pdb.set_trace()
+
             for i in range(len(self.partner)-1, 0, -1):
                 if int(city) != int(self.partner[i]['city']['id']):
                     self.partner.remove(self.partner[i])
@@ -426,7 +422,6 @@ class UpdateCart(BrowserView):
         insertedId = conn.execute(execStr).fetchone()[0]
 
         conn.close()
-#        import pdb; pdb.set_trace()
 
         return insertedId
 
@@ -493,14 +488,6 @@ class UpdateCart(BrowserView):
                return '商品已加入購物車'
 
 
-    def delItem(self): #TODO
-        """  """
-
-
-    def updateItem(self): #TODO
-        """  """
-
-
     def __call__(self):
         self.portal = api.portal.get()
         request = self.request
@@ -519,34 +506,6 @@ class UpdateCart(BrowserView):
         self.conn.close()
         return resultStr
 
-
-# 記得vm.rotateR, vm.rotateL 要*3.6
-        import pdb; pdb.set_trace()
-
-        orderInfo = {}
-        orderInfo['UID'] = request.form.get('productName')
-        orderInfo['qty'] = 1
-        orderInfo['totalSum'] = request.form.get('totalSum', 1000000)
-
-        payment_info = {
-            'MerchantTradeNo': merchantTradeNo,
-            'ItemName': itemName,
-            'TradeDesc': '%s, Total: $%s' % (itemDescription, totalAmount),
-            'TotalAmount': totalAmount,
-            'ChoosePayment': 'ALL',
-            'PaymentType': 'aio',
-            'EncryptType': 1,
-            'PaymentInfoURL': paymentInfoURL,
-            'ClientBackURL': '%s?MerchantTradeNo=%s&LogisticsType=%s&LogisticsSubType=%s' %
-                (clientBackURL, merchantTradeNo, request.form.get('LogisticsType', 'cvs'), request.form.get('LogisticsSubType', 'UNIMART')),  #可以使用 get 帶參數
-            'ReturnURL': api.portal.get_registry_record('%s.returnURL' % prefixString),
-            'MerchantTradeDate': DateTime().strftime('%Y/%m/%d %H:%M:%S'),
-            'MerchantID': api.portal.get_registry_record('%s.merchantID' % prefixString),
-        }
-
-
-        response.setCookie('itemInCart', '{}')
-        return 'DONE'
 
 class SetFeatured(BrowserView):
 
@@ -582,7 +541,6 @@ class TransState(BrowserView):
         context = self.context
         request = self.request
         portal = api.portal.get()
-#        import pdb; pdb.set_trace()
         uid = request.form.get('uid')
         if not uid:
             return
@@ -602,7 +560,6 @@ class DocWithBigImageView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -614,11 +571,9 @@ class Download_View(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         self.items = context.getChildNodes()
         self.categories = []
-#        import pdb; pdb.set_trace()
         for item in self.items:
             subject = item.subject
             if subject:
@@ -636,7 +591,6 @@ class FaqView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -648,11 +602,9 @@ class FaqListingView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         self.items = context.getChildNodes()
         self.categories = []
-#        import pdb; pdb.set_trace()
         for item in self.items:
             subject = item.subject
             if subject:
@@ -670,7 +622,6 @@ class ProductListingView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -682,7 +633,6 @@ class CoverView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -694,7 +644,6 @@ class ProductView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -741,7 +690,6 @@ class ReShowOptionView(BrowserView):
         execStr = "SELECT parameter FROM parameter WHERE id = %s" % parameterNo
         execSql = conn.execute(execStr)
         execResult = execSql.fetchall()[0][0]
-#        import pdb; pdb.set_trace()
         self.parameter = json.loads(execResult)
 
         conn.close()
@@ -755,7 +703,6 @@ class NewsListingView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -767,7 +714,6 @@ class MusicmanListingView(NewsListingView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -779,7 +725,6 @@ class LinksListingView(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -791,7 +736,6 @@ class IsAdmin(BrowserView):
             return 'False'
         current = api.user.get_current()
         roles = api.user.get_roles(user=current)
-#        import pdb; pdb.set_trace()
         if 'Manager' in roles or 'Site Administrator' in roles:
             return 'True'
         else:
@@ -811,7 +755,6 @@ class LocationView(BrowserView):
                 citys.append(item.city)
         return citys
 
-
     def __call__(self):
         context = self.context
         request = self.request
@@ -822,7 +765,6 @@ class LocationView(BrowserView):
 class LocationListingView(LocationView):
 
     template = ViewPageTemplateFile("template/location_listing_view.pt")
-
 
     def __call__(self):
         context = self.context
@@ -887,7 +829,6 @@ class SearchResultView(BrowserView):
 
         self.keyword = request.form.get('keyword', '')
         self.brain = []
-#        import pdb; pdb.set_trace()
         if self.keyword.strip():
             self.brain = api.content.find(portal=portal, SearchableText=self.keyword.strip())
 
@@ -900,7 +841,6 @@ class DeleteObj(BrowserView):
         context = self.context
         request = self.request
         portal = api.portal.get()
-#        import pdb; pdb.set_trace()
         uid = request.form.get('uid')
         if not uid:
             return
@@ -943,7 +883,6 @@ class AddCommonStore(BrowserView):
             sqlStr = "update member set commonStore = '%s' where userId = '%s'" % (result, userId)
         conn.execute(sqlStr)
 
-#        import pdb; pdb.set_trace()
         conn.close()
 
 
@@ -970,7 +909,6 @@ class DelCommonStore(BrowserView):
         execSql = conn.execute(execStr)
         execResult = execSql.fetchall()
         result = json.loads(execResult[0][0])
-#        import pdb; pdb.set_trace()
         if uid in result:
             result.remove(uid)
             wInStr = json.dumps(result)
@@ -1031,7 +969,6 @@ class DelReceive(BrowserView):
         phone = request.form.get('phone')
         email = request.form.get('email')
 
-#        import pdb;pdb.set_trace()
         execStr = "DELETE FROM receiveInfo WHERE userId = '%s' and name = '%s' and city = '%s' and addr = '%s' and phone = '%s' and email = '%s'" % \
                   (userId, name, city, addr, phone, email)
         execSql = conn.execute(execStr)

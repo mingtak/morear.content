@@ -24,4 +24,3 @@ class MorearSettingControlPanelForm(RegistryEditForm):
 
 MorearSettingControlPanelView = layout.wrap_form(MorearSettingControlPanelForm, ControlPanelFormWrapper)
 MorearSettingControlPanelView.label = _(u"Morear Setting")
-

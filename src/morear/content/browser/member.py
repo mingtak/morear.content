@@ -22,14 +22,13 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from DateTime import DateTime as DATETIME # 名稱衝突，改取別名
 from ..event.member_event import OperatorDB
+from morear.content import DBSTR, RECAPTCHA_SECRET, RECAPTCHA_URL
 
 
 logger = logging.getLogger('morear.content')
 LIMIT=20
 BASEMODEL = declarative_base()
-# 加上charset='utf8'解決phpmyadmin的中文問題
-# create_engine 內的字串，之後要改到 registry 讀取
-ENGINE = create_engine('mysql+mysqldb://morear:morear@localhost/morear?charset=utf8', echo=True)
+ENGINE = create_engine(DBSTR, echo=True)
 
 
 class Member_Forget_Pwd(BrowserView):
@@ -52,7 +51,6 @@ class Member_Forget_Pwd(BrowserView):
         conn.close()
         userId = result[0][0]
         context.acl_users.session._setupSession(userId.encode("utf-8"), request.response)
-#        import pdb; pdb.set_trace()
         request.response.redirect('%s/members/@@member_modify_pwd' % portal.absolute_url())
         return
 
@@ -77,11 +75,9 @@ class Member_Forget_Pwd(BrowserView):
         if not email:
             return request.response.redirect(portal.absolute_url())
 
-
-#        import pdb; pdb.set_trace()
-        url = 'https://www.google.com/recaptcha/api/siteverify'
+        url = RECAPTCHA_URL
         data = urllib.urlencode({
-            'secret': '6LdUty0UAAAAAMSKideRk_b6LYpwH0CRVnJnrXqc',
+            'secret': RECAPTCHA_SECRET,
             'response': request.form.get('g-recaptcha-response'),
         })
         req = urllib2.Request(url, data)
@@ -131,16 +127,15 @@ class Member_Modify_Pwd(BrowserView):
         if not request.form.get('g-recaptcha-response', False):
             return self.template()
 
-        url = 'https://www.google.com/recaptcha/api/siteverify'
+        url = RECAPTCHA_URL
         data = urllib.urlencode({
-            'secret': '6LdUty0UAAAAAMSKideRk_b6LYpwH0CRVnJnrXqc',
+            'secret': RECAPTCHA_SECRET,
             'response': request.form.get('g-recaptcha-response'),
         })
         req = urllib2.Request(url, data)
         response = urllib2.urlopen(req)
         recaptResult = response.read()
 
-#        import pdb; pdb.set_trace()
         if json.loads(recaptResult).get('success'):
             password = request.form.get('password')
             user = api.user.get_current()
@@ -152,7 +147,6 @@ class Member_Modify_Pwd(BrowserView):
             conn.execute(execStr)
 
             user.setSecurityProfile(password=password)
-
 
         return self.template()
 
@@ -166,7 +160,6 @@ class Member_Order_List(BrowserView):
         execStr = "SELECT orderId, p_UID, qty, unitPrice, parameterNo, sNumber FROM orderItem WHERE orderId = '%s'" % orderNumber
         execSql = conn.execute(execStr)
         execResult = execSql.fetchall()
-#        import pdb; pdb.set_trace()
         conn.close()
         return execResult
 
@@ -189,7 +182,6 @@ class Member_Order_List(BrowserView):
                    ORDER BY orderInfo.createDate DESC" % userId
         execSql = conn.execute(execStr)
         execResult = execSql.fetchall()
-#        logger.info(execResult)
         conn.close()
 
         self.orders = []
@@ -286,20 +278,14 @@ class Member_LoginMenu(BrowserView):
 
 class Member_Login(BrowserView):
 
-#    template = ViewPageTemplateFile("template/member_login.pt")
-#測試用 reCAPTCHA key pair
-# site key: 6LdUty0UAAAAAK6vEfDiBKeVRQskYebwOyGvO3oI
-# secret key: 6LdUty0UAAAAAMSKideRk_b6LYpwH0CRVnJnrXqc
-
-
     def __call__(self):
         context = self.context
         request = self.request
         portal = api.portal.get()
 
-        url = 'https://www.google.com/recaptcha/api/siteverify'
+        url = RECAPTCHA_URL
         data = urllib.urlencode({
-            'secret': '6LdUty0UAAAAAMSKideRk_b6LYpwH0CRVnJnrXqc',
+            'secret': RECAPTCHA_SECRET,
             'response': request.form.get('g-recaptcha-response'),
         })
         req = urllib2.Request(url, data)
@@ -389,7 +375,6 @@ class Member_Registry(BrowserView):
             if user:
                 context.acl_users.session._setupSession(user.id, context.REQUEST.RESPONSE)
                 request.response.redirect(portal.absolute_url())
-                # notify event hander
                 notify(UserLoggedInEvent(user))
 
             request.response.redirect(portal.absolute_url())
@@ -412,17 +397,14 @@ class Member_Update(Member_Registry):
 
         self.user = api.user.get_current()
         self.userId = self.user.getId()
-#        import pdb; pdb.set_trace()
-        #　email寫在zodb裏，要特別處理
         self.userEmail = self.user.getProperty('email')
 
         conn = ENGINE.connect() # DB連線
 
-        if not request.form or request.form.has_key('u'): # 條件未上
+        if not request.form or request.form.has_key('u'):
             sqlStr = "select tel, city, address from `member` where userId = '%s'" % self.userId
             execResult = conn.execute(sqlStr)
             self.userInfo = execResult.fetchall()[0]
-#            import pdb; pdb.set_trace()
             return self.template()
         else:
             fullname = request.form.get('fullname')
@@ -461,7 +443,6 @@ class Member_Exist(BrowserView):
             return 'false'
 
 
-
 class Member_03(BrowserView):
 
     template = ViewPageTemplateFile("template/member_03.pt")
@@ -469,7 +450,6 @@ class Member_03(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 
@@ -481,7 +461,6 @@ class Member_04(BrowserView):
     def __call__(self):
         context = self.context
         request = self.request
-#        portal = api.portal.get()
 
         return self.template()
 

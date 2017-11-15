@@ -58,4 +58,3 @@ def checkpType(item, event):
             api.portal.show_message(message='Wrong, Please fill all fields in headphone tab!', request=item.REQUEST, type='warning')
 
     if item.pType == 'earplugs':pass
-    #TODO: earplugs

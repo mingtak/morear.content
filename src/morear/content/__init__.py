@@ -5,6 +5,13 @@ from zope.i18nmessageid import MessageFactory
 
 _ = MessageFactory('morear.content')
 
+# mysql參數
+DBSTR = 'mysql+mysqldb://morear:morear@localhost/morear?charset=utf8'
+
+# google recaptcha 參數
+RECAPTCHA_URL = 'https://www.google.com/recaptcha/api/siteverify'
+RECAPTCHA_SECRET = '6LdUty0UAAAAAMSKideRk_b6LYpwH0CRVnJnrXqc'
+
 # 耳機參數 i18n
 _(u'logoColorL')
 _(u'surfaceR')
