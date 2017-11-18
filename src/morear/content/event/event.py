@@ -8,7 +8,9 @@ def userLoginToFolderContents(event):
         return
     portal = api.portal.get()
     current = api.user.get_current()
-    if api.user.has_permission('Modify portal content', user=current):
+#    if api.user.has_permission('Modify portal content', user=current):
+    if api.user.has_permission('Add portal content', user=current) or \
+       api.user.has_permission('Review portal content', user=current):
         portal.REQUEST.response.redirect('%s/folder_contents' % portal.absolute_url())
 
 

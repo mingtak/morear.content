@@ -104,6 +104,7 @@ class GetOrderState(BrowserView):
 
     def __call__(self):
 
+        context = self.context
         portal = api.portal.get()
         if api.user.is_anonymous():
             self.request.response.redirect(portal.absolute_url())
@@ -122,7 +123,7 @@ class GetOrderState(BrowserView):
 
         result = dict(result)
         result['state_name'] = currentState
-        if 'Manager' in api.user.get_roles(user=currentUser):
+        if api.user.get_permissions(user=currentUser, obj=context):
             return json.dumps(result)
         else:
             return json.dumps({'state_name': currentState, 'orderId': orderId})
@@ -732,11 +733,15 @@ class LinksListingView(BrowserView):
 class IsAdmin(BrowserView):
 
     def __call__(self):
+
+        context = self.context
         if api.user.is_anonymous():
             return 'False'
         current = api.user.get_current()
         roles = api.user.get_roles(user=current)
-        if 'Manager' in roles or 'Site Administrator' in roles:
+
+        if api.user.get_permissions(user=current, obj=context):
+#        if 'Manager' in roles or 'Site Administrator' in roles:
             return 'True'
         else:
             return 'False'

@@ -18,6 +18,10 @@ msgstr ""
 "Domain: plone\n"
 "X-Is-Fallback-For: zh\n"
 
+msgid "Product Manager"
+msgstr "產品經理"
+
+
 #: plone.app.dexterity/plone/app/dexterity/interfaces.py:95
 msgid "# of items"
 msgstr "項目數量"
