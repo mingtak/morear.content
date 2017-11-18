@@ -12,6 +12,8 @@ def userLoginToFolderContents(event):
     if api.user.has_permission('Add portal content', user=current) or \
        api.user.has_permission('Review portal content', user=current):
         portal.REQUEST.response.redirect('%s/folder_contents' % portal.absolute_url())
+    else:
+        portal.REQUEST.response.redirect(portal.absolute_url())
 
 
 def moveContentToTop(item, event):
