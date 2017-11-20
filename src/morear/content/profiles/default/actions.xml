@@ -387,7 +387,7 @@
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
-    <element value="Manage Portal"/>
+    <element value="List folder contents"/>
    </property>
    <property name="visible">True</property>
   </object>

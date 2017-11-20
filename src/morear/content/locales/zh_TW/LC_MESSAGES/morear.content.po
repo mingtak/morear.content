@@ -16,7 +16,7 @@ msgstr ""
 
 #: ./behavior/parameter.py:39
 msgid "3D Print Shell"
-msgstr "3D列印耳殼"
+msgstr "主體顏色"
 
 #: ./interfaces.py:376
 msgid "About Morear Background Image"
@@ -180,7 +180,7 @@ msgstr "耳機線顏色"
 
 #: ./behavior/parameter.py:70
 msgid "Line Length"
-msgstr "耳機線長度"
+msgstr "耳機線材"
 
 #: ./profiles/default/types/Location.xml
 msgid "Location"
@@ -192,11 +192,11 @@ msgstr "據點名稱"
 
 #: ./behavior/parameter.py:98
 msgid "Logo Color, Left"
-msgstr "Logo顏色(左)"
+msgstr "Logo樣式(左)"
 
 #: ./behavior/parameter.py:91
 msgid "Logo Color, Right"
-msgstr "Logo顏色(右)"
+msgstr "Logo樣式(右)"
 
 #: ./behavior/behaviors.py:134
 msgid "Main Image"
@@ -248,19 +248,19 @@ msgstr "音樂達人"
 
 #: ./behavior/behaviors.py:48
 msgid "Music Man Audio"
-msgstr "音樂達人聲音檔"
+msgstr "聲音檔"
 
 #: ./behavior/behaviors.py:43
 msgid "Music Man Image"
-msgstr "音樂達人圖像"
+msgstr "個人圖像"
 
 #: ./behavior/behaviors.py:38
 msgid "Music Man Infomation"
-msgstr "音樂達人個人資訊"
+msgstr "個人資訊"
 
 #: ./behavior/behaviors.py:33
 msgid "Music Man Title"
-msgstr "音樂達人標題"
+msgstr "標題"
 
 #: ./interfaces.py:110
 msgid "Must be select image size at 1280x680."
@@ -373,11 +373,11 @@ msgstr "Spotify 嵌入碼(線上音樂廳)"
 
 #: ./behavior/parameter.py:84
 msgid "Surface Color, Left"
-msgstr "面板顏色(左)"
+msgstr "面板顏色/樣式(左)"
 
 #: ./behavior/parameter.py:77
 msgid "Surface Color, Right"
-msgstr "面板顏色(右)"
+msgstr "面板顏色/樣式(右)"
 
 #: ./interfaces.py:30
 msgid "Title"
@@ -385,7 +385,7 @@ msgstr "標題"
 
 #: ./behavior/parameter.py:128
 msgid "Type No."
-msgstr "型號"
+msgstr "濾音器型號"
 
 #: ./configure.zcml:32
 msgid "Uninstalls the morear.content add-on."

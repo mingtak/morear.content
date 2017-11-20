@@ -738,10 +738,8 @@ class IsAdmin(BrowserView):
         if api.user.is_anonymous():
             return 'False'
         current = api.user.get_current()
-        roles = api.user.get_roles(user=current)
 
-        if api.user.get_permissions(user=current, obj=context):
-#        if 'Manager' in roles or 'Site Administrator' in roles:
+        if api.user.get_permissions(user=current, obj=context).get('Manage portal'):
             return 'True'
         else:
             return 'False'

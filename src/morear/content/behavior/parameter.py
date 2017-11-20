@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from morear.content import _
-from plone.supermodel import directives
+#from plone.supermodel import directive
 from zope import schema
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.supermodel import model
@@ -16,6 +16,7 @@ from plone.namedfile.field import NamedBlobImage
 from DateTime import DateTime
 import random
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+from plone.directives import form
 
 
 class IParameterSet(model.Schema):
@@ -28,6 +29,8 @@ class IParameterSet(model.Schema):
                 'surfaceColorR', 'surfaceColorL', 'logoColorR', 'logoColorL']
     )
 
+
+    form.mode(lineColor='hidden')
     lineColor = RelationList(
         title=_(u"Line Color"),
         value_type=RelationChoice(title=_(u"Related"),
