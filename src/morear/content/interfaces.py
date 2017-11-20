@@ -53,7 +53,7 @@ class IProduct(Interface):
         title=_(u"Discount, base on basePrice percentage(%), default value 100 is no discount."),
         default=100,
         max=100,
-        min=1,
+        min=20,
         required=True,
     )
 

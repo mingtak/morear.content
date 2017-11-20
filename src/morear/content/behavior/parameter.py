@@ -23,7 +23,7 @@ class IParameterSet(model.Schema):
     """ Add product's parameter set """
 
     model.fieldset(
-        'headphone',
+        _('headphone'),
         label=_(u""),
         fields=['bgImage_left', 'bgImage_right', 'driver', 'lineLength', 'lineColor', 'shell3D',
                 'surfaceColorR', 'surfaceColorL', 'logoColorR', 'logoColorL']
@@ -105,7 +105,7 @@ class IParameterSet(model.Schema):
     )
 
     model.fieldset(
-        'earplugs',
+        _('earplugs'),
         label=_(u""),
         fields=['ep_bgImage_left', 'ep_bgImage_right', 'ep_material', 'ep_typeNo', 'ep_colorR', 'ep_colorL',]
     )

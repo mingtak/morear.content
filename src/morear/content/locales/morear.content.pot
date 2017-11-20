@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2017-11-18 14:43+0000\n"
+"POT-Creation-Date: 2017-11-20 03:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: morear.content\n"
 
-#: ./behavior/parameter.py:26
+#: ./behavior/parameter.py:27
 msgid ""
 msgstr ""
 
-#: ./behavior/parameter.py:39
+#: ./behavior/parameter.py:42
 msgid "3D Print Shell"
 msgstr ""
 
@@ -45,11 +45,11 @@ msgstr ""
 msgid "Audio file format: *.mp3"
 msgstr ""
 
-#: ./behavior/parameter.py:46
+#: ./behavior/parameter.py:49
 msgid "Background Image, Left"
 msgstr ""
 
-#: ./behavior/parameter.py:51
+#: ./behavior/parameter.py:54
 msgid "Background Image, Right"
 msgstr ""
 
@@ -81,11 +81,11 @@ msgstr ""
 msgid "City"
 msgstr ""
 
-#: ./behavior/parameter.py:135
+#: ./behavior/parameter.py:138
 msgid "Color, Left"
 msgstr ""
 
-#: ./behavior/parameter.py:142
+#: ./behavior/parameter.py:145
 msgid "Color, Right"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Document With Big Image"
 msgstr ""
 
-#: ./behavior/parameter.py:64
+#: ./behavior/parameter.py:67
 msgid "Driver"
 msgstr ""
 
@@ -181,11 +181,11 @@ msgstr ""
 msgid "Keyword"
 msgstr ""
 
-#: ./behavior/parameter.py:32
+#: ./behavior/parameter.py:35
 msgid "Line Color"
 msgstr ""
 
-#: ./behavior/parameter.py:70
+#: ./behavior/parameter.py:73
 msgid "Line Length"
 msgstr ""
 
@@ -197,11 +197,11 @@ msgstr ""
 msgid "Location Title"
 msgstr ""
 
-#: ./behavior/parameter.py:98
+#: ./behavior/parameter.py:101
 msgid "Logo Color, Left"
 msgstr ""
 
-#: ./behavior/parameter.py:91
+#: ./behavior/parameter.py:94
 msgid "Logo Color, Right"
 msgstr ""
 
@@ -221,7 +221,7 @@ msgstr ""
 msgid "Map Code"
 msgstr ""
 
-#: ./behavior/parameter.py:121
+#: ./behavior/parameter.py:124
 msgid "Material"
 msgstr ""
 
@@ -337,7 +337,7 @@ msgstr ""
 msgid "Question"
 msgstr ""
 
-#: ./behavior/parameter.py:33
+#: ./behavior/parameter.py:36
 #: ./interfaces.py:47
 msgid "Related"
 msgstr ""
@@ -378,11 +378,11 @@ msgstr ""
 msgid "Spotify Embeded Code"
 msgstr ""
 
-#: ./behavior/parameter.py:84
+#: ./behavior/parameter.py:87
 msgid "Surface Color, Left"
 msgstr ""
 
-#: ./behavior/parameter.py:77
+#: ./behavior/parameter.py:80
 msgid "Surface Color, Right"
 msgstr ""
 
@@ -390,7 +390,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: ./behavior/parameter.py:128
+#: ./behavior/parameter.py:131
 msgid "Type No."
 msgstr ""
 
@@ -498,6 +498,10 @@ msgstr ""
 msgid "discount"
 msgstr ""
 
+#: ./behavior/parameter.py:108
+msgid "earplugs"
+msgstr ""
+
 #: ./__init__.py:73
 msgid "earplugsAmount"
 msgstr ""
@@ -552,6 +556,10 @@ msgstr ""
 
 #: ./__init__.py:88
 msgid "finished"
+msgstr ""
+
+#: ./behavior/parameter.py:26
+msgid "headphone"
 msgstr ""
 
 #: ./browser/views.py:253

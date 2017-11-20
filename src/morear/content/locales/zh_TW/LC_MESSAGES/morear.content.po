@@ -14,7 +14,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./behavior/parameter.py:39
+#: ./behavior/parameter.py:42
 msgid "3D Print Shell"
 msgstr "主體顏色"
 
@@ -38,11 +38,11 @@ msgstr "地址"
 msgid "Audio file format: *.mp3"
 msgstr "聲音檔(格式:mp3)"
 
-#: ./behavior/parameter.py:46
+#: ./behavior/parameter.py:49
 msgid "Background Image, Left"
 msgstr "左邊背景圖片"
 
-#: ./behavior/parameter.py:51
+#: ./behavior/parameter.py:54
 msgid "Background Image, Right"
 msgstr "右邊背景圖片"
 
@@ -74,11 +74,11 @@ msgstr "精選"
 msgid "City"
 msgstr "縣市"
 
-#: ./behavior/parameter.py:135
+#: ./behavior/parameter.py:138
 msgid "Color, Left"
 msgstr "左邊顏色"
 
-#: ./behavior/parameter.py:142
+#: ./behavior/parameter.py:145
 msgid "Color, Right"
 msgstr "右邊顏色"
 
@@ -92,7 +92,7 @@ msgstr "首頁"
 
 #: ./interfaces.py:72
 msgid "Cover image, show in listing"
-msgstr "要顯示在首頁列表的圖片,尺寸 600X450"
+msgstr "會顯示在產品列表的圖片,尺寸 600X450"
 
 #: ./interfaces.py:67
 msgid "Description"
@@ -110,13 +110,13 @@ msgstr "鄉鎮市區"
 msgid "Document With Big Image"
 msgstr "帶大圖的頁面"
 
-#: ./behavior/parameter.py:64
+#: ./behavior/parameter.py:67
 msgid "Driver"
 msgstr "單體"
 
 #: ./interfaces.py:23
 msgid "Earplugs"
-msgstr "耳塞"
+msgstr "客製耳塞"
 
 #: ./profiles/default/types/Cover.xml
 #: ./profiles/default/types/DocWithBigImage.xml
@@ -154,7 +154,7 @@ msgstr "頭條權重"
 
 #: ./interfaces.py:22
 msgid "Headphone"
-msgstr "耳機"
+msgstr "客製耳機"
 
 #: ./interfaces.py:62
 msgid "Headphone / earplugs mustbe fill."
@@ -174,11 +174,11 @@ msgstr "安裝 morear.content 模組"
 msgid "Keyword"
 msgstr "關鍵字設定"
 
-#: ./behavior/parameter.py:32
+#: ./behavior/parameter.py:35
 msgid "Line Color"
 msgstr "耳機線顏色"
 
-#: ./behavior/parameter.py:70
+#: ./behavior/parameter.py:73
 msgid "Line Length"
 msgstr "耳機線材"
 
@@ -190,11 +190,11 @@ msgstr "據點"
 msgid "Location Title"
 msgstr "據點名稱"
 
-#: ./behavior/parameter.py:98
+#: ./behavior/parameter.py:101
 msgid "Logo Color, Left"
 msgstr "Logo樣式(左)"
 
-#: ./behavior/parameter.py:91
+#: ./behavior/parameter.py:94
 msgid "Logo Color, Right"
 msgstr "Logo樣式(右)"
 
@@ -214,7 +214,7 @@ msgstr "主要 Slider 連結"
 msgid "Map Code"
 msgstr "地圖嵌入碼"
 
-#: ./behavior/parameter.py:121
+#: ./behavior/parameter.py:124
 msgid "Material"
 msgstr "材質"
 
@@ -330,7 +330,7 @@ msgstr "產品別"
 msgid "Question"
 msgstr "問題"
 
-#: ./behavior/parameter.py:33
+#: ./behavior/parameter.py:36
 #: ./interfaces.py:47
 msgid "Related"
 msgstr "關連"
@@ -371,11 +371,11 @@ msgstr "小圖示"
 msgid "Spotify Embeded Code"
 msgstr "Spotify 嵌入碼(線上音樂廳)"
 
-#: ./behavior/parameter.py:84
+#: ./behavior/parameter.py:87
 msgid "Surface Color, Left"
 msgstr "面板顏色/樣式(左)"
 
-#: ./behavior/parameter.py:77
+#: ./behavior/parameter.py:80
 msgid "Surface Color, Right"
 msgstr "面板顏色/樣式(右)"
 
@@ -383,7 +383,7 @@ msgstr "面板顏色/樣式(右)"
 msgid "Title"
 msgstr "標題"
 
-#: ./behavior/parameter.py:128
+#: ./behavior/parameter.py:131
 msgid "Type No."
 msgstr "濾音器型號"
 
@@ -491,6 +491,10 @@ msgstr "客製化圖案(右)"
 msgid "discount"
 msgstr "折扣"
 
+#: ./behavior/parameter.py:108
+msgid "earplugs"
+msgstr "客製耳塞"
+
 #: ./__init__.py:73
 msgid "earplugsAmount"
 msgstr "耳塞數量"
@@ -546,6 +550,10 @@ msgstr "精選"
 #: ./__init__.py:88
 msgid "finished"
 msgstr "已完成"
+
+#: ./behavior/parameter.py:26
+msgid "headphone"
+msgstr "客製耳機"
 
 #: ./browser/views.py:253
 msgid "i_2list"
