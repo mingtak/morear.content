@@ -26,7 +26,7 @@ portal = api.portal.get()
 <p><img src="${portal/absolute_url}/++plone++morear.theme/manalogin.jpeg" /></p>
 <p>&nbsp;</p>
 
-    <form class="pat-formautofocus" method="post" id="login_form" action="http://morear.babywith.me/login_form">
+    <form class="pat-formautofocus" method="post" id="login_form" action="${portal/absolute_url}/login_form">
                 <div id="login-form">
                     <input type="hidden" name="came_from" value="">
                     <input type="hidden" name="next">
